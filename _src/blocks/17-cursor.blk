@@ -1,0 +1,102 @@
+@@meta
+id: sgk-cursor
+anchor:
+order: 99
+title: Курсор-рукавиця (для ПК)
+pos: будь-де, найзручніше - в самому кінці сторінки. Блок невидимий: він замінює стрілку мишки на рукавицю Synergy на всьому сайті.
+glove: yes
+extra: gloveBody=#F4F6F1|колір рукавиці-курсора; gloveDark=#0A0C0B|контур рукавиці-курсора; ring=rgba(200,255,46,0.55)|кільце, що летить за курсором
+
+@@install
+Працює тільки на комп'ютерах з мишкою. На телефонах і планшетах
+нічого не змінюється. Над полями вводу (форма замовлення) і в
+міні-грі зі звичайним курсором нічого не відбувається - там
+показується звичайна стрілка / рукавиця гри.
+
+@@html
+<div id="sgk-cursor" aria-hidden="true">
+  <div class="sgk-ring" data-sgk="ring"></div>
+  <div class="sgk-cur" data-sgk="cur"><div class="sgk-cur-in" data-sgk="img"></div></div>
+</div>
+
+@@css
+#sgk-cursor{position:static;overflow:visible;padding:0;background:none;width:0;height:0}
+#sgk-cursor .sgk-cur,#sgk-cursor .sgk-ring,#sgk-cursor .sgk-rip{position:fixed;left:0;top:0;pointer-events:none;z-index:2147483000;will-change:transform}
+#sgk-cursor .sgk-cur{width:var(--cs,34px);height:calc(var(--cs,34px) * 1.25);margin:calc(var(--cs,34px) * -0.12) 0 0 calc(var(--cs,34px) * -0.5);opacity:0;transition:opacity .25s ease}
+#sgk-cursor .sgk-cur-in{width:100%;height:100%;transform-origin:50% 40%;transition:transform .35s cubic-bezier(.2,1.4,.4,1);filter:drop-shadow(0 4px 8px rgba(0,0,0,.45))}
+#sgk-cursor .sgk-cur-in img{width:100%;height:100%;display:block}
+#sgk-cursor .sgk-ring{width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid var(--sgk-ring);opacity:0;transition:opacity .25s ease,width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),margin .35s cubic-bezier(.2,.8,.2,1),background .3s ease,border-color .3s ease}
+#sgk-cursor.is-on .sgk-cur,#sgk-cursor.is-on .sgk-ring{opacity:1}
+#sgk-cursor.is-hover .sgk-ring{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(200,255,46,.08);border-color:var(--sgk-accent)}
+#sgk-cursor.is-hover .sgk-cur-in{transform:rotate(-14deg) scale(1.12)}
+#sgk-cursor.is-down .sgk-cur-in{transform:rotate(-8deg) scale(.82,.76)}
+#sgk-cursor .sgk-rip{width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;border:2px solid var(--sgk-accent);animation:sgkRip .55s ease-out forwards}
+@keyframes sgkRip{from{transform:var(--p) scale(1);opacity:.9}to{transform:var(--p) scale(4);opacity:0}}
+html.sgk-cursor-on,html.sgk-cursor-on body,html.sgk-cursor-on a,html.sgk-cursor-on button,html.sgk-cursor-on [role="button"],html.sgk-cursor-on label{cursor:none !important}
+html.sgk-cursor-on input,html.sgk-cursor-on textarea,html.sgk-cursor-on select,html.sgk-cursor-on [contenteditable="true"]{cursor:auto !important}
+
+@@config
+    size: 38,     /* ЗМІНИТИ - розмір рукавиці-курсора в px (28-44) */
+
+@@settings
+      enabled: true,       /* ЗМІНИТИ - false = вимкнути курсор-рукавицю */
+      minWidth: 900        /* ЗМІНИТИ - показувати тільки на екранах ширших за це значення (px) */
+
+@@js
+  if (S.enabled === false || !fine || !animOn || window.innerWidth < (S.minWidth || 900)) { root.style.display = "none"; return; }
+  root.style.setProperty("--cs", (CONFIG.size || 34) + "px");
+  var im = mk("img"); im.alt = ""; im.src = svgUrl(gloveSvg({ body: CONFIG.colors.gloveBody, accent: CONFIG.colors.accent, dark: CONFIG.colors.gloveDark }));
+  q("img").appendChild(im);
+  document.documentElement.classList.add("sgk-cursor-on");
+  var cur = q("cur"), ring = q("ring");
+  var mx = -100, my = -100, cx = -100, cy = -100, rx = -100, ry = -100, vx = 0, raf = null, shown = false;
+  var HOVER = 'a,button,[role="button"],select,label,.sgk-sz,.sgk-chip,.sgk-tab,.sgk-dot,.sgk-stage,summary';
+  var NATIVE = 'input,textarea,select,[contenteditable="true"],[data-sgk-nocursor]';
+
+  function loop() {
+    raf = null;
+    var px = cx; cx += (mx - cx) * 0.45; cy += (my - cy) * 0.45; rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+    vx = vx * 0.8 + (cx - px) * 0.2;
+    var tilt = Math.max(-25, Math.min(25, vx * 1.6));
+    cur.style.transform = "translate3d(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px,0) rotate(" + tilt.toFixed(1) + "deg)";
+    ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0)";
+    if (Math.abs(mx - cx) > 0.2 || Math.abs(my - cy) > 0.2 || Math.abs(mx - rx) > 0.2 || Math.abs(my - ry) > 0.2 || Math.abs(vx) > 0.05) raf = requestAnimationFrame(loop);
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+  document.addEventListener("mousemove", function (e) {
+    mx = e.clientX; my = e.clientY;
+    if (!shown) { shown = true; cx = rx = mx; cy = ry = my; }
+    var t = e.target, native = t && t.closest && t.closest(NATIVE);
+    root.classList.toggle("is-on", !native);
+    root.classList.toggle("is-hover", !native && !!(t && t.closest && t.closest(HOVER)));
+    kick();
+  }, { passive: true });
+  document.addEventListener("mousedown", function (e) {
+    if (!root.classList.contains("is-on")) return;
+    root.classList.add("is-down");
+    var r = mk("div", "sgk-rip"); r.style.setProperty("--p", "translate3d(" + e.clientX + "px," + e.clientY + "px,0)");
+    r.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0)";
+    root.appendChild(r); setTimeout(function () { if (r.parentNode) r.parentNode.removeChild(r); }, 600);
+  });
+  document.addEventListener("mouseup", function () { root.classList.remove("is-down"); });
+  document.documentElement.addEventListener("mouseleave", function () { root.classList.remove("is-on"); });
+  document.addEventListener("mouseover", function (e) { if (!e.relatedTarget && shown) { var t = e.target; if (!(t && t.closest && t.closest(NATIVE))) root.classList.add("is-on"); } });
+
+@@notes
+ЩО ЦЕ
+  На комп'ютері замість стрілки мишки по сайту "літає" маленька
+  рукавиця Synergy, а за нею плавно тягнеться лаймове кільце.
+  - нахиляється в бік руху;
+  - над кнопками і посиланнями кільце збільшується, рукавиця
+    повертається;
+  - при кліку рукавиця "стискається", як при ловлі м'яча, і від
+    точки кліку розходиться лаймове коло.
+  Над полями форми показується звичайний курсор (щоб було зручно
+  вводити текст), у міні-грі - рукавиця самої гри.
+  На телефонах і планшетах блок нічого не робить.
+
+НАЛАШТУВАННЯ
+  size     - розмір рукавиці (34 px);
+  settings.enabled  - вимкнути/увімкнути;
+  settings.minWidth - мінімальна ширина екрану.
+  Кольори: gloveBody, gloveDark, accent (смужки і логотип), ring.

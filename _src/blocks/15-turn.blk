@@ -1,0 +1,279 @@
+@@meta
+id: sgk-turn
+anchor: turn
+order: 2.7
+title: 3D-огляд (поверни рукавицю)
+pos: після блоку 13 (Сейв при прокрутці), перед блоком 03 (Каталог).
+icons: yes
+colors: bg=#0F1211
+extra: stageBg=#141816|фон сцени з рукавицею; orbit=rgba(200,255,46,0.25)|пунктирне коло за рукавицею
+
+@@html
+<section id="sgk-turn" aria-label="3D-огляд">
+  <div class="sgk-wrap">
+    <div class="sgk-grid">
+      <div class="sgk-info">
+        <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+        <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+        <p class="sgk-lead sgk-rv" data-d="0.14" data-sgk="lead"></p>
+        <div class="sgk-tabs sgk-rv" data-d="0.2" data-sgk="tabs"></div>
+        <div class="sgk-model sgk-rv" data-d="0.26">
+          <div class="sgk-m-name" data-sgk="name"></div>
+          <p class="sgk-m-desc" data-sgk="desc"></p>
+          <div class="sgk-sides" data-sgk="sides"></div>
+          <div class="sgk-m-foot">
+            <div class="sgk-m-price" data-sgk="price"></div>
+            <a class="sgk-btn sgk-btn--main" data-sgk="btn" href="#catalog"><span data-sgk="btnText"></span><span class="sgk-bi" data-sgk="btnIc"></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="sgk-stage sgk-rv" data-d="0.15" data-sgk="stage">
+        <div class="sgk-orbit"></div>
+        <div class="sgk-shadow" data-sgk="shadow"></div>
+        <div class="sgk-wob" data-sgk="wob">
+          <div class="sgk-obj" data-sgk="obj">
+            <div class="sgk-face sgk-front" data-sgk="front"><div class="sgk-glare"></div></div>
+            <div class="sgk-face sgk-back" data-sgk="back"><div class="sgk-glare"></div></div>
+          </div>
+        </div>
+        <div class="sgk-hint" data-sgk="hint"><span class="sgk-hint-ic" data-sgk="hintIc"></span><span data-sgk="hintText"></span></div>
+        <div class="sgk-deg" data-sgk="deg">0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@@css
+#sgk-turn .sgk-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center}
+#sgk-turn .sgk-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+#sgk-turn .sgk-tab{height:44px;padding:0 20px;border-radius:100px;border:1px solid var(--sgk-cardBorder) !important;font-size:14.5px;font-weight:700;color:var(--sgk-text);transition:background .3s ease,color .3s ease,border-color .3s ease,transform .3s ease}
+#sgk-turn .sgk-tab:hover{transform:translateY(-2px);border-color:var(--sgk-accent) !important}
+#sgk-turn .sgk-tab.is-on{background:var(--sgk-accent);color:var(--sgk-btnText);border-color:var(--sgk-accent) !important}
+#sgk-turn .sgk-model{margin-top:26px;padding:26px;border-radius:24px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);transition:opacity .35s ease,transform .35s ease}
+#sgk-turn .sgk-model.is-swap{opacity:0;transform:translateY(10px)}
+#sgk-turn .sgk-m-name{font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(22px,2.2vw,30px);color:var(--sgk-text)}
+#sgk-turn .sgk-m-desc{margin-top:10px;font-size:15px;line-height:1.6;color:var(--sgk-textMuted)}
+#sgk-turn .sgk-sides{display:inline-flex;margin-top:18px;padding:4px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid var(--sgk-cardBorder)}
+#sgk-turn .sgk-side{position:relative;z-index:1;height:38px;padding:0 18px;border-radius:100px;font-size:13.5px;font-weight:800;color:var(--sgk-textMuted);transition:color .3s ease,background .3s ease}
+#sgk-turn .sgk-side.is-on{background:var(--sgk-text);color:var(--sgk-bg)}
+#sgk-turn .sgk-m-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px}
+#sgk-turn .sgk-m-price{font-family:var(--sgk-font-h);font-weight:800;font-size:24px;color:var(--sgk-text)}
+#sgk-turn .sgk-m-foot .sgk-btn{padding:0 8px 0 24px}
+#sgk-turn .sgk-bi{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-btnText);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+#sgk-turn .sgk-btn .sgk-bi{color:var(--sgk-accent) !important}
+#sgk-turn .sgk-bi svg{width:18px;height:18px}
+#sgk-turn .sgk-btn:hover .sgk-bi{transform:rotate(-45deg)}
+
+#sgk-turn .sgk-stage{position:relative;height:clamp(440px,48vw,640px);border-radius:32px;overflow:hidden;background:radial-gradient(60% 60% at 50% 45%,rgba(200,255,46,.10) 0%,rgba(0,0,0,0) 70%),var(--sgk-stageBg);border:1px solid var(--sgk-cardBorder);perspective:1300px;cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+#sgk-turn .sgk-stage.is-drag{cursor:grabbing}
+#sgk-turn .sgk-orbit{position:absolute;left:50%;top:47%;width:84%;aspect-ratio:1/1;max-height:96%;transform:translate(-50%,-50%);border-radius:50%;border:1.5px dashed var(--sgk-orbit);animation:sgkOrbit 40s linear infinite;pointer-events:none}
+#sgk-turn .sgk-shadow{position:absolute;left:50%;bottom:7%;width:44%;height:26px;margin-left:-22%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),rgba(0,0,0,0));pointer-events:none;transition:transform .2s ease}
+#sgk-turn .sgk-wob{position:absolute;left:50%;top:46%;width:var(--fw,300px);height:var(--fh,480px);margin:calc(var(--fh,480px) / -2) 0 0 calc(var(--fw,300px) / -2);transform-style:preserve-3d}
+#sgk-turn .sgk-wob.is-idle{animation:sgkWob 3.4s ease-in-out infinite}
+#sgk-turn .sgk-obj{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform}
+#sgk-turn .sgk-obj.is-snap{transition:transform .8s cubic-bezier(.2,.9,.25,1)}
+#sgk-turn .sgk-face{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:26px;overflow:hidden;background:var(--sgk-phBg);-webkit-backface-visibility:hidden;backface-visibility:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+#sgk-turn .sgk-back{transform:rotateY(180deg)}
+#sgk-turn .sgk-face .sgk-img{pointer-events:none;-webkit-user-drag:none}
+#sgk-turn .sgk-glare{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.28) 48%,rgba(255,255,255,0) 62%);background-size:260% 100%;background-position:var(--gp,50%) 0;mix-blend-mode:overlay}
+#sgk-turn.sgk-frames .sgk-back{display:none}
+#sgk-turn.sgk-frames .sgk-face{-webkit-backface-visibility:visible;backface-visibility:visible}
+#sgk-turn .sgk-hint{position:absolute;left:50%;bottom:18px;z-index:5;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:100px;transform:translateX(-50%);background:rgba(10,12,11,.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--sgk-cardBorder);font-size:13px;font-weight:700;color:var(--sgk-text);white-space:nowrap;transition:opacity .5s ease,transform .5s ease;pointer-events:none}
+#sgk-turn .sgk-hint.is-off{opacity:0;transform:translate(-50%,10px)}
+#sgk-turn .sgk-hint-ic{display:flex;color:var(--sgk-accent);animation:sgkSwipe 1.8s ease-in-out infinite}
+#sgk-turn .sgk-hint-ic svg{width:20px;height:20px}
+#sgk-turn .sgk-deg{position:absolute;right:18px;top:16px;z-index:5;font-family:var(--sgk-font-h);font-weight:700;font-size:13px;color:var(--sgk-textMuted);font-variant-numeric:tabular-nums}
+#sgk-turn .sgk-deg::after{content:" \00B0"}
+@keyframes sgkWob{0%,100%{transform:rotateY(-16deg)}50%{transform:rotateY(16deg)}}
+@keyframes sgkOrbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes sgkSwipe{0%,100%{transform:translateX(-5px)}50%{transform:translateX(5px)}}
+@media (max-width:900px){
+  #sgk-turn .sgk-grid{grid-template-columns:minmax(0,1fr)}
+  #sgk-turn .sgk-stage{height:clamp(420px,120vw,560px);order:-1}
+  #sgk-turn .sgk-info{order:0}
+}
+@media (max-width:560px){
+  #sgk-turn .sgk-stage{border-radius:24px}
+  #sgk-turn .sgk-model{padding:20px}
+  #sgk-turn .sgk-m-foot .sgk-btn{width:100%;justify-content:space-between}
+}
+
+@@config
+    kicker: "3D-огляд",                                    /* ЗМІНИТИ - надпис над заголовком */
+    title: "Поверни [рукавицю]",                            /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    lead: "Потягни рукавицю мишкою або пальцем - подивись тил і долоню, як у магазині.", /* ЗМІНИТИ - текст */
+    hintText: "Потягни, щоб повернути",                     /* ЗМІНИТИ - підказка на сцені */
+    btnText: "Обрати розмір",                               /* ЗМІНИТИ - текст кнопки */
+
+    /* МОДЕЛІ. front - фото з одного боку, back - з іншого.
+       Для справжнього 360 (коли буде зйомка по колу) - вставте в frames 24-36 фото по порядку, тоді front/back не потрібні */
+    models: [                                                                   /* ЗМІНИТИ */
+      {
+        name: "Synergy Evolution",                                              /* ЗМІНИТИ - назва */
+        desc: "Біла модель з фірмовим S і рельєфним захистом пальців.",         /* ЗМІНИТИ - опис */
+        price: "1 650 грн",                                                     /* ЗМІНИТИ - ціна (текстом) */
+        front: "__ASSETS__evolution-1.jpg",  frontPos: "50% 35%", frontLabel: "Тил",    /* ЗМІНИТИ */
+        back:  "__ASSETS__evolution-palm.jpg", backPos: "50% 40%", backLabel: "Долоня", /* ЗМІНИТИ */
+        frames: [],                                                             /* ЗМІНИТИ - фото для 360 (необов'язково) */
+        link: "#catalog"                                                        /* ЗМІНИТИ - куди веде кнопка */
+      },
+      {
+        name: "Synergy Shine",
+        desc: "Чорна модель з неоново-блакитними вставками.",
+        price: "1 650 грн",
+        front: "__ASSETS__shine-detail.jpg", frontPos: "50% 50%", frontLabel: "Тил",
+        back:  "__ASSETS__shine-palm.jpg",   backPos: "50% 40%",  backLabel: "Долоня",
+        frames: [],
+        link: "#catalog"
+      }
+    ],
+
+@@settings
+      idleWobble: true,   /* ЗМІНИТИ - рукавиця злегка похитується, поки її не чіпали */
+      dragSpeed: 0.6      /* ЗМІНИТИ - чутливість повороту (0.3 - повільно, 1 - швидко) */
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+  txt("hintText", CONFIG.hintText);
+  txt("btnText", CONFIG.btnText);
+  q("hintIc").innerHTML = icon("hand", 1.9);
+  q("btnIc").innerHTML = icon("arrow", 2.2);
+
+  var stage = q("stage"), wob = q("wob"), obj = q("obj"), front = q("front"), back = q("back"), hint = q("hint"), deg = q("deg"), shadow = q("shadow");
+  var model = null, angle = 0, frameImgs = [], touched = false;
+
+  function size() {
+    var h = stage.clientHeight * 0.74, w = h * 0.62;
+    if (w > stage.clientWidth * 0.62) { w = stage.clientWidth * 0.62; h = w / 0.62; }
+    root.style.setProperty("--fw", Math.round(w) + "px");
+    root.style.setProperty("--fh", Math.round(h) + "px");
+  }
+  function setFace(el, src, pos, label) {
+    each(el.querySelectorAll(".sgk-img,.sgk-ph"), function (x) { x.parentNode.removeChild(x); });
+    var m = media(src, label, label, "glove");
+    if (src && pos) m.style.objectPosition = pos;
+    if (src) m.loading = "eager";
+    el.insertBefore(m, el.firstChild);
+  }
+  function apply(snap) {
+    obj.classList.toggle("is-snap", !!snap);
+    var a = ((angle % 360) + 360) % 360;
+    deg.textContent = String(Math.round(a));
+    if (model && model.frames && model.frames.length >= 8) {
+      var n = model.frames.length, idx = Math.round(a / (360 / n)) % n;
+      var im = front.querySelector(".sgk-img");
+      if (im && frameImgs[idx]) im.src = frameImgs[idx].src;
+      obj.style.transform = "none";
+    } else {
+      obj.style.transform = "rotateY(" + angle.toFixed(1) + "deg)";
+      var s = Math.abs(Math.cos(angle * Math.PI / 180));
+      shadow.style.transform = "scaleX(" + (0.55 + 0.45 * s).toFixed(3) + ")";
+      root.style.setProperty("--gp", (50 + ((a > 180 ? a - 360 : a) / 180) * 60).toFixed(1) + "%");
+      var onBack = a > 90 && a < 270;
+      each(q("sides").querySelectorAll(".sgk-side"), function (b, i) { b.classList.toggle("is-on", (i === 1) === onBack); });
+    }
+  }
+  function load(i) {
+    model = CONFIG.models[i];
+    var box = root.querySelector(".sgk-model");
+    function fill() {
+      txt("name", model.name); txt("desc", model.desc); txt("price", model.price);
+      lnk(q("btn"), model.link || "#catalog");
+      var sides = q("sides"); sides.innerHTML = "";
+      var frames = model.frames && model.frames.length >= 8;
+      root.classList.toggle("sgk-frames", frames);
+      if (frames) {
+        frameImgs = model.frames.map(function (u) { var im = new Image(); im.src = u; return im; });
+        setFace(front, model.frames[0], model.frontPos, model.name);
+        sides.style.display = "none";
+      } else {
+        frameImgs = [];
+        setFace(front, model.front, model.frontPos, model.frontLabel);
+        setFace(back, model.back, model.backPos, model.backLabel);
+        sides.style.display = "";
+        [model.frontLabel, model.backLabel].forEach(function (l, k) {
+          var b = mk("button", "sgk-side", l); b.type = "button";
+          b.addEventListener("click", function () { stopIdle(); var base = Math.round(angle / 360) * 360; angle = base + (k === 1 ? 180 : 0); apply(true); });
+          sides.appendChild(b);
+        });
+      }
+      angle = 0; apply(false);
+    }
+    if (animOn && box.getAttribute("data-init")) { box.classList.add("is-swap"); setTimeout(function () { fill(); box.classList.remove("is-swap"); }, 300); }
+    else { fill(); box.setAttribute("data-init", "1"); }
+    each(q("tabs").querySelectorAll(".sgk-tab"), function (t, k) { t.classList.toggle("is-on", k === i); });
+  }
+  var tabs = q("tabs");
+  CONFIG.models.forEach(function (m, i) {
+    var t = mk("button", "sgk-tab", m.name); t.type = "button";
+    t.addEventListener("click", function () { load(i); });
+    tabs.appendChild(t);
+  });
+  if (CONFIG.models.length < 2) tabs.style.display = "none";
+
+  function stopIdle() { if (touched) return; touched = true; wob.classList.remove("is-idle"); hint.classList.add("is-off"); }
+  if (S.idleWobble !== false && animOn) wob.classList.add("is-idle");
+
+  /* перетягування */
+  var dragging = false, sx = 0, sa = 0, sy = 0, moved = false;
+  stage.addEventListener("pointerdown", function (e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    dragging = true; moved = false; sx = e.clientX; sy = e.clientY; sa = angle;
+    stage.classList.add("is-drag");
+  });
+  window.addEventListener("pointermove", function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - sx, dy = e.clientY - sy;
+    if (!moved && Math.abs(dx) < 6) { if (Math.abs(dy) > 10) { dragging = false; stage.classList.remove("is-drag"); } return; }
+    if (!moved) { moved = true; stopIdle(); try { stage.setPointerCapture(e.pointerId); } catch (er) {} }
+    angle = sa + dx * (S.dragSpeed || 0.6);
+    apply(false);
+  });
+  function end() {
+    if (!dragging) return;
+    dragging = false; stage.classList.remove("is-drag");
+    if (moved && !(model && model.frames && model.frames.length >= 8)) { angle = Math.round(angle / 180) * 180; apply(true); }
+  }
+  window.addEventListener("pointerup", end);
+  window.addEventListener("pointercancel", end);
+
+  /* легкий нахил за мишкою */
+  if (fine && animOn) {
+    stage.addEventListener("mousemove", function (e) {
+      if (dragging) return;
+      var r = stage.getBoundingClientRect(), y = (e.clientY - r.top) / r.height - 0.5;
+      wob.style.transform = touched ? "rotateX(" + (-y * 10).toFixed(1) + "deg)" : "";
+    });
+    stage.addEventListener("mouseleave", function () { if (touched) wob.style.transform = ""; });
+  }
+
+  size(); window.addEventListener("resize", size);
+  load(0);
+  reveal();
+
+@@notes
+ЩО ЦЕ
+  Велика сцена, де рукавицю можна "крутити" мишкою або пальцем.
+  Відпускаєш - вона плавно доводиться до найближчого боку (тил або
+  долоня). Поки її не чіпали - злегка похитується і висить підказка
+  "Потягни, щоб повернути". Відблиск світла рухається разом з
+  поворотом, тінь під рукавицею звужується на ребрі.
+  Кнопки "Тил / Долоня" повертають рукавицю автоматично.
+
+МОДЕЛІ  ->  models (вкладки над карткою)
+  name, desc, price - назва, опис, ціна;
+  front / back      - фото двох боків; frontPos / backPos - яку
+                      частину фото показувати ("X% Y%");
+  frontLabel / backLabel - підписи кнопок ("Тил", "Долоня");
+  link              - куди веде кнопка "Обрати розмір".
+
+СПРАВЖНІЙ 360 ГРАДУСІВ  ->  frames
+  Коли клієнт зніме рукавицю на поворотному столику (24-36 фото
+  по колу, однаковий фон і відстань) - вставте всі посилання по
+  порядку в frames: ["...01.jpg", "...02.jpg", ...]. Тоді рукавиця
+  буде обертатися по-справжньому на всі 360 градусів.
+
+settings.idleWobble - похитування до першого дотику;
+settings.dragSpeed  - чутливість повороту.

@@ -563,6 +563,10 @@ SYNERGY GK - БЛОК 03: КАТАЛОГ МОДЕЛЕЙ
     cards.push({ el: c, p: p, szs: szs, chosen: chosen });
   });
 
+  /* --- дані для блоків "Порівняння" (14) і "3D-огляд" (15) --- */
+  window.SGK_CATALOG = { products: CONFIG.products, labels: CONFIG.ratingLabels, cutNames: CONFIG.cutNames, currency: CONFIG.currency };
+  try { document.dispatchEvent(new CustomEvent("sgk:products")); } catch (e) {}
+
   /* --- фільтри --- */
   var state = { cat: "all", cut: "all" };
   function applyFilter() {

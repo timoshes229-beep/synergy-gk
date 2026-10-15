@@ -31,6 +31,14 @@ instagramUsername на реальні ніки клієнта.
     <div class="sgk-panes" data-sgk="panes">
       <div class="sgk-pane is-on" data-pane="cart">
         <div class="sgk-items" data-sgk="items"></div>
+        <div class="sgk-promo" data-sgk="promo">
+          <div class="sgk-promo-row">
+            <input class="sgk-in sgk-promo-in" type="text" data-sgk="promoIn" autocomplete="off" spellcheck="false">
+            <button class="sgk-promo-b" type="button" data-sgk="promoBtn"></button>
+          </div>
+          <div class="sgk-promo-ok" data-sgk="promoOk"><span data-sgk="promoOkText"></span><button type="button" class="sgk-promo-x" data-sgk="promoX"></button></div>
+          <div class="sgk-promo-err" data-sgk="promoErr"></div>
+        </div>
         <div class="sgk-empty" data-sgk="empty">
           <div class="sgk-empty-ic" data-sgk="emptyIc"></div>
           <div class="sgk-empty-t" data-sgk="emptyTitle"></div>
@@ -111,6 +119,20 @@ instagramUsername на реальні ніки клієнта.
 #sgk-cart .sgk-rm{position:absolute;top:14px;right:0;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--sgk-textMuted);transition:color .2s ease,background .2s ease}
 #sgk-cart .sgk-rm svg{width:15px;height:15px}
 #sgk-cart .sgk-rm:hover{color:var(--sgk-danger);background:rgba(255,106,92,.12)}
+#sgk-cart .sgk-promo{margin-top:16px}
+#sgk-cart .sgk-promo-row{display:flex;gap:8px}
+#sgk-cart .sgk-promo-in{height:48px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+#sgk-cart .sgk-promo-b{flex:none;height:48px;padding:0 18px;border-radius:14px;border:1px solid var(--sgk-accent) !important;color:var(--sgk-accent);font-size:14px;font-weight:800;transition:background .25s ease,color .25s ease}
+#sgk-cart .sgk-promo-b:hover{background:var(--sgk-accent);color:var(--sgk-btnText)}
+#sgk-cart .sgk-promo-ok{display:none;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:var(--sgk-accentSoft);border:1px dashed var(--sgk-accent);font-size:14px;font-weight:800;color:var(--sgk-accent)}
+#sgk-cart .sgk-promo.is-ok .sgk-promo-row{display:none}
+#sgk-cart .sgk-promo.is-ok .sgk-promo-ok{display:flex;animation:sgkIn .4s ease}
+#sgk-cart .sgk-promo-x{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--sgk-accent)}
+#sgk-cart .sgk-promo-x svg{width:14px;height:14px}
+#sgk-cart .sgk-promo-err{display:none;margin-top:6px;font-size:12.5px;font-weight:600;color:var(--sgk-danger)}
+#sgk-cart .sgk-promo.is-bad .sgk-promo-err{display:block}
+#sgk-cart .sgk-promo.is-bad .sgk-promo-in{border-color:var(--sgk-danger);animation:sgkShake .45s ease}
+#sgk-cart .sgk-sum s{margin-right:8px;font-size:14px;color:var(--sgk-textMuted);font-family:var(--sgk-font-b);font-weight:600}
 #sgk-cart .sgk-empty{display:none;flex-direction:column;align-items:center;text-align:center;padding:48px 10px 20px}
 #sgk-cart .sgk-empty.is-on{display:flex}
 #sgk-cart .sgk-empty-ic{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-accentSoft);color:var(--sgk-accent);animation:sgkFloat 4s ease-in-out infinite}
@@ -229,6 +251,17 @@ instagramUsername на реальні ніки клієнта.
     autoSentText: "Замовлення також надіслано нам автоматично. Повідомлення в месенджер пришвидшить підтвердження.", /* ЗМІНИТИ - показується, якщо налаштовано webhookUrl */
 
     /* КУДИ ПРИХОДЯТЬ ЗАМОВЛЕННЯ */
+    /* ПРОМОКОДИ. code - сам код, percent - знижка у %. Код з міні-гри (блок 16) має бути тут */
+    promoCodes: [                                           /* ЗМІНИТИ */
+      { code: "SAVE10", percent: 10 }
+    ],
+    promoPlaceholder: "Промокод",                          /* ЗМІНИТИ - підказка в полі промокоду */
+    promoApply: "Застосувати",                             /* ЗМІНИТИ - кнопка */
+    promoOkText: "Промокод {code}: -{percent}%",           /* ЗМІНИТИ - коли код прийнято */
+    promoBadText: "Такого промокоду немає",                /* ЗМІНИТИ - помилка */
+    discountLabel: "Знижка",                               /* ЗМІНИТИ - рядок у тексті замовлення */
+    payLabel: "До сплати",                                 /* ЗМІНИТИ - рядок у тексті замовлення */
+
     order: {
       prefix: "SGK-",                                     /* ЗМІНИТИ - початок номера замовлення */
       telegramUsername: "synergy_gk",                     /* ЗМІНИТИ - нік Telegram БЕЗ @ (ЗАГЛУШКА - вкажіть реальний) */
@@ -254,7 +287,15 @@ instagramUsername на реальні ніки клієнта.
     try { window.localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {}
   }
   function money(n) { return fmt(n) + " " + CONFIG.currency; }
-  function total() { var t = 0; cart.forEach(function (i) { t += i.price * i.qty; }); return t; }
+  function subtotal() { var t = 0; cart.forEach(function (i) { t += i.price * i.qty; }); return t; }
+  var promo = null, PKEY = "sgk_promo";
+  function findPromo(code) {
+    code = String(code || "").trim().toUpperCase(); if (!code) return null;
+    var f = null; (CONFIG.promoCodes || []).forEach(function (p) { if (String(p.code).toUpperCase() === code) f = p; });
+    return f;
+  }
+  function discount() { return promo ? Math.round(subtotal() * promo.percent / 100) : 0; }
+  function total() { return subtotal() - discount(); }
   function count() { var c = 0; cart.forEach(function (i) { c += i.qty; }); return c; }
 
   var drawer = q("drawer"), toastEl = q("toast"), toastT;
@@ -346,6 +387,23 @@ instagramUsername на реальні ніки клієнта.
     return ok;
   }
 
+  /* --- промокод --- */
+  var pin = q("promoIn"); pin.placeholder = CONFIG.promoPlaceholder; txt("promoBtn", CONFIG.promoApply); txt("promoErr", CONFIG.promoBadText);
+  q("promoX").innerHTML = icon("x", 2.4); q("promoX").setAttribute("aria-label", "remove");
+  function setPromo(code, silent) {
+    var f = findPromo(code), pb = q("promo");
+    pb.classList.remove("is-bad");
+    if (f) { promo = f; try { window.localStorage.setItem(PKEY, f.code); } catch (e) {} pin.value = ""; render(); return true; }
+    if (!silent) { void pb.offsetWidth; pb.classList.add("is-bad"); }
+    return false;
+  }
+  q("promoBtn").addEventListener("click", function () { setPromo(pin.value); });
+  pin.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); setPromo(pin.value); } });
+  pin.addEventListener("input", function () { q("promo").classList.remove("is-bad"); });
+  q("promoX").addEventListener("click", function () { promo = null; try { window.localStorage.removeItem(PKEY); } catch (e) {} render(); });
+  document.addEventListener("sgk:promo", function (e) { setPromo(e && e.detail ? e.detail.code : "", true); });
+  (function () { var c = ""; try { c = window.localStorage.getItem(PKEY) || ""; } catch (e) { c = window.__sgkPromo || ""; } if (c) setPromo(c, true); })();
+
   /* --- рендер кошика --- */
   function renderItems() {
     var box = q("items"); box.innerHTML = "";
@@ -384,7 +442,11 @@ instagramUsername на реальні ніки клієнта.
     var c = count();
     txt("count", String(c));
     root.classList.toggle("has-items", c > 0);
-    txt("sum", money(total()));
+    var sumEl = q("sum"); sumEl.textContent = "";
+    if (promo && cart.length) { sumEl.appendChild(mk("s", "", money(subtotal()))); }
+    sumEl.appendChild(document.createTextNode(money(total())));
+    var pb = q("promo"); pb.classList.toggle("is-ok", !!promo); pb.style.display = (cart.length && (CONFIG.promoCodes || []).length) ? "" : "none";
+    if (promo) txt("promoOkText", CONFIG.promoOkText.replace("{code}", promo.code).replace("{percent}", promo.percent));
     if (step === "cart") q("cta").disabled = cart.length === 0;
     if (step === "form" && cart.length === 0) go("cart");
   }
@@ -421,10 +483,14 @@ instagramUsername на реальні ніки клієнта.
     cart.forEach(function (it, i) {
       lines.push((i + 1) + ". " + it.name + " - " + CONFIG.sizeLabel.toLowerCase() + " " + it.size + " - " + it.qty + " шт x " + money(it.price) + " = " + money(it.price * it.qty));
     });
-    lines.push("", CONFIG.sumLabel + ": " + money(total()), "");
+    if (promo) {
+      lines.push("", CONFIG.sumLabel + ": " + money(subtotal()));
+      lines.push(CONFIG.discountLabel + " (" + promo.code + ", -" + promo.percent + "%): -" + money(discount()));
+      lines.push(CONFIG.payLabel + ": " + money(total()), "");
+    } else lines.push("", CONFIG.sumLabel + ": " + money(total()), "");
     CONFIG.fields.forEach(function (f) { var v = data[f.name]; if (v) lines.push(f.label + ": " + v); });
     return {
-      number: num, total: total(), currency: CONFIG.currency, customer: data, created: new Date().toISOString(),
+      number: num, total: total(), subtotal: subtotal(), promo: promo ? promo.code : "", discount: discount(), currency: CONFIG.currency, customer: data, created: new Date().toISOString(),
       items: cart.map(function (i) { return { id: i.id, name: i.name, size: i.size, qty: i.qty, price: i.price }; }),
       text: lines.join("\n")
     };
@@ -566,6 +632,13 @@ instagramUsername на реальні ніки клієнта.
   type     - "text", "tel", "textarea", "select" (список options),
              "chips" (кнопки-варіанти options);
   placeholder - підказка в порожньому полі.
+
+ПРОМОКОДИ  ->  promoCodes
+  Список кодів зі знижкою: { code: "SAVE10", percent: 10 }.
+  У кошику під товарами є поле "Промокод". Код з міні-гри (блок 16)
+  підставляється сам після кнопки "Застосувати в кошику".
+  У тексті замовлення видно: суму, код, знижку і "До сплати".
+  Щоб прибрати промокоди зовсім: promoCodes: []
 
 ІНШЕ  ->  settings
   showWhenEmpty    - показувати кнопку кошика, навіть коли він порожній;

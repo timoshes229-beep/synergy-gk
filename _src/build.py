@@ -216,6 +216,27 @@ ICONS_JS = r'''
   }
 '''
 
+GLOVE_FN = r'''
+  /* малюнок рукавиці (SVG) - кольори беруться з CONFIG */
+  function gloveSvg(c) {
+    c = c || {};
+    var B = c.body || "#F4F6F1", A = c.accent || "#C8FF2E", D = c.dark || "#0A0C0B";
+    function f(x, y, h) {
+      return '<rect x="' + x + '" y="' + y + '" width="28" height="' + h + '" rx="14" fill="' + B + '" stroke="' + D + '" stroke-width="3"/>' +
+             '<rect x="' + (x + 5) + '" y="' + (y + 16) + '" width="18" height="5" rx="2.5" fill="' + A + '"/>';
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250">' +
+      '<rect x="6" y="104" width="34" height="88" rx="17" transform="rotate(-38 23 148)" fill="' + B + '" stroke="' + D + '" stroke-width="3"/>' +
+      f(42, 26, 110) + f(72, 10, 126) + f(102, 18, 118) + f(132, 44, 92) +
+      '<path d="M38 114 Q37 100 48 99 H156 Q166 100 164 114 L160 198 H44 Z" fill="' + B + '" stroke="' + D + '" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path d="M128 134 C110 122 84 126 86 142 C88 156 120 152 118 168 C116 182 90 184 74 174" fill="none" stroke="' + A + '" stroke-width="10" stroke-linecap="round"/>' +
+      '<rect x="46" y="194" width="110" height="50" rx="12" fill="' + D + '"/>' +
+      '<rect x="46" y="212" width="110" height="10" fill="' + A + '"/>' +
+      '</svg>';
+  }
+  function svgUrl(svg) { return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg); }
+'''
+
 ICON_LIST = "drop, glove, shield, refresh, truck, ruler, star, water, wind, hand, bag, card, chat, box, clock, sun, target, x, check, arrow, plus, instagram, telegram, phone, mail, pin"
 
 # ---------------------------------------------------------------- тексти TXT
@@ -320,7 +341,7 @@ def build_code(meta, d):
           colors_cfg(overrides(meta), extra_colors(meta)) + "\n\n" + FONTS_CFG + "\n\n    settings: {\n" + "\n".join(srows) + "\n    }\n  };"
     js = "<script>\n(function () {\n\n  /* =================================================================\n     CONFIG - ВЕСЬ КОНТЕНТ, ПОСИЛАННЯ, КОЛЬОРИ ТА НАЛАШТУВАННЯ\n     Змінюйте лише значення в лапках / числа. Не видаляйте коми.\n     ================================================================= */\n" + \
          cfg + "\n  /* ======================== КІНЕЦЬ CONFIG ======================== */\n" + \
-         COMMON_JS + (ICONS_JS if meta.get("icons") == "yes" else "") + \
+         COMMON_JS + (ICONS_JS if meta.get("icons") == "yes" else "") + (GLOVE_FN if meta.get("glove") == "yes" else "") + \
          "\n  /* ===================== ЛОГІКА БЛОКУ ===================== */\n" + d["js"].rstrip() + "\n\n})();\n</script>"
     css = "<style>\n" + COMMON_CSS + "\n/* ---------- СТИЛІ БЛОКУ ---------- */\n" + d["css"].strip() + "\n</style>"
     code = d["html"].strip() + "\n\n" + css + "\n\n" + js
@@ -358,7 +379,7 @@ def code_from_txt(src):
 def main():
     pages = []
     hero = open(os.path.join(OUT_DIR, "01-hero-T123.txt"), encoding="utf-8").read()
-    pages.append(("", code_from_txt(hero)))
+    pages.append((1.0, "", code_from_txt(hero)))
     for path in sorted(glob.glob(os.path.join(BLK_DIR, "*.blk"))):
         name = os.path.basename(path)[:-4]
         num = name.split("-")[0]
@@ -367,10 +388,11 @@ def main():
         txt = build_txt(num, meta, d, code)
         open(os.path.join(OUT_DIR, name + "-T123.txt"), "w", encoding="utf-8").write(txt)
         assert code_from_txt(txt) == code
-        pages.append((meta.get("anchor", ""), code))
+        pages.append((float(meta.get("order", num)), meta.get("anchor", ""), code))
         print("built", name)
     html = ['<!doctype html>\n<html lang="uk">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>Synergy GK</title>\n<link rel="icon" href="assets/logo.png">\n<style>html{scroll-behavior:smooth}html,body{margin:0;padding:0;background:#0A0C0B}</style>\n</head>\n<body>\n']
-    for anchor, code in pages:
+    pages.sort(key=lambda x: x[0])
+    for _, anchor, code in pages:
         if anchor:
             html.append('<div id="%s">\n%s\n</div>\n' % (anchor, code))
         else:

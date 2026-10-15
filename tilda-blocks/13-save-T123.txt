@@ -1,0 +1,465 @@
+=====================================================================
+SYNERGY GK - БЛОК 13: СЕЙВ ПРИ ПРОКРУТЦІ (М'ЯЧ ЛЕТИТЬ - РУКАВИЦЯ ЛОВИТЬ)
+Для Tilda, блок T123
+=====================================================================
+
+
+=====================================================================
+ЧАСТИНА 1. ІНСТРУКЦІЯ: ЯК ВСТАВИТИ КОД
+=====================================================================
+
+1. Відкрийте сторінку сайту в редакторі Tilda.
+2. Натисніть "+" (Додати блок) -> розділ "Інше" -> блок T123
+   ("HTML-код" / "Вставка HTML-коду").
+3. Наведіть на блок і натисніть "Контент".
+4. Скопіюйте ВЕСЬ код з ЧАСТИНИ 2: усе, що між рядками
+   "ПОЧАТОК КОДУ" і "КІНЕЦЬ КОДУ" (самі ці рядки з "=====" копіювати
+   НЕ потрібно).
+5. Вставте код у поле і натисніть "Зберегти та закрити".
+6. У режимі редагування Tilda показує T123 як сірий прямокутник
+   "HTML-код". Це нормально - натисніть "Перегляд" або опублікуйте
+   сторінку, щоб побачити блок.
+7. Місце на сторінці: між блоком 02 (Чому Synergy) і блоком 03 (Каталог).
+8. Опублікуйте сторінку.
+
+Як працює: блок займає кілька екранів у висоту. Поки відвідувач
+гортає, картинка "прилипає" до екрану, а м'яч летить у ворота і
+рукавиця його ловить. Далі сторінка гортається як звичайно.
+Висоту (а значить і швидкість сцени) задає settings.scrollLength.
+
+
+=====================================================================
+ЧАСТИНА 2. КОД
+=====================================================================
+
+===== ПОЧАТОК КОДУ =====
+<section id="sgk-save" aria-label="Сейв">
+  <div class="sgk-stage">
+    <div class="sgk-bgnet"></div>
+    <div class="sgk-bigword" data-sgk="bigWord"></div>
+    <div class="sgk-floor"></div>
+    <div class="sgk-lines" data-sgk="lines"></div>
+    <div class="sgk-speed"><b data-sgk="speed">0</b><span data-sgk="speedUnit"></span></div>
+    <div class="sgk-trail" data-sgk="trail"></div>
+    <div class="sgk-glove" data-sgk="glove"></div>
+    <div class="sgk-ball" data-sgk="ball"></div>
+    <div class="sgk-flash" data-sgk="flash"></div>
+    <div class="sgk-final" data-sgk="final">
+      <div class="sgk-final-t" data-sgk="finalTitle"></div>
+      <p class="sgk-final-d" data-sgk="finalText"></p>
+    </div>
+    <div class="sgk-hint" data-sgk="hint"><span></span></div>
+  </div>
+</section>
+
+<style>
+#sgk-save{
+  --sgk-font-h:'Unbounded',Arial,sans-serif;
+  --sgk-font-b:'Manrope',Arial,sans-serif;
+  position:relative;width:100%;overflow:hidden;
+  background:var(--sgk-bg,#0A0C0B);color:var(--sgk-text,#F4F6F1);
+  font-family:var(--sgk-font-b);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding:clamp(72px,9vw,130px) 0;
+}
+#sgk-save *,#sgk-save *::before,#sgk-save *::after{box-sizing:border-box;margin:0;padding:0}
+#sgk-save a{text-decoration:none !important;-webkit-tap-highlight-color:transparent}
+#sgk-save button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
+#sgk-save img{display:block;max-width:100%}
+#sgk-save svg{display:block}
+#sgk-save .sgk-wrap{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+#sgk-save .sgk-head{max-width:780px;margin-bottom:clamp(36px,5vw,64px)}
+#sgk-save .sgk-head--c{margin-left:auto;margin-right:auto;text-align:center}
+#sgk-save .sgk-kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sgk-accent)}
+#sgk-save .sgk-kicker::before{content:"";width:28px;height:2px;background:var(--sgk-accent);flex:none}
+#sgk-save .sgk-h2{margin-top:18px;font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(28px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:var(--sgk-text)}
+#sgk-save .sgk-h2 em,#sgk-save em{font-style:normal;color:var(--sgk-accent)}
+#sgk-save .sgk-lead{margin-top:18px;font-size:clamp(15px,1.2vw,18px);line-height:1.6;color:var(--sgk-textMuted)}
+
+#sgk-save .sgk-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 28px;border-radius:100px;border:0;cursor:pointer;font-family:var(--sgk-font-b);font-size:15px;font-weight:700;letter-spacing:.02em;white-space:nowrap;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,color .3s ease,border-color .3s ease,box-shadow .35s ease}
+#sgk-save .sgk-btn:hover{transform:translateY(-3px)}
+#sgk-save .sgk-btn:active{transform:scale(.98)}
+#sgk-save .sgk-btn svg{width:18px;height:18px;flex:none}
+#sgk-save .sgk-btn--main,#sgk-save .sgk-btn--main:hover,#sgk-save .sgk-btn--main:focus,#sgk-save .sgk-btn--main span{color:var(--sgk-btnText) !important}
+#sgk-save .sgk-btn--main{background:var(--sgk-accent)}
+#sgk-save .sgk-btn--main:hover{background:var(--sgk-accentHover);box-shadow:0 14px 36px var(--sgk-btnShadow)}
+#sgk-save .sgk-btn--ghost,#sgk-save .sgk-btn--ghost span{color:var(--sgk-ghostText) !important}
+#sgk-save .sgk-btn--ghost{background:transparent;border:1.5px solid var(--sgk-ghostBorder)}
+#sgk-save .sgk-btn--ghost:hover{background:var(--sgk-ghostHoverBg);border-color:var(--sgk-ghostHoverBg)}
+#sgk-save .sgk-btn--ghost:hover,#sgk-save .sgk-btn--ghost:hover span{color:var(--sgk-ghostHoverText) !important}
+
+#sgk-save .sgk-ph{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center;
+  background-color:var(--sgk-phBg);color:var(--sgk-phIcon);
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px),repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px)}
+#sgk-save .sgk-ph svg{width:46px;height:46px}
+#sgk-save .sgk-ph-l{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-textMuted)}
+#sgk-save .sgk-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+
+#sgk-save .sgk-rv{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+#sgk-save .sgk-rv.is-in{opacity:1;transform:none}
+#sgk-save.sgk-static .sgk-rv{opacity:1 !important;transform:none !important;transition:none !important}
+@media (max-width:560px){
+  #sgk-save .sgk-btn{height:54px;padding:0 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  #sgk-save *{animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+
+/* ---------- СТИЛІ БЛОКУ ---------- */
+#sgk-save{padding:0;overflow:visible;height:var(--sgk-len,260vh)}
+#sgk-save.sgk-static{height:auto}
+#sgk-save .sgk-stage{position:-webkit-sticky;position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(120% 90% at 70% 40%,rgba(200,255,46,.07) 0%,rgba(0,0,0,0) 55%),var(--sgk-bg)}
+#sgk-save.sgk-static .sgk-stage{position:relative}
+#sgk-save .sgk-bgnet{position:absolute;top:0;right:0;bottom:0;left:0;
+  background-image:repeating-linear-gradient(45deg,var(--sgk-netColor) 0 1px,rgba(0,0,0,0) 1px 38px),repeating-linear-gradient(-45deg,var(--sgk-netColor) 0 1px,rgba(0,0,0,0) 1px 38px);
+  -webkit-mask-image:radial-gradient(80% 80% at 70% 45%,#000 0%,rgba(0,0,0,0) 75%);mask-image:radial-gradient(80% 80% at 70% 45%,#000 0%,rgba(0,0,0,0) 75%)}
+#sgk-save .sgk-bigword{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--sgk-font-h);font-weight:800;font-size:28vw;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--sgk-finalWord);white-space:nowrap;pointer-events:none}
+#sgk-save .sgk-floor{position:absolute;left:-10%;right:-10%;bottom:-30%;height:60%;background:radial-gradient(50% 50% at 50% 50%,rgba(200,255,46,.10),rgba(0,0,0,0) 70%)}
+#sgk-save .sgk-lines{position:absolute;left:clamp(16px,6vw,96px);top:50%;transform:translateY(-50%);width:min(520px,46vw);z-index:4}
+#sgk-save .sgk-line{position:absolute;left:0;top:0;width:100%;transform:translateY(-50%);font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(26px,3.6vw,52px);line-height:1.08;letter-spacing:-.02em;color:var(--sgk-text);opacity:0;will-change:opacity,transform}
+#sgk-save .sgk-line em{font-style:normal;color:var(--sgk-accent);white-space:nowrap}
+#sgk-save .sgk-speed{position:absolute;left:clamp(16px,6vw,96px);bottom:clamp(28px,8vh,72px);z-index:4;display:flex;align-items:baseline;gap:8px;color:var(--sgk-textMuted);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+#sgk-save .sgk-speed b{font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(34px,4vw,56px);letter-spacing:0;color:var(--sgk-accent);min-width:2.6ch;font-variant-numeric:tabular-nums}
+#sgk-save .sgk-ball,#sgk-save .sgk-glove,#sgk-save .sgk-flash,#sgk-save .sgk-trail{position:absolute;left:0;top:0;will-change:transform}
+#sgk-save .sgk-ball{z-index:6;width:var(--bs,90px);height:var(--bs,90px);margin:calc(var(--bs,90px) / -2) 0 0 calc(var(--bs,90px) / -2);filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+#sgk-save .sgk-ball svg{width:100%;height:100%}
+#sgk-save .sgk-glove{z-index:5;width:var(--gw,240px);height:calc(var(--gw,240px) * 1.25);margin:calc(var(--gw,240px) * -0.7) 0 0 calc(var(--gw,240px) * -0.5);filter:drop-shadow(0 30px 50px rgba(0,0,0,.55))}
+#sgk-save .sgk-glove img{width:100%;height:100%;display:block}
+#sgk-save .sgk-trail{z-index:4;width:var(--tl,260px);height:6px;margin:-3px 0 0 0;border-radius:6px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(200,255,46,0),var(--sgk-accent));opacity:0}
+#sgk-save .sgk-flash{z-index:7;width:340px;height:340px;margin:-170px 0 0 -170px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9) 0%,var(--sgk-accent) 18%,rgba(200,255,46,.25) 42%,rgba(200,255,46,0) 70%);opacity:0;mix-blend-mode:screen;pointer-events:none}
+#sgk-save .sgk-final{position:absolute;left:clamp(16px,6vw,96px);top:50%;z-index:8;width:min(560px,48vw);transform:translateY(-50%);opacity:0}
+#sgk-save .sgk-final-t{font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(40px,6.4vw,96px);line-height:.98;letter-spacing:-.03em;color:var(--sgk-text)}
+#sgk-save .sgk-final-t em{font-style:normal;color:var(--sgk-accent)}
+#sgk-save .sgk-final-d{margin-top:18px;font-size:clamp(15px,1.3vw,18px);line-height:1.6;color:var(--sgk-textMuted);opacity:0}
+#sgk-save .sgk-hint{position:absolute;left:50%;bottom:22px;z-index:9;width:26px;height:40px;margin-left:-13px;border:1.5px solid var(--sgk-ghostBorder);border-radius:14px;transition:opacity .4s ease}
+#sgk-save .sgk-hint span{position:absolute;left:50%;top:7px;width:3px;height:8px;margin-left:-1.5px;border-radius:3px;background:var(--sgk-accent);animation:sgkHint 1.6s ease-in-out infinite}
+@keyframes sgkHint{0%{transform:translateY(0);opacity:1}70%{transform:translateY(13px);opacity:0}100%{opacity:0}}
+@media (max-width:700px){
+  #sgk-save .sgk-lines,#sgk-save .sgk-final{left:16px;right:16px;width:auto;top:20%;transform:none}
+  #sgk-save .sgk-line{transform:none;font-size:clamp(24px,7.4vw,34px)}
+  #sgk-save .sgk-final{top:16%}
+  #sgk-save .sgk-final-t{font-size:clamp(40px,12vw,58px)}
+  #sgk-save .sgk-speed{left:16px;bottom:24px}
+  #sgk-save .sgk-bigword{font-size:40vw;top:62%}
+}
+</style>
+
+<script>
+(function () {
+
+  /* =================================================================
+     CONFIG - ВЕСЬ КОНТЕНТ, ПОСИЛАННЯ, КОЛЬОРИ ТА НАЛАШТУВАННЯ
+     Змінюйте лише значення в лапках / числа. Не видаляйте коми.
+     ================================================================= */
+  var CONFIG = {
+
+    lines: [                                            /* ЗМІНИТИ - фрази, що змінюють одна одну під час польоту м'яча. [слово] = акцент */
+      "М'яч летить [120 км/год]",
+      "У воротаря - [менше пів секунди]",
+      "І все вирішує [хват]"
+    ],
+    finalTitle: "Synergy [тримає].",                    /* ЗМІНИТИ - фінальний напис після сейву */
+    finalText: "Рукавиці, в яких не страшно у вирішальний момент.", /* ЗМІНИТИ - текст під фінальним написом */
+    bigWord: "SAVE",                                    /* ЗМІНИТИ - величезне контурне слово на фоні ("" - прибрати) */
+    speedMax: 120,                                      /* ЗМІНИТИ - до якої цифри розганяється лічильник швидкості */
+    speedUnit: "км/год",                                /* ЗМІНИТИ - підпис лічильника */
+
+    colors: {
+      bg:              "#0A0C0B",                        /* ЗМІНИТИ - фон блоку */
+      accent:          "#C8FF2E",                        /* ЗМІНИТИ - акцентний колір (кнопки, виділені слова, іконки) */
+      accentHover:     "#B6F01A",                        /* ЗМІНИТИ - акцентний колір при наведенні */
+      accentSoft:      "rgba(200,255,46,0.12)",          /* ЗМІНИТИ - м'який акцент (фон іконок, рамки при наведенні) */
+      btnText:         "#0A0C0B",                        /* ЗМІНИТИ - текст на акцентних кнопках */
+      btnShadow:       "rgba(200,255,46,0.35)",          /* ЗМІНИТИ - світіння акцентної кнопки при наведенні */
+      text:            "#F4F6F1",                        /* ЗМІНИТИ - основний текст */
+      textMuted:       "rgba(244,246,241,0.66)",         /* ЗМІНИТИ - другорядний текст */
+      line:            "rgba(255,255,255,0.12)",         /* ЗМІНИТИ - лінії та рамки */
+      cardBg:          "rgba(255,255,255,0.035)",        /* ЗМІНИТИ - фон карток */
+      cardHover:       "rgba(255,255,255,0.06)",         /* ЗМІНИТИ - фон карток при наведенні */
+      cardBorder:      "rgba(255,255,255,0.10)",         /* ЗМІНИТИ - рамка карток */
+      ghostText:       "#F4F6F1",                        /* ЗМІНИТИ - текст прозорої кнопки */
+      ghostBorder:     "rgba(244,246,241,0.35)",         /* ЗМІНИТИ - рамка прозорої кнопки */
+      ghostHoverBg:    "#F4F6F1",                        /* ЗМІНИТИ - фон прозорої кнопки при наведенні */
+      ghostHoverText:  "#0A0C0B",                        /* ЗМІНИТИ - текст прозорої кнопки при наведенні */
+      phBg:            "#141816",                        /* ЗМІНИТИ - фон заглушки замість фото */
+      phIcon:          "rgba(200,255,46,0.55)",          /* ЗМІНИТИ - іконка на заглушці */
+      netColor:        "rgba(255,255,255,0.06)",         /* ЗМІНИТИ - колір сітки воріт на фоні */
+      gloveBody:       "#F4F6F1",                        /* ЗМІНИТИ - колір рукавиці */
+      gloveDark:       "#0A0C0B",                        /* ЗМІНИТИ - контур і манжета рукавиці */
+      ballColor:       "#F4F6F1",                        /* ЗМІНИТИ - колір м'яча */
+      ballDark:        "#0A0C0B",                        /* ЗМІНИТИ - візерунок м'яча */
+      finalWord:       "rgba(255,255,255,0.06)"          /* ЗМІНИТИ - величезне контурне слово на фоні */
+    },
+
+    fonts: {
+      url: "https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap", /* ЗМІНИТИ - посилання Google Fonts */
+      heading: "Unbounded", /* ЗМІНИТИ - шрифт заголовків */
+      body: "Manrope"       /* ЗМІНИТИ - шрифт тексту */
+    },
+
+    settings: {
+      animations: true,      /* ЗМІНИТИ - true = мікро-анімації, false = статичний блок */
+      scrollLength: 260,  /* ЗМІНИТИ - висота блоку у % висоти екрану (більше = сцена повільніша). 200-350 */
+      showHint: true      /* ЗМІНИТИ - показувати "мишку" з підказкою гортати */
+    }
+  };
+  /* ======================== КІНЕЦЬ CONFIG ======================== */
+
+  /* ===================== СЛУЖБОВИЙ КОД (не змінювати) ===================== */
+  var root = document.getElementById("sgk-save");
+  if (!root || root.getAttribute("data-ready")) return;
+  root.setAttribute("data-ready", "1");
+  var S = CONFIG.settings || {};
+  function mq(x) { try { return window.matchMedia(x).matches; } catch (e) { return false; } }
+  var reduce = mq("(prefers-reduced-motion: reduce)");
+  var fine = mq("(hover: hover) and (pointer: fine)");
+  var animOn = S.animations !== false && !reduce;
+
+  if (CONFIG.fonts && CONFIG.fonts.url && !document.querySelector("link[data-sgk-font]")) {
+    var fl = document.createElement("link");
+    fl.rel = "stylesheet"; fl.href = CONFIG.fonts.url; fl.setAttribute("data-sgk-font", "1");
+    document.head.appendChild(fl);
+  }
+  if (CONFIG.fonts) {
+    root.style.setProperty("--sgk-font-h", "'" + CONFIG.fonts.heading + "', Arial, sans-serif");
+    root.style.setProperty("--sgk-font-b", "'" + CONFIG.fonts.body + "', Arial, sans-serif");
+  }
+  for (var ck in CONFIG.colors) {
+    if (Object.prototype.hasOwnProperty.call(CONFIG.colors, ck)) root.style.setProperty("--sgk-" + ck, CONFIG.colors[ck]);
+  }
+
+  function q(n) { return root.querySelector('[data-sgk="' + n + '"]'); }
+  function each(list, fn) { Array.prototype.forEach.call(list || [], fn); }
+  function mk(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = text;
+    return e;
+  }
+  function txt(n, v) { var e = q(n); if (e) e.textContent = (v === undefined || v === null) ? "" : v; return e; }
+  function lnk(el, href, blank) {
+    if (!el) return el;
+    el.setAttribute("href", href || "#");
+    if (blank) { el.setAttribute("target", "_blank"); el.setAttribute("rel", "noopener"); }
+    return el;
+  }
+  function esc(s) { return String(s === undefined || s === null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function rich(el, s) { if (el) el.innerHTML = esc(s).replace(/\[(.+?)\]/g, "<em>$1</em>"); return el; }
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  var PH_ICONS = {
+    photo: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="12" width="38" height="28" rx="5"/><path d="M17 12l3-5h8l3 5"/><circle cx="24" cy="26" r="7"/></svg>',
+    glove: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 44V31l-5-8c-1.3-2.2 1.6-4.4 3.4-2.6L17 24V9.5a2.5 2.5 0 0 1 5 0V22V7a2.5 2.5 0 0 1 5 0v15V8.5a2.5 2.5 0 0 1 5 0V22v-9a2.5 2.5 0 0 1 5 0v17.5C37 38 33 44 27 44z"/><path d="M15 38h22"/></svg>'
+  };
+  function placeholder(label, kind) {
+    var d = mk("div", "sgk-ph");
+    d.innerHTML = PH_ICONS[kind] || PH_ICONS.photo;
+    if (label) d.appendChild(mk("span", "sgk-ph-l", label));
+    return d;
+  }
+  function media(url, alt, label, kind) {
+    if (url) { var i = mk("img", "sgk-img"); i.src = url; i.alt = alt || ""; i.loading = "lazy"; i.decoding = "async"; return i; }
+    return placeholder(label, kind);
+  }
+  function reveal() {
+    var els = root.querySelectorAll(".sgk-rv");
+    if (!animOn) { root.classList.add("sgk-static"); return; }
+    if (!("IntersectionObserver" in window)) { each(els, function (e) { e.classList.add("is-in"); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, d = parseFloat(el.getAttribute("data-d") || "0");
+        el.style.transitionDelay = d + "s";
+        el.classList.add("is-in");
+        io.unobserve(el);
+        setTimeout(function () { el.style.transitionDelay = ""; }, (d + 1.2) * 1000);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    each(els, function (e) { io.observe(e); });
+  }
+
+  /* малюнок рукавиці (SVG) - кольори беруться з CONFIG */
+  function gloveSvg(c) {
+    c = c || {};
+    var B = c.body || "#F4F6F1", A = c.accent || "#C8FF2E", D = c.dark || "#0A0C0B";
+    function f(x, y, h) {
+      return '<rect x="' + x + '" y="' + y + '" width="28" height="' + h + '" rx="14" fill="' + B + '" stroke="' + D + '" stroke-width="3"/>' +
+             '<rect x="' + (x + 5) + '" y="' + (y + 16) + '" width="18" height="5" rx="2.5" fill="' + A + '"/>';
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250">' +
+      '<rect x="6" y="104" width="34" height="88" rx="17" transform="rotate(-38 23 148)" fill="' + B + '" stroke="' + D + '" stroke-width="3"/>' +
+      f(42, 26, 110) + f(72, 10, 126) + f(102, 18, 118) + f(132, 44, 92) +
+      '<path d="M38 114 Q37 100 48 99 H156 Q166 100 164 114 L160 198 H44 Z" fill="' + B + '" stroke="' + D + '" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path d="M128 134 C110 122 84 126 86 142 C88 156 120 152 118 168 C116 182 90 184 74 174" fill="none" stroke="' + A + '" stroke-width="10" stroke-linecap="round"/>' +
+      '<rect x="46" y="194" width="110" height="50" rx="12" fill="' + D + '"/>' +
+      '<rect x="46" y="212" width="110" height="10" fill="' + A + '"/>' +
+      '</svg>';
+  }
+  function svgUrl(svg) { return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg); }
+
+  /* ===================== ЛОГІКА БЛОКУ ===================== */
+  var lens = Math.max(150, S.scrollLength || 260);
+  root.style.setProperty("--sgk-len", lens + "vh");
+  var linesEl = q("lines"), lineEls = [];
+  CONFIG.lines.forEach(function (t) { var d = mk("div", "sgk-line"); rich(d, t); linesEl.appendChild(d); lineEls.push(d); });
+  rich(q("finalTitle"), CONFIG.finalTitle);
+  txt("finalText", CONFIG.finalText);
+  txt("bigWord", CONFIG.bigWord);
+  txt("speedUnit", CONFIG.speedUnit);
+  if (!S.showHint) q("hint").style.display = "none";
+
+  var gl = mk("img"); gl.alt = ""; gl.src = svgUrl(gloveSvg({ body: CONFIG.colors.gloveBody, accent: CONFIG.colors.accent, dark: CONFIG.colors.gloveDark }));
+  q("glove").appendChild(gl);
+  var bc = CONFIG.colors.ballColor, bd = CONFIG.colors.ballDark;
+  q("ball").innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="' + bc + '" stroke="' + bd + '" stroke-width="3"/>' +
+    '<path d="M50 31 L64 41 L59 57 L41 57 L36 41 Z" fill="' + bd + '"/>' +
+    '<path d="M50 31 L50 6 M64 41 L87 33 M59 57 L74 79 M41 57 L26 79 M36 41 L13 33" stroke="' + bd + '" stroke-width="3" fill="none"/>' +
+    '<path d="M38 5 L50 6 L62 5 L56 0 L44 0 Z M88 22 L87 33 L95 44 L99 34 Z M74 79 L86 76 L80 92 L70 94 Z M26 79 L30 94 L20 92 L14 76 Z M13 33 L5 44 L1 34 L12 22 Z" fill="' + bd + '"/></svg>';
+
+  var ball = q("ball"), glove = q("glove"), flash = q("flash"), trail = q("trail"), speed = q("speed"), fin = q("final"), finD = q("finalText"), hint = q("hint");
+  function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
+  function seg(p, a, b) { return clamp((p - a) / (b - a), 0, 1); }
+  function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+  function eOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function bez(a, b, c, t) { var u = 1 - t; return u * u * a + 2 * u * t * b + t * t * c; }
+  var W = 0, H = 0, mob = false;
+  function measure() {
+    var st = root.querySelector(".sgk-stage"); W = st.clientWidth; H = st.clientHeight; mob = W < 700;
+    var m = Math.min(W, H);
+    root.style.setProperty("--bs", Math.round(m * (mob ? 0.16 : 0.12)) + "px");
+    root.style.setProperty("--gw", Math.round(m * (mob ? 0.42 : 0.34)) + "px");
+    root.style.setProperty("--tl", Math.round(W * 0.22) + "px");
+  }
+  var CATCH = 0.62;
+  function render(p) {
+    var cx = W * (mob ? 0.6 : 0.68), cy = H * (mob ? 0.66 : 0.46);
+    var sx = -W * 0.06, sy = H * 0.9, kx = W * (mob ? 0.2 : 0.32), ky = H * (mob ? 0.2 : 0.02);
+    /* рукавиця */
+    var g = ease(seg(p, 0.32, CATCH));
+    var gx = W * 1.2 + (cx - W * 1.2) * g, gy = H * 0.78 + (cy - H * 0.78) * g;
+    var sq = Math.sin(seg(p, CATCH, CATCH + 0.08) * Math.PI);
+    var grot = 24 * (1 - g) - 6 - sq * 4;
+    glove.style.transform = "translate3d(" + gx.toFixed(1) + "px," + gy.toFixed(1) + "px,0) rotate(" + grot.toFixed(1) + "deg) scale(" + (1 - sq * 0.08).toFixed(3) + ")";
+    /* м'яч */
+    var t = seg(p, 0.04, CATCH), bx, by, bs, br;
+    if (p < CATCH) {
+      bx = bez(sx, kx, cx, t); by = bez(sy, ky, cy, t); bs = 0.35 + 0.65 * t; br = t * 900;
+      var dx = 2 * (1 - t) * (kx - sx) + 2 * t * (cx - kx), dy = 2 * (1 - t) * (ky - sy) + 2 * t * (cy - ky);
+      var ang = Math.atan2(dy, dx) * 180 / Math.PI;
+      trail.style.transform = "translate3d(" + bx.toFixed(1) + "px," + by.toFixed(1) + "px,0) rotate(" + (ang + 180).toFixed(1) + "deg)";
+      trail.style.opacity = (t > 0.02 && t < 0.98) ? (0.25 + 0.5 * t).toFixed(2) : "0";
+    } else {
+      bx = gx - W * 0.004; by = gy - (mob ? 6 : 10); bs = 1 - sq * 0.06; br = 900 + sq * 20;
+      trail.style.opacity = "0";
+    }
+    ball.style.transform = "translate3d(" + bx.toFixed(1) + "px," + by.toFixed(1) + "px,0) rotate(" + br.toFixed(0) + "deg) scale(" + bs.toFixed(3) + ")";
+    ball.style.opacity = p < 0.03 ? "0" : "1";
+    /* спалах */
+    var f = seg(p, CATCH - 0.01, CATCH + 0.12);
+    flash.style.transform = "translate3d(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px,0) scale(" + (0.4 + f * 1.6).toFixed(3) + ")";
+    flash.style.opacity = (Math.sin(f * Math.PI) * 0.9).toFixed(3);
+    /* швидкість */
+    var sp = p < CATCH ? Math.round(CONFIG.speedMax * ease(seg(p, 0.04, 0.55))) : Math.round(CONFIG.speedMax * (1 - seg(p, CATCH, CATCH + 0.06)));
+    speed.textContent = String(sp);
+    /* фрази */
+    var n = lineEls.length || 1, span = (CATCH - 0.02) / n;
+    lineEls.forEach(function (el, i) {
+      var a = i * span, b = a + span;
+      var o = seg(p, a, a + span * 0.25) * (1 - seg(p, b - span * 0.2, b));
+      if (i === 0) o = 1 - seg(p, b - span * 0.2, b);
+      el.style.opacity = o.toFixed(3);
+      el.style.transform = (mob ? "" : "translateY(-50%) ") + "translateY(" + ((1 - o) * (p > b - span * 0.2 ? -18 : 18)).toFixed(1) + "px)";
+    });
+    /* фінал */
+    var fo = eOut(seg(p, CATCH + 0.06, CATCH + 0.18));
+    fin.style.opacity = fo.toFixed(3);
+    fin.style.transform = (mob ? "" : "translateY(-50%) ") + "translateY(" + ((1 - fo) * 24).toFixed(1) + "px)";
+    finD.style.opacity = seg(p, CATCH + 0.14, CATCH + 0.26).toFixed(3);
+    q("speed").parentNode.style.opacity = (1 - seg(p, CATCH + 0.1, CATCH + 0.18)).toFixed(3);
+    hint.style.opacity = p > 0.06 ? "0" : "1";
+  }
+
+  measure();
+  if (!animOn) {
+    root.classList.add("sgk-static");
+    hint.style.display = "none";
+    setTimeout(function () { measure(); render(1); }, 0);
+  } else {
+    var ticking = false, visible = true;
+    function progress() {
+      var r = root.getBoundingClientRect(), vh = window.innerHeight || H;
+      return clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
+    }
+    function tick() { ticking = false; render(progress()); }
+    function onScroll() { if (!visible || ticking) return; ticking = true; requestAnimationFrame(tick); }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () { measure(); render(progress()); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { visible = e.isIntersecting; if (visible) onScroll(); }); }, { rootMargin: "100px 0px" }).observe(root);
+    }
+    render(progress());
+  }
+
+})();
+</script>
+===== КІНЕЦЬ КОДУ =====
+
+
+=====================================================================
+ЧАСТИНА 3. ЩО І ДЕ ЗМІНЮВАТИ В ЦЬОМУ БЛОЦІ
+=====================================================================
+
+Усе редагується ТІЛЬКИ в об'єкті CONFIG на початку тегу <script>.
+HTML і CSS чіпати не потрібно. Біля кожного параметра стоїть
+коментар /* ЗМІНИТИ */.
+
+ЩО ВІДБУВАЄТЬСЯ
+  Відвідувач гортає сторінку - екран "прилипає", м'яч летить по дузі
+  з лаймовим слідом, лічильник швидкості розганяється до 120, фрази
+  змінюють одна одну. Рукавиця виїжджає справа і ловить м'яч:
+  спалах, рукавиця стискається, лічильник падає до 0, з'являється
+  фінальний напис. Далі сторінка гортається як звичайно.
+  На телефоні працює так само (свайпом).
+
+ТЕКСТИ
+  lines      - фрази під час польоту (2-4 штуки), [слово] = акцент;
+  finalTitle - напис після сейву; finalText - текст під ним;
+  bigWord    - величезне контурне слово на фоні;
+  speedMax, speedUnit - лічильник швидкості.
+
+КОЛЬОРИ РУКАВИЦІ І М'ЯЧА
+  gloveBody - колір рукавиці, gloveDark - контур і манжета,
+  accent - смужки на пальцях, логотип і слід м'яча;
+  ballColor / ballDark - м'яч.
+
+settings.scrollLength - наскільки довго триває сцена (у % висоти
+  екрану). 260 - оптимально; 200 - швидше; 350 - повільніше.
+
+Якщо settings.animations: false - показується одразу фінальна
+картинка (рукавиця з м'ячем) без прокрутки.
+
+---------------------------------------------------------------------
+КОЛЬОРИ  ->  CONFIG.colors
+---------------------------------------------------------------------
+  Формат "#C8FF2E" або "rgba(200,255,46,0.35)" (останнє число -
+  прозорість від 0 до 1). Кольори однакові в усіх блоках Synergy:
+  якщо міняєте акцент - міняйте accent, accentHover, accentSoft і
+  btnShadow в КОЖНОМУ блоці.
+  Колір тексту в кнопках прописаний з !important, тому оранжевий колір
+  посилань Tilda його не перебиває.
+
+---------------------------------------------------------------------
+ШРИФТИ І АНІМАЦІЇ
+---------------------------------------------------------------------
+  CONFIG.fonts - Unbounded (заголовки) + Manrope (текст), з кирилицею.
+  settings.animations: false - вимкнути анімації в цьому блоці.
+  Якщо в системі відвідувача ввімкнено "зменшити рух", анімації
+  вимикаються самі.
+
+---------------------------------------------------------------------
+ЗАГАЛЬНІ ПРАВИЛА
+---------------------------------------------------------------------
+  - Змінюйте тільки значення в лапках "..." та числа, коми не видаляйте.
+  - Слово в [квадратних дужках] у заголовках стає акцентного кольору.
+  - НЕ використовуйте емодзі - Tilda покаже їх як знаки питання.
+  - Порожнє фото "" = красива заглушка з іконкою. Коли будуть фото
+    від клієнта - вставте посилання на них (як отримати посилання з
+    Tilda - див. блок 01, частина 1).

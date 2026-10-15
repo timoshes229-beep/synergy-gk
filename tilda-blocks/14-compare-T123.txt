@@ -1,0 +1,494 @@
+=====================================================================
+SYNERGY GK - БЛОК 14: ПОРІВНЯННЯ МОДЕЛЕЙ
+Для Tilda, блок T123
+=====================================================================
+
+
+=====================================================================
+ЧАСТИНА 1. ІНСТРУКЦІЯ: ЯК ВСТАВИТИ КОД
+=====================================================================
+
+1. Відкрийте сторінку сайту в редакторі Tilda.
+2. Натисніть "+" (Додати блок) -> розділ "Інше" -> блок T123
+   ("HTML-код" / "Вставка HTML-коду").
+3. Наведіть на блок і натисніть "Контент".
+4. Скопіюйте ВЕСЬ код з ЧАСТИНИ 2: усе, що між рядками
+   "ПОЧАТОК КОДУ" і "КІНЕЦЬ КОДУ" (самі ці рядки з "=====" копіювати
+   НЕ потрібно).
+5. Вставте код у поле і натисніть "Зберегти та закрити".
+6. У режимі редагування Tilda показує T123 як сірий прямокутник
+   "HTML-код". Це нормально - натисніть "Перегляд" або опублікуйте
+   сторінку, щоб побачити блок.
+7. Місце на сторінці: одразу після блоку 03 (Каталог). ВАЖЛИВО: блок бере моделі з каталогу, тому має стояти НИЖЧЕ за блок 03.
+8. Якір (щоб кнопки з інших блоків прокручували сюди):
+   наведіть на блок -> "Налаштування" -> поле "Якір для посилання" ->
+   впишіть: compare
+   Посилання на цей блок з будь-якої кнопки: #compare
+8. Опублікуйте сторінку.
+
+Блок сам бере назви, фото, ціни і оцінки (Хват, Посадка...) з
+CONFIG каталогу (блок 03). Додали модель у каталог - вона сама
+з'явиться в порівнянні. Нічого дублювати не потрібно.
+
+
+=====================================================================
+ЧАСТИНА 2. КОД
+=====================================================================
+
+===== ПОЧАТОК КОДУ =====
+<section id="sgk-cmp" aria-label="Порівняння моделей">
+  <div class="sgk-wrap">
+    <div class="sgk-head sgk-head--c">
+      <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+      <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+      <p class="sgk-lead sgk-rv" data-d="0.16" data-sgk="lead"></p>
+    </div>
+    <div class="sgk-duel sgk-rv" data-d="0.1">
+      <div class="sgk-side" data-sgk="side0"></div>
+      <div class="sgk-vs"><span data-sgk="vs"></span></div>
+      <div class="sgk-side" data-sgk="side1"></div>
+    </div>
+    <div class="sgk-rows sgk-rv" data-d="0.18" data-sgk="rows"></div>
+    <div class="sgk-verdict sgk-rv" data-d="0.24" data-sgk="verdict"></div>
+  </div>
+</section>
+
+<style>
+#sgk-cmp{
+  --sgk-font-h:'Unbounded',Arial,sans-serif;
+  --sgk-font-b:'Manrope',Arial,sans-serif;
+  position:relative;width:100%;overflow:hidden;
+  background:var(--sgk-bg,#0A0C0B);color:var(--sgk-text,#F4F6F1);
+  font-family:var(--sgk-font-b);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding:clamp(72px,9vw,130px) 0;
+}
+#sgk-cmp *,#sgk-cmp *::before,#sgk-cmp *::after{box-sizing:border-box;margin:0;padding:0}
+#sgk-cmp a{text-decoration:none !important;-webkit-tap-highlight-color:transparent}
+#sgk-cmp button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
+#sgk-cmp img{display:block;max-width:100%}
+#sgk-cmp svg{display:block}
+#sgk-cmp .sgk-wrap{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+#sgk-cmp .sgk-head{max-width:780px;margin-bottom:clamp(36px,5vw,64px)}
+#sgk-cmp .sgk-head--c{margin-left:auto;margin-right:auto;text-align:center}
+#sgk-cmp .sgk-kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sgk-accent)}
+#sgk-cmp .sgk-kicker::before{content:"";width:28px;height:2px;background:var(--sgk-accent);flex:none}
+#sgk-cmp .sgk-h2{margin-top:18px;font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(28px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:var(--sgk-text)}
+#sgk-cmp .sgk-h2 em,#sgk-cmp em{font-style:normal;color:var(--sgk-accent)}
+#sgk-cmp .sgk-lead{margin-top:18px;font-size:clamp(15px,1.2vw,18px);line-height:1.6;color:var(--sgk-textMuted)}
+
+#sgk-cmp .sgk-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 28px;border-radius:100px;border:0;cursor:pointer;font-family:var(--sgk-font-b);font-size:15px;font-weight:700;letter-spacing:.02em;white-space:nowrap;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,color .3s ease,border-color .3s ease,box-shadow .35s ease}
+#sgk-cmp .sgk-btn:hover{transform:translateY(-3px)}
+#sgk-cmp .sgk-btn:active{transform:scale(.98)}
+#sgk-cmp .sgk-btn svg{width:18px;height:18px;flex:none}
+#sgk-cmp .sgk-btn--main,#sgk-cmp .sgk-btn--main:hover,#sgk-cmp .sgk-btn--main:focus,#sgk-cmp .sgk-btn--main span{color:var(--sgk-btnText) !important}
+#sgk-cmp .sgk-btn--main{background:var(--sgk-accent)}
+#sgk-cmp .sgk-btn--main:hover{background:var(--sgk-accentHover);box-shadow:0 14px 36px var(--sgk-btnShadow)}
+#sgk-cmp .sgk-btn--ghost,#sgk-cmp .sgk-btn--ghost span{color:var(--sgk-ghostText) !important}
+#sgk-cmp .sgk-btn--ghost{background:transparent;border:1.5px solid var(--sgk-ghostBorder)}
+#sgk-cmp .sgk-btn--ghost:hover{background:var(--sgk-ghostHoverBg);border-color:var(--sgk-ghostHoverBg)}
+#sgk-cmp .sgk-btn--ghost:hover,#sgk-cmp .sgk-btn--ghost:hover span{color:var(--sgk-ghostHoverText) !important}
+
+#sgk-cmp .sgk-ph{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center;
+  background-color:var(--sgk-phBg);color:var(--sgk-phIcon);
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px),repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px)}
+#sgk-cmp .sgk-ph svg{width:46px;height:46px}
+#sgk-cmp .sgk-ph-l{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-textMuted)}
+#sgk-cmp .sgk-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+
+#sgk-cmp .sgk-rv{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+#sgk-cmp .sgk-rv.is-in{opacity:1;transform:none}
+#sgk-cmp.sgk-static .sgk-rv{opacity:1 !important;transform:none !important;transition:none !important}
+@media (max-width:560px){
+  #sgk-cmp .sgk-btn{height:54px;padding:0 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  #sgk-cmp *{animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+
+/* ---------- СТИЛІ БЛОКУ ---------- */
+#sgk-cmp .sgk-duel{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(12px,2vw,28px);align-items:center;max-width:880px;margin:0 auto}
+#sgk-cmp .sgk-side{display:flex;flex-direction:column;border-radius:26px;overflow:hidden;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);transition:border-color .4s ease}
+#sgk-cmp .sgk-side.is-win{border-color:var(--sgk-accent)}
+#sgk-cmp .sgk-sel-w{position:relative;padding:12px}
+#sgk-cmp .sgk-sel{width:100%;height:50px;padding:0 44px 0 16px;border-radius:14px;border:1px solid var(--sgk-cardBorder);background:rgba(255,255,255,.04);color:var(--sgk-text);font-family:var(--sgk-font-h);font-weight:700;font-size:15px;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--sgk-accent) 50%),linear-gradient(135deg,var(--sgk-accent) 50%,transparent 50%);background-position:calc(100% - 22px) 22px,calc(100% - 16px) 22px;background-size:6px 6px,6px 6px;background-repeat:no-repeat;transition:border-color .25s ease}
+#sgk-cmp .sgk-sel:focus,#sgk-cmp .sgk-sel:hover{border-color:var(--sgk-accent)}
+#sgk-cmp .sgk-sel option{background:#111413;color:var(--sgk-text)}
+#sgk-cmp .sgk-pic{position:relative;aspect-ratio:1/1;margin:0 12px;border-radius:18px;overflow:hidden;background:var(--sgk-phBg)}
+#sgk-cmp .sgk-pic .sgk-img,#sgk-cmp .sgk-pic .sgk-ph{transition:opacity .35s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+#sgk-cmp .sgk-side.is-swap .sgk-pic .sgk-img,#sgk-cmp .sgk-side.is-swap .sgk-pic .sgk-ph{opacity:0;transform:scale(1.06)}
+#sgk-cmp .sgk-crown{position:absolute;left:12px;top:12px;z-index:2;padding:6px 12px;border-radius:100px;background:var(--sgk-accent);color:var(--sgk-btnText);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:0;transform:translateY(-8px);transition:opacity .4s ease,transform .4s ease}
+#sgk-cmp .sgk-side.is-win .sgk-crown{opacity:1;transform:none}
+#sgk-cmp .sgk-sd-b{padding:16px 18px 18px}
+#sgk-cmp .sgk-sd-meta{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sgk-textMuted)}
+#sgk-cmp .sgk-sd-price{margin-top:6px;font-family:var(--sgk-font-h);font-weight:800;font-size:22px;color:var(--sgk-text)}
+#sgk-cmp .sgk-sd-b .sgk-btn{width:100%;height:48px;margin-top:14px;font-size:14px}
+#sgk-cmp .sgk-vs{position:relative;width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-accent);color:var(--sgk-btnText);font-family:var(--sgk-font-h);font-weight:800;font-size:22px;box-shadow:0 0 0 8px var(--sgk-bg)}
+#sgk-cmp .sgk-vs::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%;border:2px solid var(--sgk-accent);animation:sgkVs 2.2s ease-out infinite}
+#sgk-cmp .sgk-vs.is-hit span{animation:sgkHit .6s cubic-bezier(.2,1.4,.4,1)}
+#sgk-cmp .sgk-rows{max-width:880px;margin:22px auto 0;padding:clamp(16px,2.6vw,30px);border-radius:26px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder)}
+#sgk-cmp .sgk-row{display:grid;grid-template-columns:56px minmax(0,1fr) minmax(90px,auto) minmax(0,1fr) 56px;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--sgk-line)}
+#sgk-cmp .sgk-row:first-child{border-top:0}
+#sgk-cmp .sgk-rv-v{font-family:var(--sgk-font-h);font-weight:800;font-size:16px;color:var(--sgk-textMuted);transition:color .4s ease;font-variant-numeric:tabular-nums}
+#sgk-cmp .sgk-rv-v.is-win{color:var(--sgk-accent)}
+#sgk-cmp .sgk-row > .sgk-rv-v:first-child{text-align:right}
+#sgk-cmp .sgk-lab{text-align:center;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--sgk-text)}
+#sgk-cmp .sgk-tr{height:10px;border-radius:10px;background:var(--sgk-barTrack);overflow:hidden;display:flex}
+#sgk-cmp .sgk-tr--l{justify-content:flex-end}
+#sgk-cmp .sgk-fill{height:100%;width:0;border-radius:10px;background:var(--sgk-loser);transition:width .9s cubic-bezier(.2,.8,.2,1),background .4s ease}
+#sgk-cmp .sgk-fill.is-win{background:var(--sgk-accent);box-shadow:0 0 16px var(--sgk-btnShadow)}
+#sgk-cmp .sgk-txt{grid-column:2 / span 3;display:grid;grid-template-columns:minmax(0,1fr) minmax(90px,auto) minmax(0,1fr);gap:12px;align-items:center}
+#sgk-cmp .sgk-txt span{font-size:14px;font-weight:700;color:var(--sgk-text)}
+#sgk-cmp .sgk-txt span:first-child{text-align:right}
+#sgk-cmp .sgk-verdict{max-width:880px;margin:18px auto 0;text-align:center;font-family:var(--sgk-font-h);font-weight:700;font-size:clamp(16px,1.6vw,20px);color:var(--sgk-text)}
+#sgk-cmp .sgk-verdict em{font-style:normal;color:var(--sgk-accent)}
+#sgk-cmp .sgk-empty{padding:30px;text-align:center;color:var(--sgk-textMuted)}
+@keyframes sgkVs{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+@keyframes sgkHit{0%{transform:scale(1)}40%{transform:scale(1.35) rotate(-8deg)}100%{transform:none}}
+@media (max-width:700px){
+  #sgk-cmp .sgk-duel{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  #sgk-cmp .sgk-vs{position:absolute;left:50%;top:42%;width:54px;height:54px;margin-left:-27px;z-index:3;font-size:16px;box-shadow:0 0 0 5px var(--sgk-bg)}
+  #sgk-cmp .sgk-side{border-radius:20px}
+  #sgk-cmp .sgk-sel-w{padding:8px}
+  #sgk-cmp .sgk-sel{height:44px;font-size:12.5px;padding:0 30px 0 10px;background-position:calc(100% - 16px) 19px,calc(100% - 11px) 19px}
+  #sgk-cmp .sgk-pic{margin:0 8px;border-radius:14px}
+  #sgk-cmp .sgk-sd-b{padding:12px}
+  #sgk-cmp .sgk-sd-price{font-size:17px}
+  #sgk-cmp .sgk-sd-b .sgk-btn{height:42px;padding:0 10px;font-size:13px}
+  #sgk-cmp .sgk-row{grid-template-columns:38px minmax(0,1fr) minmax(0,auto) minmax(0,1fr) 38px;gap:8px}
+  #sgk-cmp .sgk-lab{font-size:10.5px;letter-spacing:.04em}
+  #sgk-cmp .sgk-rv-v{font-size:14px}
+  #sgk-cmp .sgk-txt{grid-template-columns:minmax(0,1fr) minmax(0,auto) minmax(0,1fr);gap:8px}
+  #sgk-cmp .sgk-txt span{font-size:12.5px}
+}
+</style>
+
+<script>
+(function () {
+
+  /* =================================================================
+     CONFIG - ВЕСЬ КОНТЕНТ, ПОСИЛАННЯ, КОЛЬОРИ ТА НАЛАШТУВАННЯ
+     Змінюйте лише значення в лапках / числа. Не видаляйте коми.
+     ================================================================= */
+  var CONFIG = {
+
+    kicker: "Порівняння",                                  /* ЗМІНИТИ - надпис над заголовком */
+    title: "Яку [обрати]?",                                 /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    lead: "Обери дві моделі - і побач, хто сильніший у кожному параметрі.", /* ЗМІНИТИ - текст */
+    vsText: "VS",                                           /* ЗМІНИТИ - текст у колі посередині */
+    winnerBadge: "Перемагає",                               /* ЗМІНИТИ - мітка на фото моделі, що виграла */
+    btnText: "До моделі",                                   /* ЗМІНИТИ - кнопка під моделлю (веде в каталог) */
+    btnLink: "#catalog",                                    /* ЗМІНИТИ - куди веде кнопка */
+    priceLabel: "Ціна",                                     /* ЗМІНИТИ - назва рядка з ціною */
+    cutLabel: "Крій",                                       /* ЗМІНИТИ - назва рядка з кроєм */
+    sizesLabel: "Розміри",                                  /* ЗМІНИТИ - назва рядка з розмірами */
+    adultLabel: "Дорослі",                                  /* ЗМІНИТИ - підпис дорослої моделі */
+    kidsLabel: "Дитячі",                                    /* ЗМІНИТИ - підпис дитячої моделі */
+    noCut: "-",                                             /* ЗМІНИТИ - якщо крій не вказано */
+    verdictText: "[{name}] перемагає в {n} з {total}",      /* ЗМІНИТИ - підсумок. {name}, {n}, {total} підставляються */
+    drawText: "[Нічия] - обирай за кольором і відчуттям",   /* ЗМІНИТИ - підсумок, якщо порівну */
+    emptyText: "Додайте хоча б дві моделі в каталог (блок 03).", /* ЗМІНИТИ - якщо моделей мало */
+    photoLabel: "Фото моделі",                              /* ЗМІНИТИ - заглушка без фото */
+    startLeft: 0,                                           /* ЗМІНИТИ - яка модель зліва на старті (0 = перша в каталозі) */
+    startRight: 1,                                          /* ЗМІНИТИ - яка модель справа на старті */
+
+    colors: {
+      bg:              "#0A0C0B",                        /* ЗМІНИТИ - фон блоку */
+      accent:          "#C8FF2E",                        /* ЗМІНИТИ - акцентний колір (кнопки, виділені слова, іконки) */
+      accentHover:     "#B6F01A",                        /* ЗМІНИТИ - акцентний колір при наведенні */
+      accentSoft:      "rgba(200,255,46,0.12)",          /* ЗМІНИТИ - м'який акцент (фон іконок, рамки при наведенні) */
+      btnText:         "#0A0C0B",                        /* ЗМІНИТИ - текст на акцентних кнопках */
+      btnShadow:       "rgba(200,255,46,0.35)",          /* ЗМІНИТИ - світіння акцентної кнопки при наведенні */
+      text:            "#F4F6F1",                        /* ЗМІНИТИ - основний текст */
+      textMuted:       "rgba(244,246,241,0.66)",         /* ЗМІНИТИ - другорядний текст */
+      line:            "rgba(255,255,255,0.12)",         /* ЗМІНИТИ - лінії та рамки */
+      cardBg:          "rgba(255,255,255,0.035)",        /* ЗМІНИТИ - фон карток */
+      cardHover:       "rgba(255,255,255,0.06)",         /* ЗМІНИТИ - фон карток при наведенні */
+      cardBorder:      "rgba(255,255,255,0.10)",         /* ЗМІНИТИ - рамка карток */
+      ghostText:       "#F4F6F1",                        /* ЗМІНИТИ - текст прозорої кнопки */
+      ghostBorder:     "rgba(244,246,241,0.35)",         /* ЗМІНИТИ - рамка прозорої кнопки */
+      ghostHoverBg:    "#F4F6F1",                        /* ЗМІНИТИ - фон прозорої кнопки при наведенні */
+      ghostHoverText:  "#0A0C0B",                        /* ЗМІНИТИ - текст прозорої кнопки при наведенні */
+      phBg:            "#141816",                        /* ЗМІНИТИ - фон заглушки замість фото */
+      phIcon:          "rgba(200,255,46,0.55)",          /* ЗМІНИТИ - іконка на заглушці */
+      loser:           "rgba(244,246,241,0.28)",         /* ЗМІНИТИ - колір шкали моделі, що програє в параметрі */
+      barTrack:        "rgba(255,255,255,0.08)"          /* ЗМІНИТИ - фон порожньої шкали */
+    },
+
+    fonts: {
+      url: "https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap", /* ЗМІНИТИ - посилання Google Fonts */
+      heading: "Unbounded", /* ЗМІНИТИ - шрифт заголовків */
+      body: "Manrope"       /* ЗМІНИТИ - шрифт тексту */
+    },
+
+    settings: {
+      animations: true      /* ЗМІНИТИ - true = мікро-анімації, false = статичний блок */
+    }
+  };
+  /* ======================== КІНЕЦЬ CONFIG ======================== */
+
+  /* ===================== СЛУЖБОВИЙ КОД (не змінювати) ===================== */
+  var root = document.getElementById("sgk-cmp");
+  if (!root || root.getAttribute("data-ready")) return;
+  root.setAttribute("data-ready", "1");
+  var S = CONFIG.settings || {};
+  function mq(x) { try { return window.matchMedia(x).matches; } catch (e) { return false; } }
+  var reduce = mq("(prefers-reduced-motion: reduce)");
+  var fine = mq("(hover: hover) and (pointer: fine)");
+  var animOn = S.animations !== false && !reduce;
+
+  if (CONFIG.fonts && CONFIG.fonts.url && !document.querySelector("link[data-sgk-font]")) {
+    var fl = document.createElement("link");
+    fl.rel = "stylesheet"; fl.href = CONFIG.fonts.url; fl.setAttribute("data-sgk-font", "1");
+    document.head.appendChild(fl);
+  }
+  if (CONFIG.fonts) {
+    root.style.setProperty("--sgk-font-h", "'" + CONFIG.fonts.heading + "', Arial, sans-serif");
+    root.style.setProperty("--sgk-font-b", "'" + CONFIG.fonts.body + "', Arial, sans-serif");
+  }
+  for (var ck in CONFIG.colors) {
+    if (Object.prototype.hasOwnProperty.call(CONFIG.colors, ck)) root.style.setProperty("--sgk-" + ck, CONFIG.colors[ck]);
+  }
+
+  function q(n) { return root.querySelector('[data-sgk="' + n + '"]'); }
+  function each(list, fn) { Array.prototype.forEach.call(list || [], fn); }
+  function mk(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = text;
+    return e;
+  }
+  function txt(n, v) { var e = q(n); if (e) e.textContent = (v === undefined || v === null) ? "" : v; return e; }
+  function lnk(el, href, blank) {
+    if (!el) return el;
+    el.setAttribute("href", href || "#");
+    if (blank) { el.setAttribute("target", "_blank"); el.setAttribute("rel", "noopener"); }
+    return el;
+  }
+  function esc(s) { return String(s === undefined || s === null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function rich(el, s) { if (el) el.innerHTML = esc(s).replace(/\[(.+?)\]/g, "<em>$1</em>"); return el; }
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  var PH_ICONS = {
+    photo: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="12" width="38" height="28" rx="5"/><path d="M17 12l3-5h8l3 5"/><circle cx="24" cy="26" r="7"/></svg>',
+    glove: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 44V31l-5-8c-1.3-2.2 1.6-4.4 3.4-2.6L17 24V9.5a2.5 2.5 0 0 1 5 0V22V7a2.5 2.5 0 0 1 5 0v15V8.5a2.5 2.5 0 0 1 5 0V22v-9a2.5 2.5 0 0 1 5 0v17.5C37 38 33 44 27 44z"/><path d="M15 38h22"/></svg>'
+  };
+  function placeholder(label, kind) {
+    var d = mk("div", "sgk-ph");
+    d.innerHTML = PH_ICONS[kind] || PH_ICONS.photo;
+    if (label) d.appendChild(mk("span", "sgk-ph-l", label));
+    return d;
+  }
+  function media(url, alt, label, kind) {
+    if (url) { var i = mk("img", "sgk-img"); i.src = url; i.alt = alt || ""; i.loading = "lazy"; i.decoding = "async"; return i; }
+    return placeholder(label, kind);
+  }
+  function reveal() {
+    var els = root.querySelectorAll(".sgk-rv");
+    if (!animOn) { root.classList.add("sgk-static"); return; }
+    if (!("IntersectionObserver" in window)) { each(els, function (e) { e.classList.add("is-in"); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, d = parseFloat(el.getAttribute("data-d") || "0");
+        el.style.transitionDelay = d + "s";
+        el.classList.add("is-in");
+        io.unobserve(el);
+        setTimeout(function () { el.style.transitionDelay = ""; }, (d + 1.2) * 1000);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    each(els, function (e) { io.observe(e); });
+  }
+
+  var ICONS = {
+    drop: '<path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z"/><path d="M9 14a3 3 0 0 0 3 3"/>',
+    glove: '<path d="M7 21v-6l-2.5-4a1.4 1.4 0 0 1 2.3-1.6L8.5 12V5a1.5 1.5 0 0 1 3 0v6V4a1.5 1.5 0 0 1 3 0v7V5.5a1.5 1.5 0 0 1 3 0V11V8a1.5 1.5 0 0 1 3 0v6.5C20.5 18 18 21 15 21z"/><path d="M7 18h12"/>',
+    shield: '<path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
+    refresh: '<path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 20v-4h-4"/>',
+    truck: '<path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3.5V16h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',
+    ruler: '<path d="M4 15.5L15.5 4 20 8.5 8.5 20z"/><path d="M8 12l2 2M11 9l2 2M14 6l2 2"/>',
+    star: '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+    water: '<path d="M3 15c2 0 2-1.5 4.5-1.5S9.5 15 12 15s2.5-1.5 4.5-1.5S19 15 21 15"/><path d="M3 19c2 0 2-1.5 4.5-1.5S9.5 19 12 19s2.5-1.5 4.5-1.5S19 19 21 19"/><path d="M12 3s3.5 3.8 3.5 6.3a3.5 3.5 0 0 1-7 0C8.5 6.8 12 3 12 3z"/>',
+    wind: '<path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 15h15a3 3 0 1 1-3 3"/><path d="M3 12h7"/>',
+    hand: '<path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11V4a1.5 1.5 0 0 1 3 0v7V5.5a1.5 1.5 0 0 1 3 0V12v-3a1.5 1.5 0 0 1 3 0v6c0 3.5-2.5 6-6 6h-1.5c-2 0-3.3-.8-4.5-2.2L5 15.5c-1-1.2.5-2.8 1.8-1.8z"/>',
+    bag: '<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+    card: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/>',
+    chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>',
+    box: '<path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/>',
+    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+    target: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+    x: '<path d="M6 6l12 12M18 6L6 18"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/>',
+    telegram: '<path d="M21 4.5L3 11.3l5.6 2 2 6.2 3.3-3.6 4.9 3.6z"/><path d="M8.6 13.3L18 7l-7.4 8.5"/>',
+    phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/>',
+    pin: '<path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>'
+  };
+  function icon(name, sw) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (sw || 1.8) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || ICONS.star) + '</svg>';
+  }
+
+  /* ===================== ЛОГІКА БЛОКУ ===================== */
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+  txt("vs", CONFIG.vsText);
+
+  var cat = null, pick = [CONFIG.startLeft || 0, CONFIG.startRight || 1], sides = [];
+  function money(n) { return fmt(n) + " " + ((cat && cat.currency) || "грн"); }
+  function firstImg(p) {
+    if (p.image) return p.image;
+    var x = (p.images || [])[0];
+    return x ? (typeof x === "string" ? x : x.src) : "";
+  }
+  function buildSide(k) {
+    var el = q("side" + k); el.innerHTML = "";
+    var sw = mk("div", "sgk-sel-w"), sel = mk("select", "sgk-sel");
+    sel.setAttribute("aria-label", "model " + (k + 1));
+    cat.products.forEach(function (p, i) { var o = mk("option", "", p.name); o.value = String(i); sel.appendChild(o); });
+    sel.value = String(pick[k]);
+    sel.addEventListener("change", function () {
+      pick[k] = parseInt(sel.value, 10);
+      el.classList.add("is-swap");
+      setTimeout(function () { fillSide(k); render(); el.classList.remove("is-swap"); }, animOn ? 260 : 0);
+      var vs = root.querySelector(".sgk-vs"); vs.classList.remove("is-hit"); void vs.offsetWidth; vs.classList.add("is-hit");
+    });
+    sw.appendChild(sel); el.appendChild(sw);
+    var pic = mk("div", "sgk-pic"); pic.appendChild(mk("span", "sgk-crown", CONFIG.winnerBadge)); el.appendChild(pic);
+    var b = mk("div", "sgk-sd-b");
+    b.appendChild(mk("div", "sgk-sd-meta"));
+    b.appendChild(mk("div", "sgk-sd-price"));
+    var a = mk("a", "sgk-btn sgk-btn--ghost"); a.appendChild(mk("span", "", CONFIG.btnText)); lnk(a, CONFIG.btnLink);
+    b.appendChild(a);
+    el.appendChild(b);
+    sides[k] = { el: el, sel: sel, pic: pic, meta: b.querySelector(".sgk-sd-meta"), price: b.querySelector(".sgk-sd-price") };
+    fillSide(k);
+  }
+  function fillSide(k) {
+    var s = sides[k], p = cat.products[pick[k]];
+    each(s.pic.querySelectorAll(".sgk-img,.sgk-ph"), function (x) { x.parentNode.removeChild(x); });
+    var src = firstImg(p), m = media(src, p.name, CONFIG.photoLabel, "glove");
+    if (src && p.imagePosition) m.style.objectPosition = p.imagePosition;
+    s.pic.insertBefore(m, s.pic.firstChild);
+    s.meta.textContent = (p.category === "kids" ? CONFIG.kidsLabel : CONFIG.adultLabel) + (p.badge ? " / " + p.badge : "");
+    s.price.textContent = money(p.price);
+  }
+  var rowsEl = q("rows");
+  function render() {
+    var A = cat.products[pick[0]], B = cat.products[pick[1]];
+    rowsEl.innerHTML = "";
+    var winsA = 0, winsB = 0, total = 0;
+    (cat.labels || []).forEach(function (lab, i) {
+      var a = (A.ratings || [])[i], b = (B.ratings || [])[i];
+      if (a === undefined && b === undefined) return;
+      a = a || 0; b = b || 0; total++;
+      if (a > b) winsA++; else if (b > a) winsB++;
+      var r = mk("div", "sgk-row");
+      var va = mk("div", "sgk-rv-v" + (a > b ? " is-win" : ""), String(a));
+      var ta = mk("div", "sgk-tr sgk-tr--l"), fa = mk("div", "sgk-fill" + (a > b ? " is-win" : "")); ta.appendChild(fa);
+      var tb = mk("div", "sgk-tr"), fb = mk("div", "sgk-fill" + (b > a ? " is-win" : "")); tb.appendChild(fb);
+      var vb = mk("div", "sgk-rv-v" + (b > a ? " is-win" : ""), String(b));
+      r.appendChild(va); r.appendChild(ta); r.appendChild(mk("div", "sgk-lab", lab)); r.appendChild(tb); r.appendChild(vb);
+      rowsEl.appendChild(r);
+      setTimeout(function () { fa.style.width = Math.min(100, a * 10) + "%"; fb.style.width = Math.min(100, b * 10) + "%"; }, animOn ? 60 : 0);
+    });
+    function textRow(label, x, y, winX, winY) {
+      var r = mk("div", "sgk-row"); r.appendChild(mk("div")); var t = mk("div", "sgk-txt");
+      var sx = mk("span", "", x), sy = mk("span", "", y);
+      if (winX) sx.style.color = "var(--sgk-accent)"; if (winY) sy.style.color = "var(--sgk-accent)";
+      t.appendChild(sx); t.appendChild(mk("div", "sgk-lab", label)); t.appendChild(sy);
+      r.appendChild(t); r.appendChild(mk("div")); rowsEl.appendChild(r);
+    }
+    textRow(CONFIG.priceLabel, money(A.price), money(B.price), A.price < B.price, B.price < A.price);
+    var cn = cat.cutNames || {};
+    textRow(CONFIG.cutLabel, cn[A.cut] || CONFIG.noCut, cn[B.cut] || CONFIG.noCut, false, false);
+    textRow(CONFIG.sizesLabel, (A.sizes || []).join(", "), (B.sizes || []).join(", "), false, false);
+
+    sides[0].el.classList.toggle("is-win", winsA > winsB);
+    sides[1].el.classList.toggle("is-win", winsB > winsA);
+    var v = q("verdict");
+    if (!total || winsA === winsB) rich(v, CONFIG.drawText);
+    else {
+      var W = winsA > winsB ? A : B, n = Math.max(winsA, winsB);
+      rich(v, CONFIG.verdictText.replace("{name}", W.name).replace("{n}", n).replace("{total}", total));
+    }
+  }
+  function init() {
+    if (cat || !window.SGK_CATALOG) return;
+    cat = window.SGK_CATALOG;
+    if (!cat.products || cat.products.length < 2) { rowsEl.innerHTML = ""; rowsEl.appendChild(mk("div", "sgk-empty", CONFIG.emptyText)); root.querySelector(".sgk-duel").style.display = "none"; return; }
+    pick[0] = Math.min(pick[0], cat.products.length - 1);
+    pick[1] = Math.min(pick[1], cat.products.length - 1);
+    if (pick[0] === pick[1]) pick[1] = (pick[0] + 1) % cat.products.length;
+    buildSide(0); buildSide(1); render();
+  }
+  init();
+  document.addEventListener("sgk:products", init);
+  if (!cat) setTimeout(function () { init(); if (!cat) { rowsEl.appendChild(mk("div", "sgk-empty", CONFIG.emptyText)); root.querySelector(".sgk-duel").style.display = "none"; } }, 1500);
+
+  reveal();
+
+})();
+</script>
+===== КІНЕЦЬ КОДУ =====
+
+
+=====================================================================
+ЧАСТИНА 3. ЩО І ДЕ ЗМІНЮВАТИ В ЦЬОМУ БЛОЦІ
+=====================================================================
+
+Усе редагується ТІЛЬКИ в об'єкті CONFIG на початку тегу <script>.
+HTML і CSS чіпати не потрібно. Біля кожного параметра стоїть
+коментар /* ЗМІНИТИ */.
+
+ЩО ЦЕ
+  Дві моделі поруч: над кожною - список для вибору моделі, фото,
+  ціна. Посередині пульсуюче коло "VS". Нижче - "дзеркальні" шкали:
+  у кожному параметрі (Хват, Посадка, Зносостійкість) переможець
+  світиться лаймовим. Модель, що виграла більше параметрів,
+  отримує лаймову рамку і мітку "Перемагає", а внизу - підсумок
+  "Synergy Shine перемагає в 2 з 3".
+
+ЗВІДКИ ДАНІ
+  Усе береться з каталогу (блок 03): назви, фото, ціни, оцінки
+  (ratings), крій, розміри. Тому:
+  - змінюєте оцінки/ціни ТІЛЬКИ в каталозі;
+  - блок 14 має стояти на сторінці НИЖЧЕ за каталог.
+
+ТЕКСТИ  ->  kicker, title, lead, vsText, winnerBadge, btnText ...
+  verdictText - підсумок, де {name} - назва моделі, {n} - скільки
+  параметрів виграла, {total} - скільки всього.
+startLeft / startRight - які моделі показати на старті (рахуючи з 0).
+
+  Доступні іконки (поле icon): drop, glove, shield, refresh, truck, ruler, star, water, wind, hand, bag, card, chat, box, clock, sun, target, x, check, arrow, plus, instagram, telegram, phone, mail, pin
+
+---------------------------------------------------------------------
+КОЛЬОРИ  ->  CONFIG.colors
+---------------------------------------------------------------------
+  Формат "#C8FF2E" або "rgba(200,255,46,0.35)" (останнє число -
+  прозорість від 0 до 1). Кольори однакові в усіх блоках Synergy:
+  якщо міняєте акцент - міняйте accent, accentHover, accentSoft і
+  btnShadow в КОЖНОМУ блоці.
+  Колір тексту в кнопках прописаний з !important, тому оранжевий колір
+  посилань Tilda його не перебиває.
+
+---------------------------------------------------------------------
+ШРИФТИ І АНІМАЦІЇ
+---------------------------------------------------------------------
+  CONFIG.fonts - Unbounded (заголовки) + Manrope (текст), з кирилицею.
+  settings.animations: false - вимкнути анімації в цьому блоці.
+  Якщо в системі відвідувача ввімкнено "зменшити рух", анімації
+  вимикаються самі.
+
+---------------------------------------------------------------------
+ЗАГАЛЬНІ ПРАВИЛА
+---------------------------------------------------------------------
+  - Змінюйте тільки значення в лапках "..." та числа, коми не видаляйте.
+  - Слово в [квадратних дужках] у заголовках стає акцентного кольору.
+  - НЕ використовуйте емодзі - Tilda покаже їх як знаки питання.
+  - Порожнє фото "" = красива заглушка з іконкою. Коли будуть фото
+    від клієнта - вставте посилання на них (як отримати посилання з
+    Tilda - див. блок 01, частина 1).

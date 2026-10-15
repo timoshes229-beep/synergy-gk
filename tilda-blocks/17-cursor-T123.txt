@@ -1,0 +1,347 @@
+=====================================================================
+SYNERGY GK - БЛОК 17: КУРСОР-РУКАВИЦЯ (ДЛЯ ПК)
+Для Tilda, блок T123
+=====================================================================
+
+
+=====================================================================
+ЧАСТИНА 1. ІНСТРУКЦІЯ: ЯК ВСТАВИТИ КОД
+=====================================================================
+
+1. Відкрийте сторінку сайту в редакторі Tilda.
+2. Натисніть "+" (Додати блок) -> розділ "Інше" -> блок T123
+   ("HTML-код" / "Вставка HTML-коду").
+3. Наведіть на блок і натисніть "Контент".
+4. Скопіюйте ВЕСЬ код з ЧАСТИНИ 2: усе, що між рядками
+   "ПОЧАТОК КОДУ" і "КІНЕЦЬ КОДУ" (самі ці рядки з "=====" копіювати
+   НЕ потрібно).
+5. Вставте код у поле і натисніть "Зберегти та закрити".
+6. У режимі редагування Tilda показує T123 як сірий прямокутник
+   "HTML-код". Це нормально - натисніть "Перегляд" або опублікуйте
+   сторінку, щоб побачити блок.
+7. Місце на сторінці: будь-де, найзручніше - в самому кінці сторінки. Блок невидимий: він замінює стрілку мишки на рукавицю Synergy на всьому сайті.
+8. Опублікуйте сторінку.
+
+Працює тільки на комп'ютерах з мишкою. На телефонах і планшетах
+нічого не змінюється. Над полями вводу (форма замовлення) і в
+міні-грі зі звичайним курсором нічого не відбувається - там
+показується звичайна стрілка / рукавиця гри.
+
+
+=====================================================================
+ЧАСТИНА 2. КОД
+=====================================================================
+
+===== ПОЧАТОК КОДУ =====
+<div id="sgk-cursor" aria-hidden="true">
+  <div class="sgk-ring" data-sgk="ring"></div>
+  <div class="sgk-cur" data-sgk="cur"><div class="sgk-cur-in" data-sgk="img"></div></div>
+</div>
+
+<style>
+#sgk-cursor{
+  --sgk-font-h:'Unbounded',Arial,sans-serif;
+  --sgk-font-b:'Manrope',Arial,sans-serif;
+  position:relative;width:100%;overflow:hidden;
+  background:var(--sgk-bg,#0A0C0B);color:var(--sgk-text,#F4F6F1);
+  font-family:var(--sgk-font-b);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding:clamp(72px,9vw,130px) 0;
+}
+#sgk-cursor *,#sgk-cursor *::before,#sgk-cursor *::after{box-sizing:border-box;margin:0;padding:0}
+#sgk-cursor a{text-decoration:none !important;-webkit-tap-highlight-color:transparent}
+#sgk-cursor button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
+#sgk-cursor img{display:block;max-width:100%}
+#sgk-cursor svg{display:block}
+#sgk-cursor .sgk-wrap{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+#sgk-cursor .sgk-head{max-width:780px;margin-bottom:clamp(36px,5vw,64px)}
+#sgk-cursor .sgk-head--c{margin-left:auto;margin-right:auto;text-align:center}
+#sgk-cursor .sgk-kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sgk-accent)}
+#sgk-cursor .sgk-kicker::before{content:"";width:28px;height:2px;background:var(--sgk-accent);flex:none}
+#sgk-cursor .sgk-h2{margin-top:18px;font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(28px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:var(--sgk-text)}
+#sgk-cursor .sgk-h2 em,#sgk-cursor em{font-style:normal;color:var(--sgk-accent)}
+#sgk-cursor .sgk-lead{margin-top:18px;font-size:clamp(15px,1.2vw,18px);line-height:1.6;color:var(--sgk-textMuted)}
+
+#sgk-cursor .sgk-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 28px;border-radius:100px;border:0;cursor:pointer;font-family:var(--sgk-font-b);font-size:15px;font-weight:700;letter-spacing:.02em;white-space:nowrap;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,color .3s ease,border-color .3s ease,box-shadow .35s ease}
+#sgk-cursor .sgk-btn:hover{transform:translateY(-3px)}
+#sgk-cursor .sgk-btn:active{transform:scale(.98)}
+#sgk-cursor .sgk-btn svg{width:18px;height:18px;flex:none}
+#sgk-cursor .sgk-btn--main,#sgk-cursor .sgk-btn--main:hover,#sgk-cursor .sgk-btn--main:focus,#sgk-cursor .sgk-btn--main span{color:var(--sgk-btnText) !important}
+#sgk-cursor .sgk-btn--main{background:var(--sgk-accent)}
+#sgk-cursor .sgk-btn--main:hover{background:var(--sgk-accentHover);box-shadow:0 14px 36px var(--sgk-btnShadow)}
+#sgk-cursor .sgk-btn--ghost,#sgk-cursor .sgk-btn--ghost span{color:var(--sgk-ghostText) !important}
+#sgk-cursor .sgk-btn--ghost{background:transparent;border:1.5px solid var(--sgk-ghostBorder)}
+#sgk-cursor .sgk-btn--ghost:hover{background:var(--sgk-ghostHoverBg);border-color:var(--sgk-ghostHoverBg)}
+#sgk-cursor .sgk-btn--ghost:hover,#sgk-cursor .sgk-btn--ghost:hover span{color:var(--sgk-ghostHoverText) !important}
+
+#sgk-cursor .sgk-ph{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center;
+  background-color:var(--sgk-phBg);color:var(--sgk-phIcon);
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px),repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px)}
+#sgk-cursor .sgk-ph svg{width:46px;height:46px}
+#sgk-cursor .sgk-ph-l{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-textMuted)}
+#sgk-cursor .sgk-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+
+#sgk-cursor .sgk-rv{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+#sgk-cursor .sgk-rv.is-in{opacity:1;transform:none}
+#sgk-cursor.sgk-static .sgk-rv{opacity:1 !important;transform:none !important;transition:none !important}
+@media (max-width:560px){
+  #sgk-cursor .sgk-btn{height:54px;padding:0 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  #sgk-cursor *{animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+
+/* ---------- СТИЛІ БЛОКУ ---------- */
+#sgk-cursor{position:static;overflow:visible;padding:0;background:none;width:0;height:0}
+#sgk-cursor .sgk-cur,#sgk-cursor .sgk-ring,#sgk-cursor .sgk-rip{position:fixed;left:0;top:0;pointer-events:none;z-index:2147483000;will-change:transform}
+#sgk-cursor .sgk-cur{width:var(--cs,34px);height:calc(var(--cs,34px) * 1.25);margin:calc(var(--cs,34px) * -0.12) 0 0 calc(var(--cs,34px) * -0.5);opacity:0;transition:opacity .25s ease}
+#sgk-cursor .sgk-cur-in{width:100%;height:100%;transform-origin:50% 40%;transition:transform .35s cubic-bezier(.2,1.4,.4,1);filter:drop-shadow(0 4px 8px rgba(0,0,0,.45))}
+#sgk-cursor .sgk-cur-in img{width:100%;height:100%;display:block}
+#sgk-cursor .sgk-ring{width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid var(--sgk-ring);opacity:0;transition:opacity .25s ease,width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),margin .35s cubic-bezier(.2,.8,.2,1),background .3s ease,border-color .3s ease}
+#sgk-cursor.is-on .sgk-cur,#sgk-cursor.is-on .sgk-ring{opacity:1}
+#sgk-cursor.is-hover .sgk-ring{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(200,255,46,.08);border-color:var(--sgk-accent)}
+#sgk-cursor.is-hover .sgk-cur-in{transform:rotate(-14deg) scale(1.12)}
+#sgk-cursor.is-down .sgk-cur-in{transform:rotate(-8deg) scale(.82,.76)}
+#sgk-cursor .sgk-rip{width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;border:2px solid var(--sgk-accent);animation:sgkRip .55s ease-out forwards}
+@keyframes sgkRip{from{transform:var(--p) scale(1);opacity:.9}to{transform:var(--p) scale(4);opacity:0}}
+html.sgk-cursor-on,html.sgk-cursor-on body,html.sgk-cursor-on a,html.sgk-cursor-on button,html.sgk-cursor-on [role="button"],html.sgk-cursor-on label{cursor:none !important}
+html.sgk-cursor-on input,html.sgk-cursor-on textarea,html.sgk-cursor-on select,html.sgk-cursor-on [contenteditable="true"]{cursor:auto !important}
+</style>
+
+<script>
+(function () {
+
+  /* =================================================================
+     CONFIG - ВЕСЬ КОНТЕНТ, ПОСИЛАННЯ, КОЛЬОРИ ТА НАЛАШТУВАННЯ
+     Змінюйте лише значення в лапках / числа. Не видаляйте коми.
+     ================================================================= */
+  var CONFIG = {
+
+    size: 38,     /* ЗМІНИТИ - розмір рукавиці-курсора в px (28-44) */
+
+    colors: {
+      bg:              "#0A0C0B",                        /* ЗМІНИТИ - фон блоку */
+      accent:          "#C8FF2E",                        /* ЗМІНИТИ - акцентний колір (кнопки, виділені слова, іконки) */
+      accentHover:     "#B6F01A",                        /* ЗМІНИТИ - акцентний колір при наведенні */
+      accentSoft:      "rgba(200,255,46,0.12)",          /* ЗМІНИТИ - м'який акцент (фон іконок, рамки при наведенні) */
+      btnText:         "#0A0C0B",                        /* ЗМІНИТИ - текст на акцентних кнопках */
+      btnShadow:       "rgba(200,255,46,0.35)",          /* ЗМІНИТИ - світіння акцентної кнопки при наведенні */
+      text:            "#F4F6F1",                        /* ЗМІНИТИ - основний текст */
+      textMuted:       "rgba(244,246,241,0.66)",         /* ЗМІНИТИ - другорядний текст */
+      line:            "rgba(255,255,255,0.12)",         /* ЗМІНИТИ - лінії та рамки */
+      cardBg:          "rgba(255,255,255,0.035)",        /* ЗМІНИТИ - фон карток */
+      cardHover:       "rgba(255,255,255,0.06)",         /* ЗМІНИТИ - фон карток при наведенні */
+      cardBorder:      "rgba(255,255,255,0.10)",         /* ЗМІНИТИ - рамка карток */
+      ghostText:       "#F4F6F1",                        /* ЗМІНИТИ - текст прозорої кнопки */
+      ghostBorder:     "rgba(244,246,241,0.35)",         /* ЗМІНИТИ - рамка прозорої кнопки */
+      ghostHoverBg:    "#F4F6F1",                        /* ЗМІНИТИ - фон прозорої кнопки при наведенні */
+      ghostHoverText:  "#0A0C0B",                        /* ЗМІНИТИ - текст прозорої кнопки при наведенні */
+      phBg:            "#141816",                        /* ЗМІНИТИ - фон заглушки замість фото */
+      phIcon:          "rgba(200,255,46,0.55)",          /* ЗМІНИТИ - іконка на заглушці */
+      gloveBody:       "#F4F6F1",                        /* ЗМІНИТИ - колір рукавиці-курсора */
+      gloveDark:       "#0A0C0B",                        /* ЗМІНИТИ - контур рукавиці-курсора */
+      ring:            "rgba(200,255,46,0.55)"           /* ЗМІНИТИ - кільце, що летить за курсором */
+    },
+
+    fonts: {
+      url: "https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap", /* ЗМІНИТИ - посилання Google Fonts */
+      heading: "Unbounded", /* ЗМІНИТИ - шрифт заголовків */
+      body: "Manrope"       /* ЗМІНИТИ - шрифт тексту */
+    },
+
+    settings: {
+      animations: true,      /* ЗМІНИТИ - true = мікро-анімації, false = статичний блок */
+      enabled: true,       /* ЗМІНИТИ - false = вимкнути курсор-рукавицю */
+      minWidth: 900        /* ЗМІНИТИ - показувати тільки на екранах ширших за це значення (px) */
+    }
+  };
+  /* ======================== КІНЕЦЬ CONFIG ======================== */
+
+  /* ===================== СЛУЖБОВИЙ КОД (не змінювати) ===================== */
+  var root = document.getElementById("sgk-cursor");
+  if (!root || root.getAttribute("data-ready")) return;
+  root.setAttribute("data-ready", "1");
+  var S = CONFIG.settings || {};
+  function mq(x) { try { return window.matchMedia(x).matches; } catch (e) { return false; } }
+  var reduce = mq("(prefers-reduced-motion: reduce)");
+  var fine = mq("(hover: hover) and (pointer: fine)");
+  var animOn = S.animations !== false && !reduce;
+
+  if (CONFIG.fonts && CONFIG.fonts.url && !document.querySelector("link[data-sgk-font]")) {
+    var fl = document.createElement("link");
+    fl.rel = "stylesheet"; fl.href = CONFIG.fonts.url; fl.setAttribute("data-sgk-font", "1");
+    document.head.appendChild(fl);
+  }
+  if (CONFIG.fonts) {
+    root.style.setProperty("--sgk-font-h", "'" + CONFIG.fonts.heading + "', Arial, sans-serif");
+    root.style.setProperty("--sgk-font-b", "'" + CONFIG.fonts.body + "', Arial, sans-serif");
+  }
+  for (var ck in CONFIG.colors) {
+    if (Object.prototype.hasOwnProperty.call(CONFIG.colors, ck)) root.style.setProperty("--sgk-" + ck, CONFIG.colors[ck]);
+  }
+
+  function q(n) { return root.querySelector('[data-sgk="' + n + '"]'); }
+  function each(list, fn) { Array.prototype.forEach.call(list || [], fn); }
+  function mk(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = text;
+    return e;
+  }
+  function txt(n, v) { var e = q(n); if (e) e.textContent = (v === undefined || v === null) ? "" : v; return e; }
+  function lnk(el, href, blank) {
+    if (!el) return el;
+    el.setAttribute("href", href || "#");
+    if (blank) { el.setAttribute("target", "_blank"); el.setAttribute("rel", "noopener"); }
+    return el;
+  }
+  function esc(s) { return String(s === undefined || s === null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function rich(el, s) { if (el) el.innerHTML = esc(s).replace(/\[(.+?)\]/g, "<em>$1</em>"); return el; }
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  var PH_ICONS = {
+    photo: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="12" width="38" height="28" rx="5"/><path d="M17 12l3-5h8l3 5"/><circle cx="24" cy="26" r="7"/></svg>',
+    glove: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 44V31l-5-8c-1.3-2.2 1.6-4.4 3.4-2.6L17 24V9.5a2.5 2.5 0 0 1 5 0V22V7a2.5 2.5 0 0 1 5 0v15V8.5a2.5 2.5 0 0 1 5 0V22v-9a2.5 2.5 0 0 1 5 0v17.5C37 38 33 44 27 44z"/><path d="M15 38h22"/></svg>'
+  };
+  function placeholder(label, kind) {
+    var d = mk("div", "sgk-ph");
+    d.innerHTML = PH_ICONS[kind] || PH_ICONS.photo;
+    if (label) d.appendChild(mk("span", "sgk-ph-l", label));
+    return d;
+  }
+  function media(url, alt, label, kind) {
+    if (url) { var i = mk("img", "sgk-img"); i.src = url; i.alt = alt || ""; i.loading = "lazy"; i.decoding = "async"; return i; }
+    return placeholder(label, kind);
+  }
+  function reveal() {
+    var els = root.querySelectorAll(".sgk-rv");
+    if (!animOn) { root.classList.add("sgk-static"); return; }
+    if (!("IntersectionObserver" in window)) { each(els, function (e) { e.classList.add("is-in"); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, d = parseFloat(el.getAttribute("data-d") || "0");
+        el.style.transitionDelay = d + "s";
+        el.classList.add("is-in");
+        io.unobserve(el);
+        setTimeout(function () { el.style.transitionDelay = ""; }, (d + 1.2) * 1000);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    each(els, function (e) { io.observe(e); });
+  }
+
+  /* малюнок рукавиці (SVG) - кольори беруться з CONFIG */
+  function gloveSvg(c) {
+    c = c || {};
+    var B = c.body || "#F4F6F1", A = c.accent || "#C8FF2E", D = c.dark || "#0A0C0B";
+    function f(x, y, h) {
+      return '<rect x="' + x + '" y="' + y + '" width="28" height="' + h + '" rx="14" fill="' + B + '" stroke="' + D + '" stroke-width="3"/>' +
+             '<rect x="' + (x + 5) + '" y="' + (y + 16) + '" width="18" height="5" rx="2.5" fill="' + A + '"/>';
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250">' +
+      '<rect x="6" y="104" width="34" height="88" rx="17" transform="rotate(-38 23 148)" fill="' + B + '" stroke="' + D + '" stroke-width="3"/>' +
+      f(42, 26, 110) + f(72, 10, 126) + f(102, 18, 118) + f(132, 44, 92) +
+      '<path d="M38 114 Q37 100 48 99 H156 Q166 100 164 114 L160 198 H44 Z" fill="' + B + '" stroke="' + D + '" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path d="M128 134 C110 122 84 126 86 142 C88 156 120 152 118 168 C116 182 90 184 74 174" fill="none" stroke="' + A + '" stroke-width="10" stroke-linecap="round"/>' +
+      '<rect x="46" y="194" width="110" height="50" rx="12" fill="' + D + '"/>' +
+      '<rect x="46" y="212" width="110" height="10" fill="' + A + '"/>' +
+      '</svg>';
+  }
+  function svgUrl(svg) { return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg); }
+
+  /* ===================== ЛОГІКА БЛОКУ ===================== */
+  if (S.enabled === false || !fine || !animOn || window.innerWidth < (S.minWidth || 900)) { root.style.display = "none"; return; }
+  root.style.setProperty("--cs", (CONFIG.size || 34) + "px");
+  var im = mk("img"); im.alt = ""; im.src = svgUrl(gloveSvg({ body: CONFIG.colors.gloveBody, accent: CONFIG.colors.accent, dark: CONFIG.colors.gloveDark }));
+  q("img").appendChild(im);
+  document.documentElement.classList.add("sgk-cursor-on");
+  var cur = q("cur"), ring = q("ring");
+  var mx = -100, my = -100, cx = -100, cy = -100, rx = -100, ry = -100, vx = 0, raf = null, shown = false;
+  var HOVER = 'a,button,[role="button"],select,label,.sgk-sz,.sgk-chip,.sgk-tab,.sgk-dot,.sgk-stage,summary';
+  var NATIVE = 'input,textarea,select,[contenteditable="true"],[data-sgk-nocursor]';
+
+  function loop() {
+    raf = null;
+    var px = cx; cx += (mx - cx) * 0.45; cy += (my - cy) * 0.45; rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+    vx = vx * 0.8 + (cx - px) * 0.2;
+    var tilt = Math.max(-25, Math.min(25, vx * 1.6));
+    cur.style.transform = "translate3d(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px,0) rotate(" + tilt.toFixed(1) + "deg)";
+    ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0)";
+    if (Math.abs(mx - cx) > 0.2 || Math.abs(my - cy) > 0.2 || Math.abs(mx - rx) > 0.2 || Math.abs(my - ry) > 0.2 || Math.abs(vx) > 0.05) raf = requestAnimationFrame(loop);
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+  document.addEventListener("mousemove", function (e) {
+    mx = e.clientX; my = e.clientY;
+    if (!shown) { shown = true; cx = rx = mx; cy = ry = my; }
+    var t = e.target, native = t && t.closest && t.closest(NATIVE);
+    root.classList.toggle("is-on", !native);
+    root.classList.toggle("is-hover", !native && !!(t && t.closest && t.closest(HOVER)));
+    kick();
+  }, { passive: true });
+  document.addEventListener("mousedown", function (e) {
+    if (!root.classList.contains("is-on")) return;
+    root.classList.add("is-down");
+    var r = mk("div", "sgk-rip"); r.style.setProperty("--p", "translate3d(" + e.clientX + "px," + e.clientY + "px,0)");
+    r.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0)";
+    root.appendChild(r); setTimeout(function () { if (r.parentNode) r.parentNode.removeChild(r); }, 600);
+  });
+  document.addEventListener("mouseup", function () { root.classList.remove("is-down"); });
+  document.documentElement.addEventListener("mouseleave", function () { root.classList.remove("is-on"); });
+  document.addEventListener("mouseover", function (e) { if (!e.relatedTarget && shown) { var t = e.target; if (!(t && t.closest && t.closest(NATIVE))) root.classList.add("is-on"); } });
+
+})();
+</script>
+===== КІНЕЦЬ КОДУ =====
+
+
+=====================================================================
+ЧАСТИНА 3. ЩО І ДЕ ЗМІНЮВАТИ В ЦЬОМУ БЛОЦІ
+=====================================================================
+
+Усе редагується ТІЛЬКИ в об'єкті CONFIG на початку тегу <script>.
+HTML і CSS чіпати не потрібно. Біля кожного параметра стоїть
+коментар /* ЗМІНИТИ */.
+
+ЩО ЦЕ
+  На комп'ютері замість стрілки мишки по сайту "літає" маленька
+  рукавиця Synergy, а за нею плавно тягнеться лаймове кільце.
+  - нахиляється в бік руху;
+  - над кнопками і посиланнями кільце збільшується, рукавиця
+    повертається;
+  - при кліку рукавиця "стискається", як при ловлі м'яча, і від
+    точки кліку розходиться лаймове коло.
+  Над полями форми показується звичайний курсор (щоб було зручно
+  вводити текст), у міні-грі - рукавиця самої гри.
+  На телефонах і планшетах блок нічого не робить.
+
+НАЛАШТУВАННЯ
+  size     - розмір рукавиці (34 px);
+  settings.enabled  - вимкнути/увімкнути;
+  settings.minWidth - мінімальна ширина екрану.
+  Кольори: gloveBody, gloveDark, accent (смужки і логотип), ring.
+
+---------------------------------------------------------------------
+КОЛЬОРИ  ->  CONFIG.colors
+---------------------------------------------------------------------
+  Формат "#C8FF2E" або "rgba(200,255,46,0.35)" (останнє число -
+  прозорість від 0 до 1). Кольори однакові в усіх блоках Synergy:
+  якщо міняєте акцент - міняйте accent, accentHover, accentSoft і
+  btnShadow в КОЖНОМУ блоці.
+  Колір тексту в кнопках прописаний з !important, тому оранжевий колір
+  посилань Tilda його не перебиває.
+
+---------------------------------------------------------------------
+ШРИФТИ І АНІМАЦІЇ
+---------------------------------------------------------------------
+  CONFIG.fonts - Unbounded (заголовки) + Manrope (текст), з кирилицею.
+  settings.animations: false - вимкнути анімації в цьому блоці.
+  Якщо в системі відвідувача ввімкнено "зменшити рух", анімації
+  вимикаються самі.
+
+---------------------------------------------------------------------
+ЗАГАЛЬНІ ПРАВИЛА
+---------------------------------------------------------------------
+  - Змінюйте тільки значення в лапках "..." та числа, коми не видаляйте.
+  - Слово в [квадратних дужках] у заголовках стає акцентного кольору.
+  - НЕ використовуйте емодзі - Tilda покаже їх як знаки питання.
+  - Порожнє фото "" = красива заглушка з іконкою. Коли будуть фото
+    від клієнта - вставте посилання на них (як отримати посилання з
+    Tilda - див. блок 01, частина 1).
