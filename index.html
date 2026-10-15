@@ -9,8 +9,9 @@
 <body>
 <section id="sgk-hero" class="sgk" aria-label="Synergy GK">
 
-  <div class="sgk-bg"><div class="sgk-bg-move"><div class="sgk-bg-img"></div></div></div>
+  <div class="sgk-bg"><div class="sgk-bg-move"><div class="sgk-bg-img"><div class="sgk-hs-wrap" data-sgk="hotspots"></div></div></div></div>
   <div class="sgk-overlay"></div>
+  <div class="sgk-stripe"></div>
   <div class="sgk-net"></div>
   <div class="sgk-word"><div class="sgk-word-in" data-sgk="word"></div></div>
   <div class="sgk-spot"></div>
@@ -150,7 +151,8 @@
   font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--sgk-text) !important;
 }
 #sgk-hero .sgk-logo-acc{color:var(--sgk-accent) !important}
-#sgk-hero .sgk-logo-img{display:block;width:auto}
+#sgk-hero .sgk-logo-img{display:block;width:auto;max-width:none;border-radius:50%;box-shadow:0 0 0 1.5px var(--sgk-logoRing);margin-right:8px;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+#sgk-hero a.sgk-logo:hover .sgk-logo-img{transform:rotate(-12deg) scale(1.06)}
 #sgk-hero a.sgk-insta{
   display:inline-flex;align-items:center;gap:10px;padding:9px 16px 9px 11px;border-radius:100px;
   border:1px solid var(--sgk-badgeBorder);background:var(--sgk-badgeBg);
@@ -330,6 +332,55 @@
 @keyframes sgkScroll{0%{transform:translateY(0);opacity:1}70%{transform:translateY(11px);opacity:0}100%{transform:translateY(0);opacity:0}}
 @keyframes sgkMq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
+/* ---------- РЕЖИМ "ПАНЕЛЬ": ФОТО ПРАВОРУЧ ЗІ СКОШЕНИМ КРАЄМ ---------- */
+#sgk-hero .sgk-stripe{display:none}
+#sgk-hero.sgk-panel{--sgk-pl:50%;--sgk-ps:9vw;--sgk-pb:96px}
+#sgk-hero.sgk-panel .sgk-bg{
+  left:var(--sgk-pl);bottom:var(--sgk-pb);
+  -webkit-clip-path:polygon(var(--sgk-ps) 0,100% 0,100% 100%,0 100%);
+  clip-path:polygon(var(--sgk-ps) 0,100% 0,100% 100%,0 100%);
+}
+#sgk-hero.sgk-panel .sgk-overlay{
+  background:
+    linear-gradient(0deg,var(--sgk-bg) 0%,rgba(0,0,0,0) 14%),
+    linear-gradient(180deg,var(--sgk-overlaySoft) 0%,rgba(0,0,0,0) 24%);
+}
+#sgk-hero.sgk-panel .sgk-stripe{
+  display:block;position:absolute;top:0;left:0;right:0;bottom:var(--sgk-pb);z-index:2;pointer-events:none;
+  background:var(--sgk-accent);
+  -webkit-clip-path:polygon(calc(var(--sgk-pl) + var(--sgk-ps) - 26px) 0,calc(var(--sgk-pl) + var(--sgk-ps) - 18px) 0,calc(var(--sgk-pl) - 18px) 100%,calc(var(--sgk-pl) - 26px) 100%);
+  clip-path:polygon(calc(var(--sgk-pl) + var(--sgk-ps) - 26px) 0,calc(var(--sgk-pl) + var(--sgk-ps) - 18px) 0,calc(var(--sgk-pl) - 18px) 100%,calc(var(--sgk-pl) - 26px) 100%);
+  transform:scaleY(0);transform-origin:top;transition:transform 1.4s cubic-bezier(.6,.1,.2,1) .3s;
+}
+#sgk-hero.sgk-panel.sgk-play .sgk-stripe{transform:none}
+#sgk-hero.sgk-panel.sgk-static .sgk-stripe{transform:none;transition:none}
+#sgk-hero.sgk-panel .sgk-net{-webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,0) 48%);mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,0) 48%)}
+#sgk-hero.sgk-panel .sgk-word{text-align:left}
+#sgk-hero.sgk-panel .sgk-word-in{font-size:13vw}
+#sgk-hero.sgk-panel .sgk-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,110px);pointer-events:none}
+#sgk-hero.sgk-panel .sgk-left,#sgk-hero.sgk-panel .sgk-card-wrap{pointer-events:auto}
+#sgk-hero.sgk-panel .sgk-right{align-self:end}
+#sgk-hero.sgk-panel .sgk-card-wrap{max-width:330px}
+#sgk-hero.sgk-panel .sgk-title{font-size:clamp(30px,3.9vw,60px)}
+#sgk-hero.sgk-panel .sgk-scroll-w{display:none}
+
+/* ---------- ПОЗНАЧКА НА ФОТО (рукавиця) ---------- */
+#sgk-hero .sgk-hs-wrap{position:absolute;top:0;left:0;width:100%;height:100%}
+#sgk-hero a.sgk-hs{position:absolute;width:0;height:0;pointer-events:auto;color:var(--sgk-hsText) !important;opacity:0;transform:scale(.4);transition:opacity .6s ease 1.9s,transform .8s cubic-bezier(.2,1.4,.4,1) 1.9s}
+#sgk-hero.sgk-play a.sgk-hs{opacity:1;transform:none}
+#sgk-hero.sgk-static a.sgk-hs{opacity:1;transform:none;transition:none}
+#sgk-hero .sgk-hs-dot{position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;background:var(--sgk-accent);box-shadow:0 0 0 5px rgba(10,12,11,.35)}
+#sgk-hero .sgk-hs-dot::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%;border:2px solid var(--sgk-accent);animation:sgkPing 2s ease-out infinite}
+#sgk-hero .sgk-hs-l{
+  position:absolute;right:24px;top:0;transform:translateY(-50%);white-space:nowrap;
+  padding:9px 15px;border-radius:100px;background:var(--sgk-hsBg);color:var(--sgk-hsText) !important;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  font-family:var(--sgk-font-b);font-size:13px;font-weight:700;letter-spacing:.02em;
+  transition:background .3s ease,color .3s ease;
+}
+#sgk-hero .sgk-hs--r .sgk-hs-l{right:auto;left:24px}
+#sgk-hero a.sgk-hs:hover .sgk-hs-l{background:var(--sgk-accent);color:var(--sgk-btnText) !important}
+
 /* ---------- ПЛАНШЕТ ---------- */
 @media (max-width:1100px){
   #sgk-hero .sgk-title{font-size:clamp(32px,5.2vw,64px)}
@@ -346,6 +397,21 @@
   #sgk-hero .sgk-word-in{font-size:24vw}
   #sgk-hero .sgk-scroll-w{display:none}
   #sgk-hero .sgk-title{font-size:clamp(32px,7vw,56px)}
+
+  /* панель на телефоні/планшеті: фото зверху, текст під ним */
+  #sgk-hero.sgk-panel .sgk-bg{
+    left:0;right:0;top:0;bottom:auto;height:62vh;height:62svh;
+    -webkit-clip-path:none;clip-path:none;
+  }
+  #sgk-hero.sgk-panel .sgk-bg::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(180deg,rgba(0,0,0,0) 42%,var(--sgk-bg) 100%)}
+  #sgk-hero.sgk-panel .sgk-overlay{background:linear-gradient(180deg,var(--sgk-overlayMobile) 0px,rgba(0,0,0,0) 150px)}
+  #sgk-hero.sgk-panel .sgk-stripe,
+  #sgk-hero.sgk-panel .sgk-net,
+  #sgk-hero.sgk-panel .sgk-word{display:none}
+  #sgk-hero.sgk-panel .sgk-main{grid-template-columns:minmax(0,1fr);gap:44px;padding-top:calc(62vh - 210px);padding-top:calc(62svh - 210px)}
+  #sgk-hero.sgk-panel .sgk-title{font-size:clamp(32px,7vw,56px);text-shadow:0 2px 24px rgba(0,0,0,.45)}
+  #sgk-hero.sgk-panel .sgk-right{align-self:start}
+  #sgk-hero.sgk-panel .sgk-card-wrap{max-width:460px}
 }
 
 /* ---------- ТЕЛЕФОН ---------- */
@@ -354,7 +420,9 @@
   #sgk-hero a.sgk-logo{font-size:16px}
   #sgk-hero a.sgk-insta{padding:8px 13px 8px 9px;font-size:13px}
   #sgk-hero .sgk-badge{font-size:10.5px;letter-spacing:.1em}
-  #sgk-hero .sgk-title{font-size:clamp(28px,8.6vw,40px);margin:20px 0 18px}
+  #sgk-hero .sgk-title,
+  #sgk-hero.sgk-panel .sgk-title{font-size:clamp(28px,8.6vw,40px);margin:20px 0 18px}
+  #sgk-hero .sgk-logo-img{max-height:34px}
   #sgk-hero .sgk-sub{font-size:15px}
   #sgk-hero .sgk-btns{flex-direction:column;align-items:stretch;margin-top:28px}
   #sgk-hero a.sgk-btn{width:100%}
@@ -391,18 +459,27 @@
 
     /* ---------- ФОТО НА ФОНІ ---------- */
     photo: {
-      desktop: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=2200&q=80", /* ЗМІНИТИ - посилання на фото для комп'ютера */
-      mobile: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1100&q=80",  /* ЗМІНИТИ - фото для телефону (можна те саме або вертикальне) */
-      positionDesktop: "70% center", /* ЗМІНИТИ - яку частину фото показувати на ПК: "center", "right center", "70% 30%" */
-      positionMobile: "center top"   /* ЗМІНИТИ - яку частину фото показувати на телефоні */
+      mode: "panel", /* ЗМІНИТИ - "panel" = фото праворуч зі скошеним краєм (на телефоні - зверху); "full" = фото на весь екран під текстом */
+      desktop: "https://timoshes229-beep.github.io/synergy-gk/assets/hero-desktop.jpg", /* ЗМІНИТИ - фото для комп'ютера */
+      mobile: "https://timoshes229-beep.github.io/synergy-gk/assets/hero-mobile.jpg",   /* ЗМІНИТИ - фото для телефону (вертикальне) */
+      positionDesktop: "50% 0%",  /* ЗМІНИТИ - яку частину фото показувати на ПК, формат "X% Y%" (0% 0% = лівий верх, 50% 50% = центр) */
+      positionMobile: "50% 10%"   /* ЗМІНИТИ - яку частину фото показувати на телефоні, формат "X% Y%" */
     },
+
+    /* ---------- ПОЗНАЧКИ НА ФОТО (пульсуюча точка + підпис) ---------- */
+    /* x і y - місце на САМОМУ фото від 0 до 1 (0.5 = середина). Точка тримається свого місця при будь-якому розмірі екрану */
+    hotspots: [                                                                                 /* ЗМІНИТИ - позначки на фото для ПК */
+      { x: 0.47, y: 0.90, label: "Synergy у грі", link: "#catalog", side: "left" }              /* ЗМІНИТИ - side: "left"/"right" - з якого боку підпис */
+    ],
+    hotspotsMobile: [],                                                                         /* ЗМІНИТИ - позначки на фото для телефону (так само) */
 
     /* ---------- ЛОГОТИП (верхній лівий кут) ---------- */
     logo: {
+      image: "https://timoshes229-beep.github.io/synergy-gk/assets/logo.png", /* ЗМІНИТИ - логотип-картинка. Порожнє "" - тільки текст */
+      imageHeight: 40,   /* ЗМІНИТИ - висота логотипу-картинки в px */
+      showText: true,    /* ЗМІНИТИ - true = поруч з картинкою ще й назва текстом */
       text: "SYNERGY",   /* ЗМІНИТИ - перша частина назви */
       accent: "GK",      /* ЗМІНИТИ - друга частина назви (акцентним кольором) */
-      image: "",         /* ЗМІНИТИ - посилання на логотип-картинку. Якщо заповнено - замість тексту буде картинка */
-      imageHeight: 36,   /* ЗМІНИТИ - висота логотипу-картинки в px */
       link: "#"          /* ЗМІНИТИ - куди веде клік по логотипу */
     },
 
@@ -413,15 +490,15 @@
     },
 
     /* ---------- ТЕКСТИ ---------- */
-    badge: "Магазин воротарських рукавиць", /* ЗМІНИТИ - плашка над заголовком */
+    badge: "Від воротаря — для воротарів", /* ЗМІНИТИ - плашка над заголовком */
 
-    title: [                                   /* ЗМІНИТИ - заголовок, кожен рядок окремо */
-      { text: "Рукавиці,",   accent: false },  /* ЗМІНИТИ - рядок 1 */
-      { text: "що тримають", accent: false },  /* ЗМІНИТИ - рядок 2 */
-      { text: "кожен м'яч",  accent: true  }   /* ЗМІНИТИ - рядок 3. accent: true = акцентний колір + підкреслення */
+    title: [                                       /* ЗМІНИТИ - заголовок, кожен рядок окремо */
+      { text: "Ти — остання",    accent: false },  /* ЗМІНИТИ - рядок 1 */
+      { text: "лінія оборони.",  accent: false },  /* ЗМІНИТИ - рядок 2 */
+      { text: "Ми — твій хват.", accent: true  }   /* ЗМІНИТИ - рядок 3. accent: true = акцентний колір + підкреслення */
     ],
 
-    subtitle: "Професійні воротарські рукавиці з німецьким латексом для дітей і дорослих. Допоможемо підібрати розмір і крій під твій стиль гри - від тренування до фіналу.", /* ЗМІНИТИ - опис під заголовком */
+    subtitle: "Synergy створив воротар, який сам виходить у цих рукавицях на поле. Німецький латекс, точна посадка і хват, що не підводить ні під дощем, ні у фіналі.", /* ЗМІНИТИ - опис під заголовком */
 
     /* ---------- КНОПКИ ---------- */
     button1: { text: "Обрати рукавиці",  link: "#catalog", newTab: false }, /* ЗМІНИТИ - головна кнопка (текст, посилання, нова вкладка true/false) */
@@ -473,7 +550,7 @@
     colors: {
       bg:            "#0A0C0B",                 /* ЗМІНИТИ - основний фон блоку */
       overlay:       "rgba(10,12,11,0.92)",     /* ЗМІНИТИ - затемнення фото зліва (під текстом) */
-      overlaySoft:   "rgba(10,12,11,0.25)",     /* ЗМІНИТИ - затемнення фото справа */
+      overlaySoft:   "rgba(10,12,11,0.25)",     /* ЗМІНИТИ - затемнення фото справа (у режимі "panel" - легке затемнення верху фото) */
       overlayMobile: "rgba(10,12,11,0.55)",     /* ЗМІНИТИ - затемнення фото зверху на телефоні */
       accent:        "#C8FF2E",                 /* ЗМІНИТИ - акцентний колір (кнопка, виділене слово, шкали) */
       accentHover:   "#B6F01A",                 /* ЗМІНИТИ - акцентний колір при наведенні на кнопку */
@@ -498,7 +575,10 @@
       outlineWord:   "rgba(255,255,255,0.10)",  /* ЗМІНИТИ - контур великого слова на фоні */
       glow:          "rgba(200,255,46,0.10)",   /* ЗМІНИТИ - світло, що рухається за курсором */
       marqueeBg:     "#C8FF2E",                 /* ЗМІНИТИ - фон бігучого рядка */
-      marqueeText:   "#0A0C0B"                  /* ЗМІНИТИ - текст бігучого рядка */
+      marqueeText:   "#0A0C0B",                 /* ЗМІНИТИ - текст бігучого рядка */
+      hsBg:          "rgba(10,12,11,0.72)",     /* ЗМІНИТИ - фон підпису позначки на фото */
+      hsText:        "#F4F6F1",                 /* ЗМІНИТИ - текст підпису позначки на фото */
+      logoRing:      "rgba(255,255,255,0.35)"   /* ЗМІНИТИ - тонке кільце навколо круглого логотипу */
     },
 
     /* ---------- ШРИФТИ (Google Fonts, з підтримкою кирилиці) ---------- */
@@ -519,10 +599,10 @@
       cardTilt: true,        /* ЗМІНИТИ - 3D-нахил картки при наведенні (тільки ПК) */
       accentUnderline: true, /* ЗМІНИТИ - намальоване підкреслення під акцентним рядком */
       showTopBar: true,      /* ЗМІНИТИ - показати логотип та Instagram зверху */
-      showCard: true,        /* ЗМІНИТИ - показати картку моделі */
+      showCard: false,       /* ЗМІНИТИ - показати картку моделі (у режимі "panel" вона перекриває частину фото) */
       showNet: true,         /* ЗМІНИТИ - показати візерунок "сітка воріт" */
       showMarquee: true,     /* ЗМІНИТИ - показати бігучий рядок */
-      showScrollHint: true,  /* ЗМІНИТИ - показати підказку "Гортай" */
+      showScrollHint: true,  /* ЗМІНИТИ - показати підказку "Гортай" (тільки в режимі "full") */
       marqueeSpeed: 32       /* ЗМІНИТИ - швидкість бігучого рядка в секундах (більше = повільніше) */
     }
   };
@@ -569,6 +649,7 @@
   flag(!S.showNet, "sgk-nonet");
   flag(!S.showMarquee, "sgk-nomq");
   flag(!S.showScrollHint, "sgk-noscroll");
+  flag(P.mode === "panel", "sgk-panel");
 
   /* --- помічники --- */
   function q(n) { return root.querySelector('[data-sgk="' + n + '"]'); }
@@ -593,7 +674,8 @@
   if (L.image) {
     var im = mk("img", "sgk-logo-img"); im.src = L.image; im.alt = L.text || "logo"; im.style.height = (L.imageHeight || 36) + "px";
     logoEl.appendChild(im);
-  } else {
+  }
+  if (!L.image || L.showText) {
     logoEl.appendChild(mk("span", "", L.text));
     if (L.accent) logoEl.appendChild(mk("span", "sgk-logo-acc", L.accent));
   }
@@ -670,11 +752,54 @@
   track.appendChild(mqGroup()); track.appendChild(mqGroup());
   if (!animOn) track.style.animation = "none";
 
-  /* --- завантаження фото --- */
-  var pre = new Image();
-  pre.onload = pre.onerror = function () { root.classList.add("sgk-loaded"); };
-  pre.src = (window.innerWidth <= 900 && P.mobile) ? P.mobile : P.desktop;
+  /* --- завантаження фото і позначки на ньому --- */
+  var bgImgEl = root.querySelector(".sgk-bg-img"), hsWrap = q("hotspots"), dims = {}, lastMob = null;
+  function isMob() { return window.innerWidth <= 900; }
+  function srcFor(mob) { return (mob && P.mobile) ? P.mobile : P.desktop; }
+  function parsePos(str) {
+    var map = { left: 0, top: 0, center: 50, right: 100, bottom: 100 };
+    var parts = String(str || "50% 50%").trim().split(/\s+/);
+    function f(v) { return Object.prototype.hasOwnProperty.call(map, v) ? map[v] / 100 : parseFloat(v) / 100; }
+    var x = f(parts[0]), y = parts.length > 1 ? f(parts[1]) : 0.5;
+    return { x: isNaN(x) ? 0.5 : x, y: isNaN(y) ? 0.5 : y };
+  }
+  function placeHotspots() {
+    var mob = isMob(), list = mob ? CONFIG.hotspotsMobile : CONFIG.hotspots, d = dims[srcFor(mob)];
+    hsWrap.innerHTML = "";
+    if (!list || !list.length || !d || !d.w) return;
+    var W = bgImgEl.offsetWidth, H = bgImgEl.offsetHeight;
+    var sc = Math.max(W / d.w, H / d.h), dw = d.w * sc, dh = d.h * sc;
+    var pos = parsePos(mob ? P.positionMobile : P.positionDesktop);
+    var ox = (W - dw) * pos.x, oy = (H - dh) * pos.y;
+    list.forEach(function (h) {
+      var a = mk("a", "sgk-hs" + (h.side === "right" ? " sgk-hs--r" : ""));
+      a.setAttribute("href", h.link || "#");
+      a.style.left = (ox + h.x * dw).toFixed(1) + "px";
+      a.style.top = (oy + h.y * dh).toFixed(1) + "px";
+      a.appendChild(mk("span", "sgk-hs-dot"));
+      if (h.label) a.appendChild(mk("span", "sgk-hs-l", h.label));
+      hsWrap.appendChild(a);
+    });
+  }
+  function loadDims(src, cb) {
+    if (dims[src]) { cb(); return; }
+    var im = new Image();
+    im.onload = function () { dims[src] = { w: im.naturalWidth, h: im.naturalHeight }; cb(); };
+    im.onerror = function () { dims[src] = { w: 0, h: 0 }; cb(); };
+    im.src = src;
+  }
+  function refreshPhoto() {
+    var mob = isMob();
+    loadDims(srcFor(mob), function () { root.classList.add("sgk-loaded"); placeHotspots(); });
+    lastMob = mob;
+  }
+  refreshPhoto();
   setTimeout(function () { root.classList.add("sgk-loaded"); }, 2500);
+  var rzT;
+  window.addEventListener("resize", function () {
+    clearTimeout(rzT);
+    rzT = setTimeout(function () { if (isMob() !== lastMob) refreshPhoto(); else placeHotspots(); }, 150);
+  });
 
   /* --- поява елементів по черзі --- */
   var rev = root.querySelectorAll(".sgk-r, .sgk-line-in");
