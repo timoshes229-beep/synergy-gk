@@ -46,7 +46,7 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
 #sgk-cat .sgk-card:hover{transform:translateY(-6px);border-color:var(--sgk-accentSoft)}
 #sgk-cat .sgk-card.is-hid{display:none}
 #sgk-cat .sgk-card.is-pop{animation:sgkPop .5s cubic-bezier(.2,.8,.2,1)}
-#sgk-cat .sgk-media{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--sgk-phBg)}
+#sgk-cat .sgk-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--sgk-phBg)}
 #sgk-cat .sgk-media .sgk-img,#sgk-cat .sgk-media .sgk-ph{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .5s ease}
 #sgk-cat .sgk-card:hover .sgk-media .sgk-img,#sgk-cat .sgk-card:hover .sgk-media .sgk-ph{transform:scale(1.06)}
 #sgk-cat .sgk-media .sgk-img2{opacity:0}
@@ -97,7 +97,7 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
 }
 @media (max-width:600px){
   #sgk-cat .sgk-grid{grid-template-columns:minmax(0,1fr);gap:14px}
-  #sgk-cat .sgk-media{aspect-ratio:4/3}
+  #sgk-cat .sgk-media{aspect-ratio:1/1}
   #sgk-cat .sgk-fl{flex-wrap:nowrap;overflow-x:auto;width:calc(100% + 32px);margin:0 -16px;padding:2px 16px;scrollbar-width:none}
   #sgk-cat .sgk-fl::-webkit-scrollbar{display:none}
   #sgk-cat .sgk-chip{flex:none}
@@ -134,8 +134,8 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
 
     /* ТОВАРИ. Скопіюйте рядок { ... }, щоб додати модель. id - унікальний, латиницею без пробілів */
     products: [
-      { id: "pro-negative", name: "Synergy Pro Negative", category: "adult", cut: "negative", price: 1650, oldPrice: 1900, badge: "Хіт",  desc: "Щільна посадка і максимальний контроль м'яча.", ratings: [9.6, 9.8, 8.5], sizes: ["7","8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
-      { id: "pro-roll",     name: "Synergy Pro Roll",     category: "adult", cut: "roll",     price: 1650, oldPrice: 0,    badge: "New",  desc: "Латекс обгортає пальці - більше площі для хвату.", ratings: [9.8, 9.0, 8.6], sizes: ["7","8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
+      { id: "evolution",    name: "Synergy Evolution",    category: "adult", cut: "",         price: 1650, oldPrice: 0,    badge: "New",  desc: "Біла модель з фірмовим S на долоні і рельєфним захистом пальців.", ratings: [9.6, 9.4, 8.8], sizes: ["7","8","9","10","11"], image: "__ASSETS__evolution-1.jpg", image2: "__ASSETS__evolution-2.jpg", imagePosition: "50% 22%" }, /* ЗМІНИТИ - ціна, оцінки, розміри і крій - уточнити у клієнта */
+      { id: "shine",        name: "Synergy Shine",        category: "adult", cut: "",         price: 1650, oldPrice: 0,    badge: "New",  desc: "Чорна модель з неоново-блакитними вставками і фірмовим S.", ratings: [9.7, 9.3, 8.7], sizes: ["7","8","9","10","11"], image: "__ASSETS__shine-1.jpg", image2: "__ASSETS__shine-2.jpg", imagePosition: "50% 45%" }, /* ЗМІНИТИ - ціна, оцінки, розміри і крій - уточнити у клієнта */
       { id: "hybrid-elite", name: "Synergy Hybrid Elite", category: "adult", cut: "hybrid",   price: 1950, oldPrice: 0,    badge: "",     desc: "Топова модель для матчів: щільність і площа контакту.", ratings: [9.7, 9.5, 9.0], sizes: ["8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
       { id: "training",     name: "Synergy Training",     category: "adult", cut: "negative", price: 990,  oldPrice: 0,    badge: "",     desc: "Міцні рукавиці для щоденних тренувань.", ratings: [8.6, 9.2, 9.6], sizes: ["7","8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
       { id: "junior-neg",   name: "Synergy Junior Negative", category: "kids", cut: "negative", price: 890, oldPrice: 0,  badge: "Kids", desc: "Дитяча модель з тим самим латексом, що й у дорослих.", ratings: [9.2, 9.4, 8.4], sizes: ["4","5","6","7"], image: "", image2: "" }, /* ЗМІНИТИ */
@@ -199,8 +199,10 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
     var c = mk("article", "sgk-card sgk-rv");
     c.setAttribute("data-d", (0.05 + (i % 3) * 0.1).toFixed(2));
     var m = mk("div", "sgk-media");
-    m.appendChild(media(p.image, p.name, CONFIG.photoLabel, "glove"));
-    if (p.image && p.image2) { var i2 = media(p.image2, p.name); i2.className += " sgk-img2"; m.appendChild(i2); }
+    var i1 = media(p.image, p.name, CONFIG.photoLabel, "glove");
+    if (p.image && p.imagePosition) i1.style.objectPosition = p.imagePosition;
+    m.appendChild(i1);
+    if (p.image && p.image2) { var i2 = media(p.image2, p.name); i2.className += " sgk-img2"; if (p.imagePosition) i2.style.objectPosition = p.imagePosition; m.appendChild(i2); }
     if (p.badge) m.appendChild(mk("span", "sgk-badge", p.badge));
     if (p.cut && CONFIG.cutNames[p.cut]) m.appendChild(mk("span", "sgk-cut", CONFIG.cutNames[p.cut]));
     c.appendChild(m);
@@ -328,6 +330,7 @@ kicker / title / lead - надписи над каталогом.
   name      - назва моделі;
   category  - "adult" або "kids" (для фільтра);
   cut       - "negative", "roll" або "hybrid" (для фільтра і мітки);
+              "" - крій не вказано (модель видно тільки у фільтрі "Усі крої");
   price     - ціна числом без пробілів: 1650;
   oldPrice  - стара ціна (буде закреслена), 0 - не показувати;
   badge     - мітка на фото ("Хіт", "New", "-15%"), "" - без мітки;
@@ -337,7 +340,9 @@ kicker / title / lead - надписи над каталогом.
               [] - без шкал;
   sizes     - доступні розміри, наприклад ["7","8","9"];
   image     - фото товару ("" = заглушка з іконкою рукавиці);
-  image2    - друге фото, показується при наведенні (необов'язково).
+  image2    - друге фото, показується при наведенні (необов'язково);
+  imagePosition - яку частину фото показувати в картці, "X% Y%"
+              (для вертикальних фото рукавиць добре працює "50% 22%").
 
 ФІЛЬТРИ  ->  categories, cuts
   Кнопки над товарами. id фільтра має збігатися з category / cut товару.
@@ -351,5 +356,7 @@ kicker / title / lead - надписи над каталогом.
   рукавиці мого розміру" - цей розмір автоматично обереться в усіх
   картках, де він є.
 
-УВАГА: назви моделей, ціни, оцінки і розміри - ЗАГЛУШКИ. Замініть
-на реальний асортимент клієнта.
+УВАГА: перші дві моделі (Synergy Evolution, Synergy Shine) - з реальними
+фото, але ціна, оцінки, розміри і крій - заглушки. Решта моделей -
+повністю ЗАГЛУШКИ.
+Замініть на реальний асортимент клієнта.

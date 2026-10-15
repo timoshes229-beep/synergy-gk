@@ -171,10 +171,10 @@ SYNERGY GK - БЛОК 07: В ГРІ (ГАЛЕРЕЯ ТА ВІДГУКИ)
 
     gallery: [                                            /* ЗМІНИТИ - фото галереї. Перше - велике. Ідеально 5 штук */
       { image: "https://timoshes229-beep.github.io/synergy-gk/assets/hero-desktop.jpg", caption: "Засновник Synergy на тренуванні", link: "" }, /* ЗМІНИТИ - link: "" = без посилання */
-      { image: "", caption: "Сейв у матчі",          link: "" },
-      { image: "", caption: "Розминка перед грою",   link: "" },
-      { image: "", caption: "Рукавиці крупним планом", link: "" },
-      { image: "", caption: "Команда воротарів",     link: "" }
+      { image: "https://timoshes229-beep.github.io/synergy-gk/assets/shine-detail.jpg", caption: "Synergy Shine крупним планом", link: "" },
+      { image: "https://timoshes229-beep.github.io/synergy-gk/assets/shine-2.jpg", caption: "Synergy Shine", link: "" },
+      { image: "https://timoshes229-beep.github.io/synergy-gk/assets/evolution-detail.jpg", caption: "Synergy Evolution крупним планом", link: "" },
+      { image: "https://timoshes229-beep.github.io/synergy-gk/assets/evolution-palm.jpg", caption: "Долоня Synergy Evolution", link: "" }
     ],
 
     reviewsTitle: "Відгуки воротарів",                    /* ЗМІНИТИ - заголовок відгуків */

@@ -85,10 +85,10 @@ colors: bg=#0F1211
 
     gallery: [                                            /* ЗМІНИТИ - фото галереї. Перше - велике. Ідеально 5 штук */
       { image: "__ASSETS__hero-desktop.jpg", caption: "Засновник Synergy на тренуванні", link: "" }, /* ЗМІНИТИ - link: "" = без посилання */
-      { image: "", caption: "Сейв у матчі",          link: "" },
-      { image: "", caption: "Розминка перед грою",   link: "" },
-      { image: "", caption: "Рукавиці крупним планом", link: "" },
-      { image: "", caption: "Команда воротарів",     link: "" }
+      { image: "__ASSETS__shine-detail.jpg", caption: "Synergy Shine крупним планом", link: "" },
+      { image: "__ASSETS__shine-2.jpg", caption: "Synergy Shine", link: "" },
+      { image: "__ASSETS__evolution-detail.jpg", caption: "Synergy Evolution крупним планом", link: "" },
+      { image: "__ASSETS__evolution-palm.jpg", caption: "Долоня Synergy Evolution", link: "" }
     ],
 
     reviewsTitle: "Відгуки воротарів",                    /* ЗМІНИТИ - заголовок відгуків */
