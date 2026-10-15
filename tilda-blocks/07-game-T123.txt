@@ -1,0 +1,437 @@
+=====================================================================
+SYNERGY GK - БЛОК 07: В ГРІ (ГАЛЕРЕЯ ТА ВІДГУКИ)
+Для Tilda, блок T123
+=====================================================================
+
+
+=====================================================================
+ЧАСТИНА 1. ІНСТРУКЦІЯ: ЯК ВСТАВИТИ КОД
+=====================================================================
+
+1. Відкрийте сторінку сайту в редакторі Tilda.
+2. Натисніть "+" (Додати блок) -> розділ "Інше" -> блок T123
+   ("HTML-код" / "Вставка HTML-коду").
+3. Наведіть на блок і натисніть "Контент".
+4. Скопіюйте ВЕСЬ код з ЧАСТИНИ 2: усе, що між рядками
+   "ПОЧАТОК КОДУ" і "КІНЕЦЬ КОДУ" (самі ці рядки з "=====" копіювати
+   НЕ потрібно).
+5. Вставте код у поле і натисніть "Зберегти та закрити".
+6. У режимі редагування Tilda показує T123 як сірий прямокутник
+   "HTML-код". Це нормально - натисніть "Перегляд" або опублікуйте
+   сторінку, щоб побачити блок.
+7. Місце на сторінці: після блоку 06 (Засновник).
+8. Якір (щоб кнопки з інших блоків прокручували сюди):
+   наведіть на блок -> "Налаштування" -> поле "Якір для посилання" ->
+   впишіть: game
+   Посилання на цей блок з будь-якої кнопки: #game
+8. Опублікуйте сторінку.
+
+
+=====================================================================
+ЧАСТИНА 2. КОД
+=====================================================================
+
+===== ПОЧАТОК КОДУ =====
+<section id="sgk-game" aria-label="В грі">
+  <div class="sgk-wrap">
+    <div class="sgk-top">
+      <div class="sgk-head">
+        <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+        <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+      </div>
+      <a class="sgk-btn sgk-btn--ghost sgk-rv" data-d="0.16" data-sgk="insta" href="#"><span class="sgk-bi" data-sgk="instaIc"></span><span data-sgk="instaText"></span></a>
+    </div>
+    <div class="sgk-gal" data-sgk="gallery"></div>
+
+    <div class="sgk-rev-top">
+      <div class="sgk-rev-title sgk-rv" data-sgk="revTitle"></div>
+      <div class="sgk-arrows sgk-rv">
+        <button class="sgk-arr" type="button" data-sgk="prev" aria-label="prev"></button>
+        <button class="sgk-arr" type="button" data-sgk="next" aria-label="next"></button>
+      </div>
+    </div>
+    <div class="sgk-track sgk-rv" data-d="0.1" data-sgk="reviews"></div>
+  </div>
+</section>
+
+<style>
+#sgk-game{
+  --sgk-font-h:'Unbounded',Arial,sans-serif;
+  --sgk-font-b:'Manrope',Arial,sans-serif;
+  position:relative;width:100%;overflow:hidden;
+  background:var(--sgk-bg,#0A0C0B);color:var(--sgk-text,#F4F6F1);
+  font-family:var(--sgk-font-b);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding:clamp(72px,9vw,130px) 0;
+}
+#sgk-game *,#sgk-game *::before,#sgk-game *::after{box-sizing:border-box;margin:0;padding:0}
+#sgk-game a{text-decoration:none !important;-webkit-tap-highlight-color:transparent}
+#sgk-game button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
+#sgk-game img{display:block;max-width:100%}
+#sgk-game svg{display:block}
+#sgk-game .sgk-wrap{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+#sgk-game .sgk-head{max-width:780px;margin-bottom:clamp(36px,5vw,64px)}
+#sgk-game .sgk-head--c{margin-left:auto;margin-right:auto;text-align:center}
+#sgk-game .sgk-kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sgk-accent)}
+#sgk-game .sgk-kicker::before{content:"";width:28px;height:2px;background:var(--sgk-accent);flex:none}
+#sgk-game .sgk-h2{margin-top:18px;font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(28px,4vw,54px);line-height:1.08;letter-spacing:-.02em;color:var(--sgk-text)}
+#sgk-game .sgk-h2 em,#sgk-game em{font-style:normal;color:var(--sgk-accent)}
+#sgk-game .sgk-lead{margin-top:18px;font-size:clamp(15px,1.2vw,18px);line-height:1.6;color:var(--sgk-textMuted)}
+
+#sgk-game .sgk-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 28px;border-radius:100px;border:0;cursor:pointer;font-family:var(--sgk-font-b);font-size:15px;font-weight:700;letter-spacing:.02em;white-space:nowrap;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,color .3s ease,border-color .3s ease,box-shadow .35s ease}
+#sgk-game .sgk-btn:hover{transform:translateY(-3px)}
+#sgk-game .sgk-btn:active{transform:scale(.98)}
+#sgk-game .sgk-btn svg{width:18px;height:18px;flex:none}
+#sgk-game .sgk-btn--main,#sgk-game .sgk-btn--main:hover,#sgk-game .sgk-btn--main:focus,#sgk-game .sgk-btn--main span{color:var(--sgk-btnText) !important}
+#sgk-game .sgk-btn--main{background:var(--sgk-accent)}
+#sgk-game .sgk-btn--main:hover{background:var(--sgk-accentHover);box-shadow:0 14px 36px var(--sgk-btnShadow)}
+#sgk-game .sgk-btn--ghost,#sgk-game .sgk-btn--ghost span{color:var(--sgk-ghostText) !important}
+#sgk-game .sgk-btn--ghost{background:transparent;border:1.5px solid var(--sgk-ghostBorder)}
+#sgk-game .sgk-btn--ghost:hover{background:var(--sgk-ghostHoverBg);border-color:var(--sgk-ghostHoverBg)}
+#sgk-game .sgk-btn--ghost:hover,#sgk-game .sgk-btn--ghost:hover span{color:var(--sgk-ghostHoverText) !important}
+
+#sgk-game .sgk-ph{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center;
+  background-color:var(--sgk-phBg);color:var(--sgk-phIcon);
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px),repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 22px)}
+#sgk-game .sgk-ph svg{width:46px;height:46px}
+#sgk-game .sgk-ph-l{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-textMuted)}
+#sgk-game .sgk-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+
+#sgk-game .sgk-rv{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+#sgk-game .sgk-rv.is-in{opacity:1;transform:none}
+#sgk-game.sgk-static .sgk-rv{opacity:1 !important;transform:none !important;transition:none !important}
+@media (max-width:560px){
+  #sgk-game .sgk-btn{height:54px;padding:0 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  #sgk-game *{animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+
+/* ---------- СТИЛІ БЛОКУ ---------- */
+#sgk-game .sgk-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+#sgk-game .sgk-top .sgk-head{margin-bottom:0}
+#sgk-game .sgk-bi{display:flex}
+#sgk-game .sgk-bi svg{width:20px;height:20px}
+#sgk-game .sgk-gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,250px);gap:14px}
+#sgk-game .sgk-tile{position:relative;display:block;border-radius:22px;overflow:hidden;background:var(--sgk-phBg)}
+#sgk-game .sgk-tile:first-child{grid-column:span 2;grid-row:span 2}
+#sgk-game .sgk-tile .sgk-img,#sgk-game .sgk-tile .sgk-ph{transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+#sgk-game .sgk-tile:hover .sgk-img,#sgk-game .sgk-tile:hover .sgk-ph{transform:scale(1.07)}
+#sgk-game .sgk-tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(0deg,rgba(0,0,0,.65),rgba(0,0,0,0));opacity:0;transition:opacity .45s ease;pointer-events:none}
+#sgk-game .sgk-tile:hover::after{opacity:1}
+#sgk-game .sgk-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;font-size:14px;font-weight:700;color:#fff;opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
+#sgk-game .sgk-tile:hover .sgk-cap{opacity:1;transform:none}
+#sgk-game .sgk-rev-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:clamp(56px,7vw,96px);margin-bottom:22px}
+#sgk-game .sgk-rev-title{font-family:var(--sgk-font-h);font-weight:700;font-size:clamp(20px,2vw,28px);color:var(--sgk-text)}
+#sgk-game .sgk-arrows{display:flex;gap:10px}
+#sgk-game .sgk-arr{width:50px;height:50px;border-radius:50%;border:1px solid var(--sgk-cardBorder) !important;display:flex;align-items:center;justify-content:center;color:var(--sgk-text);transition:background .25s ease,color .25s ease,transform .25s ease}
+#sgk-game .sgk-arr svg{width:20px;height:20px}
+#sgk-game .sgk-arr[data-sgk="prev"] svg{transform:rotate(180deg)}
+#sgk-game .sgk-arr:hover{background:var(--sgk-accent);color:var(--sgk-btnText);transform:scale(1.06)}
+#sgk-game .sgk-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px;cursor:grab}
+#sgk-game .sgk-track::-webkit-scrollbar{display:none}
+#sgk-game .sgk-track.is-drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+#sgk-game .sgk-rev{flex:0 0 calc((100% - 32px) / 3);scroll-snap-align:start;display:flex;flex-direction:column;padding:26px;border-radius:24px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);transition:border-color .35s ease,transform .35s ease;user-select:none}
+#sgk-game .sgk-rev:hover{border-color:var(--sgk-accentSoft);transform:translateY(-4px)}
+#sgk-game .sgk-stars{display:flex;gap:4px;color:var(--sgk-accent)}
+#sgk-game .sgk-stars svg{width:18px;height:18px;fill:currentColor}
+#sgk-game .sgk-rev-t{margin-top:16px;margin-bottom:22px;font-size:15px;line-height:1.65;color:var(--sgk-text)}
+#sgk-game .sgk-who{display:flex;align-items:center;gap:12px;margin-top:auto}
+#sgk-game .sgk-ava{position:relative;flex:none;width:46px;height:46px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--sgk-accent);color:var(--sgk-btnText);font-family:var(--sgk-font-h);font-weight:800;font-size:16px}
+#sgk-game .sgk-ava img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+#sgk-game .sgk-nm{font-weight:800;font-size:15px;color:var(--sgk-text)}
+#sgk-game .sgk-rl{font-size:13px;color:var(--sgk-textMuted)}
+@media (max-width:1000px){
+  #sgk-game .sgk-rev{flex-basis:calc((100% - 16px) / 2)}
+}
+@media (max-width:700px){
+  #sgk-game .sgk-gal{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(140px,42vw,220px);gap:10px}
+  #sgk-game .sgk-tile{border-radius:18px}
+  #sgk-game .sgk-cap{opacity:1;transform:none;font-size:12.5px;left:12px;bottom:10px}
+  #sgk-game .sgk-tile::after{opacity:1}
+  #sgk-game .sgk-rev{flex-basis:86%}
+  #sgk-game .sgk-track{margin:0 -16px;padding:0 16px 4px;width:calc(100% + 32px);scroll-padding:0 16px}
+  #sgk-game .sgk-top .sgk-btn{width:100%}
+}
+</style>
+
+<script>
+(function () {
+
+  /* =================================================================
+     CONFIG - ВЕСЬ КОНТЕНТ, ПОСИЛАННЯ, КОЛЬОРИ ТА НАЛАШТУВАННЯ
+     Змінюйте лише значення в лапках / числа. Не видаляйте коми.
+     ================================================================= */
+  var CONFIG = {
+
+    kicker: "В грі",                                      /* ЗМІНИТИ - надпис над заголовком */
+    title: "Рукавиці Synergy [на полі]",                  /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    instagramText: "Більше в @synergy.gk",                /* ЗМІНИТИ - текст кнопки */
+    instagramLink: "https://www.instagram.com/synergy.gk/", /* ЗМІНИТИ - посилання ("" - сховати кнопку) */
+    photoLabel: "Фото з гри",                             /* ЗМІНИТИ - підпис на заглушках */
+
+    gallery: [                                            /* ЗМІНИТИ - фото галереї. Перше - велике. Ідеально 5 штук */
+      { image: "https://timoshes229-beep.github.io/synergy-gk/assets/hero-desktop.jpg", caption: "Засновник Synergy на тренуванні", link: "" }, /* ЗМІНИТИ - link: "" = без посилання */
+      { image: "", caption: "Сейв у матчі",          link: "" },
+      { image: "", caption: "Розминка перед грою",   link: "" },
+      { image: "", caption: "Рукавиці крупним планом", link: "" },
+      { image: "", caption: "Команда воротарів",     link: "" }
+    ],
+
+    reviewsTitle: "Відгуки воротарів",                    /* ЗМІНИТИ - заголовок відгуків */
+    reviews: [                                            /* ЗМІНИТИ - відгуки (ЗАГЛУШКИ - замініть реальними з Instagram) */
+      { stars: 5, text: "Тут буде реальний відгук воротаря про рукавиці: хват, посадка, скільки служать.", name: "Ім'я воротаря", role: "Команда / вік", photo: "" },
+      { stars: 5, text: "Тут буде реальний відгук. Попросіть у клієнта 3-6 відгуків або скріншотів з Instagram.", name: "Ім'я воротаря", role: "Команда / вік", photo: "" },
+      { stars: 5, text: "Тут буде реальний відгук. Можна додати фото людини в полі photo.", name: "Ім'я воротаря", role: "Команда / вік", photo: "" },
+      { stars: 5, text: "Тут буде реальний відгук. Відгуків може бути скільки завгодно - вони гортаються.", name: "Ім'я воротаря", role: "Команда / вік", photo: "" }
+    ],
+
+    colors: {
+      bg:              "#0F1211",                        /* ЗМІНИТИ - фон блоку */
+      accent:          "#C8FF2E",                        /* ЗМІНИТИ - акцентний колір (кнопки, виділені слова, іконки) */
+      accentHover:     "#B6F01A",                        /* ЗМІНИТИ - акцентний колір при наведенні */
+      accentSoft:      "rgba(200,255,46,0.12)",          /* ЗМІНИТИ - м'який акцент (фон іконок, рамки при наведенні) */
+      btnText:         "#0A0C0B",                        /* ЗМІНИТИ - текст на акцентних кнопках */
+      btnShadow:       "rgba(200,255,46,0.35)",          /* ЗМІНИТИ - світіння акцентної кнопки при наведенні */
+      text:            "#F4F6F1",                        /* ЗМІНИТИ - основний текст */
+      textMuted:       "rgba(244,246,241,0.66)",         /* ЗМІНИТИ - другорядний текст */
+      line:            "rgba(255,255,255,0.12)",         /* ЗМІНИТИ - лінії та рамки */
+      cardBg:          "rgba(255,255,255,0.035)",        /* ЗМІНИТИ - фон карток */
+      cardHover:       "rgba(255,255,255,0.06)",         /* ЗМІНИТИ - фон карток при наведенні */
+      cardBorder:      "rgba(255,255,255,0.10)",         /* ЗМІНИТИ - рамка карток */
+      ghostText:       "#F4F6F1",                        /* ЗМІНИТИ - текст прозорої кнопки */
+      ghostBorder:     "rgba(244,246,241,0.35)",         /* ЗМІНИТИ - рамка прозорої кнопки */
+      ghostHoverBg:    "#F4F6F1",                        /* ЗМІНИТИ - фон прозорої кнопки при наведенні */
+      ghostHoverText:  "#0A0C0B",                        /* ЗМІНИТИ - текст прозорої кнопки при наведенні */
+      phBg:            "#141816",                        /* ЗМІНИТИ - фон заглушки замість фото */
+      phIcon:          "rgba(200,255,46,0.55)"           /* ЗМІНИТИ - іконка на заглушці */
+    },
+
+    fonts: {
+      url: "https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap", /* ЗМІНИТИ - посилання Google Fonts */
+      heading: "Unbounded", /* ЗМІНИТИ - шрифт заголовків */
+      body: "Manrope"       /* ЗМІНИТИ - шрифт тексту */
+    },
+
+    settings: {
+      animations: true      /* ЗМІНИТИ - true = мікро-анімації, false = статичний блок */
+    }
+  };
+  /* ======================== КІНЕЦЬ CONFIG ======================== */
+
+  /* ===================== СЛУЖБОВИЙ КОД (не змінювати) ===================== */
+  var root = document.getElementById("sgk-game");
+  if (!root || root.getAttribute("data-ready")) return;
+  root.setAttribute("data-ready", "1");
+  var S = CONFIG.settings || {};
+  function mq(x) { try { return window.matchMedia(x).matches; } catch (e) { return false; } }
+  var reduce = mq("(prefers-reduced-motion: reduce)");
+  var fine = mq("(hover: hover) and (pointer: fine)");
+  var animOn = S.animations !== false && !reduce;
+
+  if (CONFIG.fonts && CONFIG.fonts.url && !document.querySelector("link[data-sgk-font]")) {
+    var fl = document.createElement("link");
+    fl.rel = "stylesheet"; fl.href = CONFIG.fonts.url; fl.setAttribute("data-sgk-font", "1");
+    document.head.appendChild(fl);
+  }
+  if (CONFIG.fonts) {
+    root.style.setProperty("--sgk-font-h", "'" + CONFIG.fonts.heading + "', Arial, sans-serif");
+    root.style.setProperty("--sgk-font-b", "'" + CONFIG.fonts.body + "', Arial, sans-serif");
+  }
+  for (var ck in CONFIG.colors) {
+    if (Object.prototype.hasOwnProperty.call(CONFIG.colors, ck)) root.style.setProperty("--sgk-" + ck, CONFIG.colors[ck]);
+  }
+
+  function q(n) { return root.querySelector('[data-sgk="' + n + '"]'); }
+  function each(list, fn) { Array.prototype.forEach.call(list || [], fn); }
+  function mk(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = text;
+    return e;
+  }
+  function txt(n, v) { var e = q(n); if (e) e.textContent = (v === undefined || v === null) ? "" : v; return e; }
+  function lnk(el, href, blank) {
+    if (!el) return el;
+    el.setAttribute("href", href || "#");
+    if (blank) { el.setAttribute("target", "_blank"); el.setAttribute("rel", "noopener"); }
+    return el;
+  }
+  function esc(s) { return String(s === undefined || s === null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function rich(el, s) { if (el) el.innerHTML = esc(s).replace(/\[(.+?)\]/g, "<em>$1</em>"); return el; }
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  var PH_ICONS = {
+    photo: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="12" width="38" height="28" rx="5"/><path d="M17 12l3-5h8l3 5"/><circle cx="24" cy="26" r="7"/></svg>',
+    glove: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 44V31l-5-8c-1.3-2.2 1.6-4.4 3.4-2.6L17 24V9.5a2.5 2.5 0 0 1 5 0V22V7a2.5 2.5 0 0 1 5 0v15V8.5a2.5 2.5 0 0 1 5 0V22v-9a2.5 2.5 0 0 1 5 0v17.5C37 38 33 44 27 44z"/><path d="M15 38h22"/></svg>'
+  };
+  function placeholder(label, kind) {
+    var d = mk("div", "sgk-ph");
+    d.innerHTML = PH_ICONS[kind] || PH_ICONS.photo;
+    if (label) d.appendChild(mk("span", "sgk-ph-l", label));
+    return d;
+  }
+  function media(url, alt, label, kind) {
+    if (url) { var i = mk("img", "sgk-img"); i.src = url; i.alt = alt || ""; i.loading = "lazy"; i.decoding = "async"; return i; }
+    return placeholder(label, kind);
+  }
+  function reveal() {
+    var els = root.querySelectorAll(".sgk-rv");
+    if (!animOn) { root.classList.add("sgk-static"); return; }
+    if (!("IntersectionObserver" in window)) { each(els, function (e) { e.classList.add("is-in"); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, d = parseFloat(el.getAttribute("data-d") || "0");
+        el.style.transitionDelay = d + "s";
+        el.classList.add("is-in");
+        io.unobserve(el);
+        setTimeout(function () { el.style.transitionDelay = ""; }, (d + 1.2) * 1000);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    each(els, function (e) { io.observe(e); });
+  }
+
+  var ICONS = {
+    drop: '<path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z"/><path d="M9 14a3 3 0 0 0 3 3"/>',
+    glove: '<path d="M7 21v-6l-2.5-4a1.4 1.4 0 0 1 2.3-1.6L8.5 12V5a1.5 1.5 0 0 1 3 0v6V4a1.5 1.5 0 0 1 3 0v7V5.5a1.5 1.5 0 0 1 3 0V11V8a1.5 1.5 0 0 1 3 0v6.5C20.5 18 18 21 15 21z"/><path d="M7 18h12"/>',
+    shield: '<path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
+    refresh: '<path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 20v-4h-4"/>',
+    truck: '<path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3.5V16h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',
+    ruler: '<path d="M4 15.5L15.5 4 20 8.5 8.5 20z"/><path d="M8 12l2 2M11 9l2 2M14 6l2 2"/>',
+    star: '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+    water: '<path d="M3 15c2 0 2-1.5 4.5-1.5S9.5 15 12 15s2.5-1.5 4.5-1.5S19 15 21 15"/><path d="M3 19c2 0 2-1.5 4.5-1.5S9.5 19 12 19s2.5-1.5 4.5-1.5S19 19 21 19"/><path d="M12 3s3.5 3.8 3.5 6.3a3.5 3.5 0 0 1-7 0C8.5 6.8 12 3 12 3z"/>',
+    wind: '<path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 15h15a3 3 0 1 1-3 3"/><path d="M3 12h7"/>',
+    hand: '<path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11V4a1.5 1.5 0 0 1 3 0v7V5.5a1.5 1.5 0 0 1 3 0V12v-3a1.5 1.5 0 0 1 3 0v6c0 3.5-2.5 6-6 6h-1.5c-2 0-3.3-.8-4.5-2.2L5 15.5c-1-1.2.5-2.8 1.8-1.8z"/>',
+    bag: '<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+    card: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/>',
+    chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>',
+    box: '<path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/>',
+    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+    target: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+    x: '<path d="M6 6l12 12M18 6L6 18"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/>',
+    telegram: '<path d="M21 4.5L3 11.3l5.6 2 2 6.2 3.3-3.6 4.9 3.6z"/><path d="M8.6 13.3L18 7l-7.4 8.5"/>',
+    phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/>',
+    pin: '<path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>'
+  };
+  function icon(name, sw) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (sw || 1.8) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || ICONS.star) + '</svg>';
+  }
+
+  /* ===================== ЛОГІКА БЛОКУ ===================== */
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  txt("instaText", CONFIG.instagramText);
+  q("instaIc").innerHTML = icon("instagram");
+  if (CONFIG.instagramLink) lnk(q("insta"), CONFIG.instagramLink, true); else q("insta").style.display = "none";
+
+  var gal = q("gallery");
+  CONFIG.gallery.forEach(function (g, i) {
+    var t = mk(g.link ? "a" : "div", "sgk-tile sgk-rv");
+    if (g.link) lnk(t, g.link, /^https?:/.test(g.link));
+    t.setAttribute("data-d", (0.05 + i * 0.08).toFixed(2));
+    t.appendChild(media(g.image, g.caption, CONFIG.photoLabel, "photo"));
+    if (g.caption) t.appendChild(mk("div", "sgk-cap", g.caption));
+    gal.appendChild(t);
+  });
+
+  txt("revTitle", CONFIG.reviewsTitle);
+  var track = q("reviews");
+  var STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>';
+  CONFIG.reviews.forEach(function (r) {
+    var c = mk("div", "sgk-rev");
+    var st = mk("div", "sgk-stars"); var html = ""; for (var k = 0; k < (r.stars || 5); k++) html += STAR; st.innerHTML = html; c.appendChild(st);
+    c.appendChild(mk("p", "sgk-rev-t", r.text));
+    var w = mk("div", "sgk-who");
+    var av = mk("div", "sgk-ava", (r.name || "?").trim().charAt(0).toUpperCase());
+    if (r.photo) { var im = mk("img"); im.src = r.photo; im.alt = r.name; av.appendChild(im); }
+    w.appendChild(av);
+    var nb = mk("div"); nb.appendChild(mk("div", "sgk-nm", r.name)); nb.appendChild(mk("div", "sgk-rl", r.role)); w.appendChild(nb);
+    c.appendChild(w);
+    track.appendChild(c);
+  });
+
+  q("prev").innerHTML = icon("arrow", 2); q("next").innerHTML = icon("arrow", 2);
+  function stepW() { var c = track.querySelector(".sgk-rev"); return c ? c.getBoundingClientRect().width + 16 : 300; }
+  q("prev").addEventListener("click", function () { track.scrollBy({ left: -stepW(), behavior: "smooth" }); });
+  q("next").addEventListener("click", function () {
+    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) track.scrollTo({ left: 0, behavior: "smooth" });
+    else track.scrollBy({ left: stepW(), behavior: "smooth" });
+  });
+
+  /* перетягування мишкою на ПК */
+  if (fine) {
+    var down = false, sx = 0, sl = 0, moved = false;
+    track.addEventListener("mousedown", function (e) { down = true; moved = false; sx = e.pageX; sl = track.scrollLeft; track.classList.add("is-drag"); });
+    window.addEventListener("mouseup", function () { if (!down) return; down = false; track.classList.remove("is-drag"); });
+    track.addEventListener("mousemove", function (e) { if (!down) return; var dx = e.pageX - sx; if (Math.abs(dx) > 4) moved = true; track.scrollLeft = sl - dx; });
+    track.addEventListener("click", function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  }
+
+  reveal();
+
+})();
+</script>
+===== КІНЕЦЬ КОДУ =====
+
+
+=====================================================================
+ЧАСТИНА 3. ЩО І ДЕ ЗМІНЮВАТИ В ЦЬОМУ БЛОЦІ
+=====================================================================
+
+Усе редагується ТІЛЬКИ в об'єкті CONFIG на початку тегу <script>.
+HTML і CSS чіпати не потрібно. Біля кожного параметра стоїть
+коментар /* ЗМІНИТИ */.
+
+kicker / title - надпис і заголовок.
+instagramText / instagramLink - кнопка на Instagram праворуч.
+
+ГАЛЕРЕЯ  ->  gallery
+  Перше фото - велике (2x2), інші - маленькі. Найкраще 5 фото.
+  image   - фото ("" = заглушка);
+  caption - підпис, з'являється при наведенні (на телефоні видно завжди);
+  link    - посилання при кліку (наприклад, пост в Instagram), "" - без.
+
+ВІДГУКИ  ->  reviews
+  stars - кількість зірок (1-5); text - текст; name - ім'я;
+  role  - команда/вік; photo - фото людини ("" = перша літера імені).
+  Відгуки гортаються стрілками, свайпом на телефоні і перетягуванням
+  мишкою на ПК.
+
+УВАГА: відгуки - ЗАГЛУШКИ. Не публікуйте сайт з вигаданими
+відгуками - попросіть у клієнта реальні (скріншоти з Instagram теж
+підійдуть).
+
+  Доступні іконки (поле icon): drop, glove, shield, refresh, truck, ruler, star, water, wind, hand, bag, card, chat, box, clock, sun, target, x, check, arrow, plus, instagram, telegram, phone, mail, pin
+
+---------------------------------------------------------------------
+КОЛЬОРИ  ->  CONFIG.colors
+---------------------------------------------------------------------
+  Формат "#C8FF2E" або "rgba(200,255,46,0.35)" (останнє число -
+  прозорість від 0 до 1). Кольори однакові в усіх блоках Synergy:
+  якщо міняєте акцент - міняйте accent, accentHover, accentSoft і
+  btnShadow в КОЖНОМУ блоці.
+  Колір тексту в кнопках прописаний з !important, тому оранжевий колір
+  посилань Tilda його не перебиває.
+
+---------------------------------------------------------------------
+ШРИФТИ І АНІМАЦІЇ
+---------------------------------------------------------------------
+  CONFIG.fonts - Unbounded (заголовки) + Manrope (текст), з кирилицею.
+  settings.animations: false - вимкнути анімації в цьому блоці.
+  Якщо в системі відвідувача ввімкнено "зменшити рух", анімації
+  вимикаються самі.
+
+---------------------------------------------------------------------
+ЗАГАЛЬНІ ПРАВИЛА
+---------------------------------------------------------------------
+  - Змінюйте тільки значення в лапках "..." та числа, коми не видаляйте.
+  - Слово в [квадратних дужках] у заголовках стає акцентного кольору.
+  - НЕ використовуйте емодзі - Tilda покаже їх як знаки питання.
+  - Порожнє фото "" = красива заглушка з іконкою. Коли будуть фото
+    від клієнта - вставте посилання на них (як отримати посилання з
+    Tilda - див. блок 01, частина 1).

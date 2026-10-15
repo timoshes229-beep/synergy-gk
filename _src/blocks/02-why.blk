@@ -1,0 +1,87 @@
+@@meta
+id: sgk-why
+anchor: why
+title: Переваги (Чому Synergy)
+pos: другий блок, одразу під першим екраном (блок 01).
+icons: yes
+
+@@html
+<section id="sgk-why" aria-label="Переваги Synergy">
+  <div class="sgk-wrap">
+    <div class="sgk-head">
+      <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+      <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+      <p class="sgk-lead sgk-rv" data-d="0.16" data-sgk="lead"></p>
+    </div>
+    <div class="sgk-grid" data-sgk="items"></div>
+  </div>
+</section>
+
+@@css
+#sgk-why .sgk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+#sgk-why .sgk-card{position:relative;display:flex;flex-direction:column;min-height:300px;padding:30px 26px 28px;border-radius:24px;overflow:hidden;
+  background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .4s ease,background .4s ease,opacity .9s ease}
+#sgk-why .sgk-card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--sgk-accent);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+#sgk-why .sgk-card:hover{transform:translateY(-6px);border-color:var(--sgk-accentSoft);background:var(--sgk-cardHover)}
+#sgk-why .sgk-card:hover::before{transform:scaleX(1)}
+#sgk-why .sgk-num{position:absolute;right:22px;top:16px;font-family:var(--sgk-font-h);font-weight:800;font-size:60px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--sgk-line);transition:-webkit-text-stroke-color .4s ease}
+#sgk-why .sgk-card:hover .sgk-num{-webkit-text-stroke-color:var(--sgk-accent)}
+#sgk-why .sgk-ic{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:var(--sgk-accentSoft);color:var(--sgk-accent);
+  transition:transform .5s cubic-bezier(.2,1.4,.4,1),background .4s ease,color .4s ease}
+#sgk-why .sgk-ic svg{width:26px;height:26px}
+#sgk-why .sgk-card:hover .sgk-ic{transform:rotate(-8deg) scale(1.08);background:var(--sgk-accent);color:var(--sgk-btnText)}
+#sgk-why .sgk-ct{margin-top:auto;padding-top:44px;font-family:var(--sgk-font-h);font-weight:700;font-size:19px;line-height:1.25;color:var(--sgk-text)}
+#sgk-why .sgk-cd{margin-top:12px;font-size:14.5px;line-height:1.6;color:var(--sgk-textMuted)}
+@media (max-width:1100px){#sgk-why .sgk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){
+  #sgk-why .sgk-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  #sgk-why .sgk-card{min-height:0;padding:24px 22px}
+  #sgk-why .sgk-ct{padding-top:26px;font-size:18px}
+  #sgk-why .sgk-num{font-size:48px}
+}
+
+@@config
+    kicker: "Чому Synergy",                            /* ЗМІНИТИ - маленький надпис над заголовком */
+    title: "Створено у [воротах], а не в офісі",       /* ЗМІНИТИ - заголовок. Слово в [дужках] - акцентним кольором */
+    lead: "Кожну модель засновник бренду спершу тестує сам - на тренуваннях і в матчах. У продаж іде тільки те, у чому він готовий вийти на поле.", /* ЗМІНИТИ - текст під заголовком */
+
+    items: [                                                                                                  /* ЗМІНИТИ - картки переваг (можна 3, 4, 6, 8) */
+      { icon: "drop",    title: "Німецький латекс",     text: "Липкий хват у суху й мокру погоду. Латекс тримає м'яч навіть після сильного удару." }, /* ЗМІНИТИ */
+      { icon: "glove",   title: "Перевірено в матчах",  text: "Модель потрапляє в каталог тільки після того, як відіграла сезон у руках воротаря." },   /* ЗМІНИТИ */
+      { icon: "refresh", title: "Обмін розміру",        text: "Не підійшов розмір - обміняємо. Допоможемо підібрати правильний ще до покупки." },        /* ЗМІНИТИ */
+      { icon: "truck",   title: "Швидка доставка",      text: "Відправляємо Новою Поштою по всій Україні. Оплата при отриманні або на картку." }          /* ЗМІНИТИ */
+    ],
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+  if (!CONFIG.lead) q("lead").style.display = "none";
+
+  var grid = q("items");
+  CONFIG.items.forEach(function (it, i) {
+    var c = mk("div", "sgk-card sgk-rv");
+    c.setAttribute("data-d", (0.1 + i * 0.1).toFixed(2));
+    c.appendChild(mk("div", "sgk-num", (i < 9 ? "0" : "") + (i + 1)));
+    var ic = mk("div", "sgk-ic"); ic.innerHTML = icon(it.icon); c.appendChild(ic);
+    c.appendChild(mk("div", "sgk-ct", it.title));
+    c.appendChild(mk("div", "sgk-cd", it.text));
+    grid.appendChild(c);
+  });
+
+  reveal();
+
+@@notes
+kicker / title / lead - надпис, заголовок і текст над картками.
+
+items - картки переваг. У кожної:
+  icon  - іконка (назва зі списку нижче);
+  title - заголовок картки;
+  text  - опис.
+  Можна додати або прибрати картки (копіюйте рядок разом з комою).
+  На ПК - 4 в ряд, на планшеті - 2, на телефоні - 1.
+  Номери 01, 02... ставляться автоматично.
+
+УВАГА: тексти - чернетка. Уточніть у клієнта реальні умови обміну та
+доставки.

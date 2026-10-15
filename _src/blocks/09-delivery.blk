@@ -1,0 +1,106 @@
+@@meta
+id: sgk-del
+anchor: delivery
+title: Доставка, оплата, обмін
+pos: після блоку 08 (Догляд).
+icons: yes
+colors: bg=#0F1211
+
+@@html
+<section id="sgk-del" aria-label="Доставка і оплата">
+  <div class="sgk-wrap">
+    <div class="sgk-head">
+      <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+      <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+    </div>
+    <div class="sgk-ribbon sgk-rv" data-d="0.12">
+      <span class="sgk-rib-ic" data-sgk="ribIc"></span>
+      <span class="sgk-rib-t" data-sgk="ribbon"></span>
+      <span class="sgk-rib-pulse"></span>
+    </div>
+    <div class="sgk-cols" data-sgk="cols"></div>
+  </div>
+</section>
+
+@@css
+#sgk-del .sgk-ribbon{position:relative;display:flex;align-items:center;gap:14px;padding:18px 22px;border-radius:20px;border:1px solid var(--sgk-accentSoft);background:var(--sgk-accentSoft);margin-bottom:16px;overflow:hidden}
+#sgk-del .sgk-rib-ic{flex:none;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--sgk-accent);color:var(--sgk-btnText)}
+#sgk-del .sgk-rib-ic svg{width:20px;height:20px}
+#sgk-del .sgk-rib-t{font-weight:700;font-size:15.5px;line-height:1.4;color:var(--sgk-text)}
+#sgk-del .sgk-rib-pulse{position:absolute;top:0;bottom:0;left:-30%;width:30%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(200,255,46,.14),rgba(255,255,255,0));animation:sgkSweep 4.5s ease-in-out infinite 1s;pointer-events:none}
+#sgk-del .sgk-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#sgk-del .sgk-col{position:relative;padding:30px 28px;border-radius:26px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .4s ease,opacity .9s ease}
+#sgk-del .sgk-col:hover{transform:translateY(-6px);border-color:var(--sgk-accentSoft)}
+#sgk-del .sgk-col-ic{width:60px;height:60px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:var(--sgk-accentSoft);color:var(--sgk-accent);transition:transform .5s cubic-bezier(.2,1.4,.4,1),background .4s ease,color .4s ease}
+#sgk-del .sgk-col-ic svg{width:28px;height:28px}
+#sgk-del .sgk-col:hover .sgk-col-ic{transform:translateX(6px);background:var(--sgk-accent);color:var(--sgk-btnText)}
+#sgk-del .sgk-col-t{margin-top:22px;font-family:var(--sgk-font-h);font-weight:700;font-size:21px;color:var(--sgk-text)}
+#sgk-del .sgk-col ul{list-style:none;margin-top:16px}
+#sgk-del .sgk-col li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;font-size:15px;line-height:1.5;color:var(--sgk-textMuted);border-top:1px solid var(--sgk-line)}
+#sgk-del .sgk-col li:first-child{border-top:0}
+#sgk-del .sgk-col li span{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-accent);color:var(--sgk-btnText)}
+#sgk-del .sgk-col li svg{width:13px;height:13px}
+#sgk-del .sgk-col li b{color:var(--sgk-text);font-weight:700}
+@keyframes sgkSweep{0%{left:-30%}40%{left:110%}100%{left:110%}}
+@media (max-width:1000px){#sgk-del .sgk-cols{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){
+  #sgk-del .sgk-col{padding:24px 22px}
+  #sgk-del .sgk-ribbon{align-items:flex-start}
+}
+
+@@config
+    kicker: "Доставка і оплата",                           /* ЗМІНИТИ - надпис над заголовком */
+    title: "Від кошика до [воріт] - швидко",                /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    ribbonIcon: "clock",                                    /* ЗМІНИТИ - іконка смужки */
+    ribbon: "Відправляємо в день замовлення, якщо ви встигли до 16:00", /* ЗМІНИТИ - текст смужки ("" - сховати) */
+
+    columns: [                                              /* ЗМІНИТИ - колонки (ЧЕРНЕТКА - уточніть умови в клієнта) */
+      { icon: "truck",   title: "Доставка", points: [
+          "Новою Поштою по всій Україні - 1-3 дні",
+          "У відділення, поштомат або кур'єром",
+          "Безкоштовна доставка від 2 000 грн"
+      ] },
+      { icon: "card",    title: "Оплата", points: [
+          "Накладений платіж при отриманні",
+          "Оплата на картку за реквізитами",
+          "Чек і гарантія на кожну пару"
+      ] },
+      { icon: "refresh", title: "Обмін і повернення", points: [
+          "14 днів на обмін розміру",
+          "Рукавиці без слідів гри та з бирками",
+          "Допоможемо підібрати правильний розмір"
+      ] }
+    ],
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  if (CONFIG.ribbon) { txt("ribbon", CONFIG.ribbon); q("ribIc").innerHTML = icon(CONFIG.ribbonIcon || "clock"); if (!animOn) root.querySelector(".sgk-rib-pulse").style.display = "none"; }
+  else root.querySelector(".sgk-ribbon").style.display = "none";
+
+  var cols = q("cols");
+  CONFIG.columns.forEach(function (c, i) {
+    var d = mk("div", "sgk-col sgk-rv"); d.setAttribute("data-d", (0.1 + i * 0.12).toFixed(2));
+    var ic = mk("div", "sgk-col-ic"); ic.innerHTML = icon(c.icon); d.appendChild(ic);
+    d.appendChild(mk("div", "sgk-col-t", c.title));
+    var ul = mk("ul");
+    c.points.forEach(function (p) { var li = mk("li"); var s = mk("span"); s.innerHTML = icon("check", 2.6); li.appendChild(s); li.appendChild(mk("div", "", p)); ul.appendChild(li); });
+    d.appendChild(ul);
+    cols.appendChild(d);
+  });
+
+  reveal();
+
+@@notes
+kicker / title - надпис і заголовок.
+
+ribbon / ribbonIcon - лаймова смужка з важливою умовою (по ній
+  періодично пробігає відблиск). "" - сховати.
+
+columns - колонки (Доставка, Оплата, Обмін):
+  icon   - іконка;
+  title  - заголовок;
+  points - пункти списку (можна скільки завгодно).
+
+УВАГА: усі умови - ЧЕРНЕТКА. Обов'язково уточніть у клієнта: службу
+доставки, суму безкоштовної доставки, способи оплати, термін обміну.

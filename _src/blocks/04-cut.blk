@@ -1,0 +1,224 @@
+@@meta
+id: sgk-cut
+anchor: cut
+title: Типи крою
+pos: після блоку 03 (Каталог).
+icons: yes
+extra: barTrack=rgba(255,255,255,0.10)|фон порожньої шкали; outlineWord=rgba(255,255,255,0.14)|контур великої назви крою на фото
+
+@@html
+<section id="sgk-cut" aria-label="Типи крою">
+  <div class="sgk-wrap">
+    <div class="sgk-head">
+      <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+      <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+      <p class="sgk-lead sgk-rv" data-d="0.16" data-sgk="lead"></p>
+    </div>
+    <div class="sgk-layout">
+      <div class="sgk-tabs sgk-rv" data-d="0.1" data-sgk="tabs" role="tablist"></div>
+      <div class="sgk-panel sgk-rv" data-d="0.2">
+        <div class="sgk-media" data-sgk="media">
+          <div class="sgk-big" data-sgk="big"></div>
+        </div>
+        <div class="sgk-info" data-sgk="info">
+          <div class="sgk-name" data-sgk="name"></div>
+          <p class="sgk-text" data-sgk="text"></p>
+          <div class="sgk-bars" data-sgk="bars"></div>
+          <div class="sgk-for">
+            <div class="sgk-for-l" data-sgk="forLabel"></div>
+            <div class="sgk-for-t" data-sgk="forText"></div>
+          </div>
+          <a class="sgk-btn sgk-btn--main" data-sgk="btn" href="#catalog"><span data-sgk="btnText"></span><span class="sgk-bi" data-sgk="btnIc"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@@css
+#sgk-cut .sgk-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,40px);align-items:start}
+#sgk-cut .sgk-tabs{display:flex;flex-direction:column;gap:10px}
+#sgk-cut .sgk-tab{position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:center;width:100%;padding:22px 24px;border-radius:20px;text-align:left;
+  background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);transition:background .35s ease,border-color .35s ease,transform .35s ease}
+#sgk-cut .sgk-tab:hover{border-color:var(--sgk-accentSoft);transform:translateX(4px)}
+#sgk-cut .sgk-tab-n{grid-row:span 2;font-family:var(--sgk-font-h);font-weight:800;font-size:28px;color:transparent;-webkit-text-stroke:1px var(--sgk-textMuted);transition:color .35s ease,-webkit-text-stroke-color .35s ease}
+#sgk-cut .sgk-tab-t{font-family:var(--sgk-font-h);font-weight:700;font-size:18px;color:var(--sgk-text)}
+#sgk-cut .sgk-tab-s{font-size:13.5px;line-height:1.45;color:var(--sgk-textMuted)}
+#sgk-cut .sgk-tab-p{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--sgk-accent)}
+#sgk-cut .sgk-tab.is-on{background:var(--sgk-cardHover);border-color:var(--sgk-accent)}
+#sgk-cut .sgk-tab.is-on .sgk-tab-n{color:var(--sgk-accent);-webkit-text-stroke-color:var(--sgk-accent)}
+#sgk-cut .sgk-tab.is-run .sgk-tab-p{animation:sgkProg var(--dur,6s) linear forwards}
+#sgk-cut .sgk-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:28px;overflow:hidden;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);min-height:460px}
+#sgk-cut .sgk-media{position:relative;overflow:hidden;background:var(--sgk-phBg);min-height:300px}
+#sgk-cut .sgk-media .sgk-img,#sgk-cut .sgk-media .sgk-ph{transition:opacity .45s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+#sgk-cut .sgk-big{position:absolute;left:18px;right:18px;bottom:14px;z-index:2;font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(34px,4vw,58px);line-height:.95;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.2px var(--sgk-outlineWord);pointer-events:none;transition:opacity .45s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+#sgk-cut .sgk-info{display:flex;flex-direction:column;padding:clamp(24px,3vw,40px);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+#sgk-cut .sgk-name{font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(22px,2.2vw,30px);color:var(--sgk-accent)}
+#sgk-cut .sgk-text{margin-top:12px;font-size:15px;line-height:1.6;color:var(--sgk-textMuted)}
+#sgk-cut .sgk-bars{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+#sgk-cut .sgk-bar-h{display:flex;justify-content:space-between;font-size:13px}
+#sgk-cut .sgk-bar-l{color:var(--sgk-textMuted)}
+#sgk-cut .sgk-bar-v{font-weight:700;color:var(--sgk-text)}
+#sgk-cut .sgk-bar-t{margin-top:7px;height:6px;border-radius:6px;background:var(--sgk-barTrack);overflow:hidden}
+#sgk-cut .sgk-bar-f{height:100%;width:0;border-radius:6px;background:var(--sgk-accent);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+#sgk-cut .sgk-for{margin-top:24px;padding:16px 18px;border-radius:16px;background:var(--sgk-accentSoft)}
+#sgk-cut .sgk-for-l{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-accent)}
+#sgk-cut .sgk-for-t{margin-top:6px;font-size:14px;line-height:1.5;color:var(--sgk-text)}
+#sgk-cut .sgk-info .sgk-btn{align-self:flex-start;margin-top:auto;padding:0 8px 0 24px}
+#sgk-cut .sgk-info .sgk-for{margin-bottom:24px}
+#sgk-cut .sgk-bi{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-btnText);color:var(--sgk-accent) !important;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+#sgk-cut .sgk-btn .sgk-bi{color:var(--sgk-accent) !important}
+#sgk-cut .sgk-bi svg{width:18px;height:18px}
+#sgk-cut .sgk-btn:hover .sgk-bi{transform:rotate(-45deg)}
+#sgk-cut .sgk-panel.is-swap .sgk-info{opacity:0;transform:translateY(14px)}
+#sgk-cut .sgk-panel.is-swap .sgk-big{opacity:0;transform:translateX(-20px)}
+#sgk-cut .sgk-panel.is-swap .sgk-media .sgk-img,#sgk-cut .sgk-panel.is-swap .sgk-media .sgk-ph{opacity:0;transform:scale(1.05)}
+@keyframes sgkProg{from{width:0}to{width:100%}}
+@media (max-width:1100px){
+  #sgk-cut .sgk-layout{grid-template-columns:minmax(0,1fr)}
+  #sgk-cut .sgk-tabs{flex-direction:row;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  #sgk-cut .sgk-tabs::-webkit-scrollbar{display:none}
+  #sgk-cut .sgk-tab{flex:1 0 240px}
+  #sgk-cut .sgk-tab:hover{transform:none}
+}
+@media (max-width:700px){
+  #sgk-cut .sgk-panel{grid-template-columns:minmax(0,1fr);min-height:0}
+  #sgk-cut .sgk-media{min-height:0;aspect-ratio:4/3}
+  #sgk-cut .sgk-tab{flex:0 0 78%;padding:18px 18px}
+  #sgk-cut .sgk-tab-s{display:none}
+  #sgk-cut .sgk-tab-n{grid-row:auto;font-size:22px}
+  #sgk-cut .sgk-tabs{margin:0 -16px;padding:0 16px 2px;width:calc(100% + 32px)}
+  #sgk-cut .sgk-info .sgk-btn{align-self:stretch;justify-content:space-between}
+}
+
+@@config
+    kicker: "Типи крою",                                   /* ЗМІНИТИ - надпис над заголовком */
+    title: "Який крій [твій]?",                             /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    lead: "Від крою залежить, як рукавиця сидить на руці і як тримає м'яч. Ось просте пояснення без складних слів.", /* ЗМІНИТИ - текст під заголовком */
+    forLabel: "Кому підходить",                             /* ЗМІНИТИ - підпис блоку "кому підходить" */
+    btnText: "Дивитись моделі",                             /* ЗМІНИТИ - текст кнопки */
+    photoLabel: "Фото крою",                                /* ЗМІНИТИ - підпис на заглушці замість фото */
+
+    cuts: [                                                 /* ЗМІНИТИ - типи крою (можна додати ще) */
+      {
+        name: "Negative cut",                              /* ЗМІНИТИ - назва */
+        short: "Шви всередині - як друга шкіра",           /* ЗМІНИТИ - короткий опис у вкладці */
+        text: "Шви сховані всередину рукавиці, тому вона щільно облягає пальці. Відчуваєш м'яч так, ніби ловиш його голою рукою.", /* ЗМІНИТИ */
+        bars: [ { label: "Контакт з м'ячем", value: 92 }, { label: "Щільність посадки", value: 98 }, { label: "Площа латексу", value: 80 } ], /* ЗМІНИТИ - шкали 0-100 */
+        forText: "Воротарям, які люблять щільну посадку і точну гру руками.", /* ЗМІНИТИ */
+        image: "",                                         /* ЗМІНИТИ - фото ("" = заглушка) */
+        link: "#catalog"                                   /* ЗМІНИТИ - куди веде кнопка */
+      },
+      {
+        name: "Roll finger",
+        short: "Латекс обгортає пальці",
+        text: "Пальці обгорнуті латексом без бокових вставок. Більша площа контакту - м'яч буквально прилипає до рукавиці.",
+        bars: [ { label: "Контакт з м'ячем", value: 98 }, { label: "Щільність посадки", value: 75 }, { label: "Площа латексу", value: 96 } ],
+        forText: "Тим, хто багато ловить і хоче максимальний хват.",
+        image: "",
+        link: "#catalog"
+      },
+      {
+        name: "Hybrid cut",
+        short: "Найкраще з двох кроїв",
+        text: "Поєднує обидва підходи: частина пальців як у Negative, частина як у Roll finger. Баланс між посадкою і площею хвату.",
+        bars: [ { label: "Контакт з м'ячем", value: 94 }, { label: "Щільність посадки", value: 88 }, { label: "Площа латексу", value: 90 } ],
+        forText: "Універсалам, які не хочуть обирати.",
+        image: "",
+        link: "#catalog"
+      }
+    ],
+
+@@settings
+      autoplay: true,   /* ЗМІНИТИ - вкладки перемикаються самі, поки відвідувач не натисне */
+      interval: 6       /* ЗМІНИТИ - секунд на одну вкладку */
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+  txt("forLabel", CONFIG.forLabel);
+  txt("btnText", CONFIG.btnText);
+  q("btnIc").innerHTML = icon("arrow", 2.2);
+
+  var tabsEl = q("tabs"), panel = root.querySelector(".sgk-panel"), mediaEl = q("media"), tabs = [];
+  var cur = -1, timer = null, auto = S.autoplay !== false && animOn, dur = (S.interval || 6);
+  root.style.setProperty("--dur", dur + "s");
+
+  CONFIG.cuts.forEach(function (c, i) {
+    var t = mk("button", "sgk-tab");
+    t.type = "button"; t.setAttribute("role", "tab");
+    t.appendChild(mk("span", "sgk-tab-n", (i < 9 ? "0" : "") + (i + 1)));
+    t.appendChild(mk("span", "sgk-tab-t", c.name));
+    t.appendChild(mk("span", "sgk-tab-s", c.short));
+    t.appendChild(mk("span", "sgk-tab-p"));
+    t.addEventListener("click", function () { auto = false; stop(); show(i); });
+    tabsEl.appendChild(t); tabs.push(t);
+  });
+
+  function fill(i) {
+    var c = CONFIG.cuts[i];
+    each(mediaEl.querySelectorAll(".sgk-img,.sgk-ph"), function (x) { x.parentNode.removeChild(x); });
+    mediaEl.insertBefore(media(c.image, c.name, CONFIG.photoLabel, "glove"), mediaEl.firstChild);
+    txt("big", c.name);
+    txt("name", c.name);
+    txt("text", c.text);
+    txt("forText", c.forText);
+    lnk(q("btn"), c.link || "#catalog");
+    var bars = q("bars"); bars.innerHTML = "";
+    (c.bars || []).forEach(function (b) {
+      var row = mk("div", "sgk-bar"), h = mk("div", "sgk-bar-h");
+      h.appendChild(mk("span", "sgk-bar-l", b.label));
+      h.appendChild(mk("span", "sgk-bar-v", (b.value / 10).toFixed(1)));
+      var tr = mk("div", "sgk-bar-t"), f = mk("div", "sgk-bar-f");
+      tr.appendChild(f); row.appendChild(h); row.appendChild(tr); bars.appendChild(row);
+      setTimeout(function () { f.style.width = Math.max(0, Math.min(100, b.value)) + "%"; }, animOn ? 120 : 0);
+    });
+  }
+  function show(i) {
+    if (i === cur) return;
+    cur = i;
+    tabs.forEach(function (t, k) { t.classList.toggle("is-on", k === i); t.classList.remove("is-run"); t.setAttribute("aria-selected", k === i ? "true" : "false"); });
+    if (animOn) {
+      panel.classList.add("is-swap");
+      setTimeout(function () { fill(i); panel.classList.remove("is-swap"); }, 380);
+    } else fill(i);
+    if (auto) { void tabs[i].offsetWidth; tabs[i].classList.add("is-run"); }
+  }
+  function stop() { clearInterval(timer); timer = null; tabs.forEach(function (t) { t.classList.remove("is-run"); }); }
+  function start() {
+    if (!auto || timer) return;
+    tabs[cur].classList.add("is-run");
+    timer = setInterval(function () { show((cur + 1) % CONFIG.cuts.length); }, dur * 1000);
+  }
+
+  fill(0); cur = 0; tabs[0].classList.add("is-on");
+  if (auto && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) start(); else if (auto) { clearInterval(timer); timer = null; tabs[cur].classList.remove("is-run"); } });
+    }, { threshold: 0.35 });
+    io.observe(root);
+    panel.addEventListener("mouseenter", function () { if (auto) { clearInterval(timer); timer = null; tabs[cur].classList.remove("is-run"); } });
+    panel.addEventListener("mouseleave", function () { start(); });
+  }
+
+  reveal();
+
+@@notes
+kicker / title / lead - надписи над блоком.
+
+cuts - типи крою. Кожен тип - одна вкладка зліва і картка справа:
+  name     - назва крою;
+  short    - короткий опис у вкладці (на телефоні не показується);
+  text     - пояснення;
+  bars     - шкали: label - назва, value - від 0 до 100
+             (праворуч автоматично покажеться оцінка: 92 -> 9.2);
+  forText  - "Кому підходить";
+  image    - фото крою ("" = заглушка). Ідеально - фото долоні
+             рукавиці крупним планом;
+  link     - куди веде кнопка (за замовчуванням каталог).
+
+Автоперемикання: settings.autoplay (true/false) і settings.interval
+(секунд на вкладку). Під активною вкладкою біжить лаймова смужка
+таймера. Автоперемикання зупиняється, коли відвідувач натискає
+вкладку або наводить мишку на картку.

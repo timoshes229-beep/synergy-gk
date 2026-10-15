@@ -1,0 +1,140 @@
+@@meta
+id: sgk-care
+anchor: care
+title: Догляд за рукавицями
+pos: після блоку 07 (В грі).
+icons: yes
+extra: danger=#FF6A5C|колір іконок у блоці "Чого не робити"
+
+@@html
+<section id="sgk-care" aria-label="Догляд">
+  <div class="sgk-wrap">
+    <div class="sgk-head sgk-head--c">
+      <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+      <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+      <p class="sgk-lead sgk-rv" data-d="0.16" data-sgk="lead"></p>
+    </div>
+    <div class="sgk-steps" data-sgk="steps">
+      <div class="sgk-line"><div class="sgk-line-f"></div></div>
+    </div>
+    <div class="sgk-bottom">
+      <div class="sgk-tip sgk-rv" data-d="0.1">
+        <div class="sgk-tip-ic" data-sgk="tipIc"></div>
+        <div><div class="sgk-tip-l" data-sgk="tipLabel"></div><p class="sgk-tip-t" data-sgk="tipText"></p></div>
+      </div>
+      <div class="sgk-dont sgk-rv" data-d="0.2">
+        <div class="sgk-dont-l" data-sgk="dontLabel"></div>
+        <ul data-sgk="dont"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+@@css
+#sgk-care .sgk-steps{position:relative;display:grid;grid-template-columns:repeat(var(--sgk-n,4),minmax(0,1fr));gap:20px}
+#sgk-care .sgk-line{position:absolute;left:var(--sgk-ll,12.5%);right:var(--sgk-ll,12.5%);top:38px;height:2px;background:var(--sgk-line)}
+#sgk-care .sgk-line-f{height:100%;width:0;background:var(--sgk-accent);transition:width 1.8s cubic-bezier(.6,.1,.2,1) .3s}
+#sgk-care .sgk-steps.is-in .sgk-line-f,#sgk-care.sgk-static .sgk-line-f{width:100%}
+#sgk-care .sgk-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 6px}
+#sgk-care .sgk-st-ic{position:relative;width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-bg);border:2px solid var(--sgk-line);color:var(--sgk-accent);transition:border-color .5s ease,background .5s ease,color .5s ease,transform .5s cubic-bezier(.2,1.4,.4,1)}
+#sgk-care .sgk-st-ic svg{width:32px;height:32px}
+#sgk-care .sgk-step.is-in .sgk-st-ic{border-color:var(--sgk-accent)}
+#sgk-care .sgk-step:hover .sgk-st-ic{background:var(--sgk-accent);color:var(--sgk-btnText);transform:scale(1.08) rotate(-6deg)}
+#sgk-care .sgk-st-n{position:absolute;right:-4px;top:-4px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-accent);color:var(--sgk-btnText);font-family:var(--sgk-font-h);font-weight:800;font-size:12px}
+#sgk-care .sgk-st-t{margin-top:22px;font-family:var(--sgk-font-h);font-weight:700;font-size:18px;line-height:1.25;color:var(--sgk-text)}
+#sgk-care .sgk-st-d{margin-top:10px;font-size:14.5px;line-height:1.6;color:var(--sgk-textMuted);max-width:260px}
+#sgk-care .sgk-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:clamp(44px,6vw,72px)}
+#sgk-care .sgk-tip{display:flex;gap:18px;align-items:center;padding:26px;border-radius:24px;background:var(--sgk-accent);color:var(--sgk-btnText)}
+#sgk-care .sgk-tip-ic{flex:none;width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:var(--sgk-btnText);color:var(--sgk-accent)}
+#sgk-care .sgk-tip-ic svg{width:26px;height:26px}
+#sgk-care .sgk-tip-l{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+#sgk-care .sgk-tip-t{margin-top:8px;font-family:var(--sgk-font-h);font-weight:600;font-size:17px;line-height:1.4}
+#sgk-care .sgk-dont{padding:26px;border-radius:24px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder)}
+#sgk-care .sgk-dont-l{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-danger)}
+#sgk-care .sgk-dont ul{list-style:none;margin-top:12px}
+#sgk-care .sgk-dont li{display:flex;align-items:flex-start;gap:12px;padding:9px 0;font-size:15px;line-height:1.45;color:var(--sgk-text);border-top:1px solid var(--sgk-line)}
+#sgk-care .sgk-dont li:first-child{border-top:0}
+#sgk-care .sgk-dont li span{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,106,92,.14);color:var(--sgk-danger)}
+#sgk-care .sgk-dont li svg{width:13px;height:13px}
+@media (max-width:900px){
+  #sgk-care .sgk-steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  #sgk-care .sgk-line{display:none}
+  #sgk-care .sgk-bottom{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  #sgk-care .sgk-steps{grid-template-columns:minmax(0,1fr);row-gap:0}
+  #sgk-care .sgk-line{display:block;left:38px !important;right:auto !important;top:40px;bottom:40px;width:2px;height:auto}
+  #sgk-care .sgk-line-f{width:100%;height:0;transition:height 1.8s cubic-bezier(.6,.1,.2,1) .3s}
+  #sgk-care .sgk-steps.is-in .sgk-line-f,#sgk-care.sgk-static .sgk-line-f{height:100%}
+  #sgk-care .sgk-step{display:grid;grid-template-columns:78px 1fr;column-gap:18px;align-items:start;text-align:left;padding:0 0 26px}
+  #sgk-care .sgk-st-ic{grid-row:span 2}
+  #sgk-care .sgk-st-t{margin-top:12px}
+  #sgk-care .sgk-st-d{margin-top:6px;max-width:none}
+  #sgk-care .sgk-tip{flex-direction:column}
+}
+
+@@config
+    kicker: "Догляд",                                      /* ЗМІНИТИ - надпис над заголовком */
+    title: "Щоб хват [жив довше]",                          /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    lead: "Латекс - живий матеріал. Чотири прості кроки після кожної гри - і рукавиці прослужать значно довше.", /* ЗМІНИТИ - текст під заголовком */
+
+    steps: [                                                /* ЗМІНИТИ - кроки догляду */
+      { icon: "water", title: "Промий після гри",           text: "Теплою водою без порошку, руками, 1-2 хвилини." },        /* ЗМІНИТИ */
+      { icon: "hand",  title: "Віджми без скручування",     text: "Притисни рушником. Не викручуй латекс - він рветься." },   /* ЗМІНИТИ */
+      { icon: "wind",  title: "Суши природно",              text: "Подалі від батареї та сонця, з папером всередині." },      /* ЗМІНИТИ */
+      { icon: "bag",   title: "Зберігай окремо",            text: "У сумці для рукавиць, латексом не одне до одного." }       /* ЗМІНИТИ */
+    ],
+
+    tipIcon: "drop",                                        /* ЗМІНИТИ - іконка поради */
+    tipLabel: "Порада воротаря",                            /* ЗМІНИТИ - підпис поради */
+    tipText: "Перед грою злегка змочи латекс водою - хват стане помітно кращим.", /* ЗМІНИТИ - текст поради */
+
+    dontLabel: "Чого не робити",                            /* ЗМІНИТИ - заголовок списку заборон */
+    dont: [                                                 /* ЗМІНИТИ - список "не робити" */
+      "Не прати в пральній машині",
+      "Не сушити на батареї чи під феном",
+      "Не залишати мокрими в закритій сумці"
+    ],
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+
+  var stepsEl = q("steps");
+  stepsEl.classList.add("sgk-rv");
+  stepsEl.style.opacity = "1"; stepsEl.style.transform = "none";
+  CONFIG.steps.forEach(function (s, i) {
+    var d = mk("div", "sgk-step sgk-rv"); d.setAttribute("data-d", (0.15 + i * 0.2).toFixed(2));
+    var ic = mk("div", "sgk-st-ic"); ic.innerHTML = icon(s.icon, 1.6);
+    ic.appendChild(mk("span", "sgk-st-n", String(i + 1)));
+    d.appendChild(ic);
+    d.appendChild(mk("div", "sgk-st-t", s.title));
+    d.appendChild(mk("p", "sgk-st-d", s.text));
+    stepsEl.appendChild(d);
+  });
+  root.style.setProperty("--sgk-n", Math.max(1, CONFIG.steps.length));
+  if (CONFIG.steps.length) root.style.setProperty("--sgk-ll", (50 / CONFIG.steps.length) + "%");
+
+  q("tipIc").innerHTML = icon(CONFIG.tipIcon || "drop");
+  txt("tipLabel", CONFIG.tipLabel);
+  txt("tipText", CONFIG.tipText);
+  txt("dontLabel", CONFIG.dontLabel);
+  var ul = q("dont");
+  CONFIG.dont.forEach(function (t) {
+    var li = mk("li"); var s = mk("span"); s.innerHTML = icon("x", 2.6); li.appendChild(s); li.appendChild(mk("div", "", t)); ul.appendChild(li);
+  });
+
+  reveal();
+
+@@notes
+kicker / title / lead - надписи над блоком.
+
+steps - кроки догляду (icon, title, text). На ПК - в ряд з лінією,
+  яка "заповнюється" зліва направо; на телефоні - вертикально.
+
+tipIcon / tipLabel / tipText - лаймова картка з порадою.
+dontLabel / dont - список "Чого не робити".
+
+Тексти - загальні правила догляду за латексом. Якщо у клієнта є
+свої рекомендації - замініть.

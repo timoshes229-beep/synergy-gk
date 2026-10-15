@@ -1,0 +1,161 @@
+@@meta
+id: sgk-story
+anchor: about
+title: Засновник та історія бренду
+pos: після блоку 05 (Підбір розміру).
+icons: no
+
+@@html
+<section id="sgk-story" aria-label="Засновник">
+  <div class="sgk-wrap">
+    <div class="sgk-grid">
+      <div class="sgk-photo-col sgk-rv">
+        <div class="sgk-frame"></div>
+        <div class="sgk-photo" data-sgk="photo"></div>
+        <div class="sgk-seal" data-sgk="seal">
+          <svg class="sgk-seal-ring" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="sgk-story-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+            <text><textPath href="#sgk-story-circle" data-sgk="sealText"></textPath></text>
+          </svg>
+          <div class="sgk-seal-in" data-sgk="sealLogo"></div>
+        </div>
+        <div class="sgk-num" data-sgk="number"></div>
+      </div>
+      <div class="sgk-text-col">
+        <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+        <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+        <div class="sgk-paras" data-sgk="paras"></div>
+        <blockquote class="sgk-quote sgk-rv" data-d="0.3">
+          <svg class="sgk-q-ic" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V22C0 9 7 1 19 0v8C12 10 9 14 9 20h10v16zm29 0V22C29 9 36 1 48 0v8c-7 2-10 6-10 12h10v16z"/></svg>
+          <p data-sgk="quote"></p>
+          <footer><span class="sgk-sign" data-sgk="name"></span><span class="sgk-role" data-sgk="role"></span></footer>
+        </blockquote>
+        <div class="sgk-facts" data-sgk="facts"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@@css
+#sgk-story .sgk-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,96px);align-items:center}
+#sgk-story .sgk-photo-col{position:relative;padding:0 24px 24px 0}
+#sgk-story .sgk-frame{position:absolute;top:24px;left:24px;right:0;bottom:0;border:2px solid var(--sgk-accent);border-radius:30px;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+#sgk-story .sgk-photo-col:hover .sgk-frame{transform:translate(8px,8px)}
+#sgk-story .sgk-photo{position:relative;aspect-ratio:4/5;border-radius:30px;overflow:hidden;background:var(--sgk-phBg);
+  -webkit-clip-path:inset(0 0 100% 0 round 30px);clip-path:inset(0 0 100% 0 round 30px);transition:-webkit-clip-path 1.3s cubic-bezier(.7,0,.2,1) .15s,clip-path 1.3s cubic-bezier(.7,0,.2,1) .15s}
+#sgk-story .sgk-photo-col.is-in .sgk-photo,#sgk-story.sgk-static .sgk-photo{-webkit-clip-path:inset(0 0 0 0 round 30px);clip-path:inset(0 0 0 0 round 30px)}
+#sgk-story .sgk-photo .sgk-img{transform:scale(1.12);transition:transform 1.8s cubic-bezier(.2,.8,.2,1) .15s;object-position:var(--sgk-pos,50% 20%)}
+#sgk-story .sgk-photo-col.is-in .sgk-photo .sgk-img{transform:scale(1.02)}
+#sgk-story .sgk-seal{position:absolute;right:-6px;top:40px;width:136px;height:136px;border-radius:50%;background:var(--sgk-bg);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+#sgk-story .sgk-seal-ring{position:absolute;top:0;left:0;width:100%;height:100%;animation:sgkSpin 18s linear infinite}
+#sgk-story .sgk-seal-ring text{font-family:var(--sgk-font-h);font-weight:700;font-size:15px;fill:var(--sgk-accent);text-transform:uppercase}
+#sgk-story .sgk-seal-in{position:absolute;top:50%;left:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1.5px rgba(255,255,255,.3)}
+#sgk-story .sgk-seal-in img{width:100%;height:100%;object-fit:cover}
+#sgk-story .sgk-num{position:absolute;left:-10px;bottom:-4px;font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(90px,11vw,170px);line-height:.8;color:transparent;-webkit-text-stroke:2px var(--sgk-accent);pointer-events:none}
+#sgk-story .sgk-paras{margin-top:22px}
+#sgk-story .sgk-paras p{font-size:clamp(15px,1.15vw,17px);line-height:1.7;color:var(--sgk-textMuted)}
+#sgk-story .sgk-paras p + p{margin-top:14px}
+#sgk-story .sgk-quote{position:relative;margin-top:30px;padding:26px 28px 24px;border-radius:24px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);border-left:3px solid var(--sgk-accent)}
+#sgk-story .sgk-q-ic{width:36px;height:27px;fill:var(--sgk-accent);margin-bottom:14px}
+#sgk-story .sgk-quote p{font-family:var(--sgk-font-h);font-weight:600;font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:var(--sgk-text)}
+#sgk-story .sgk-quote footer{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:16px}
+#sgk-story .sgk-sign{font-weight:800;font-size:15px;color:var(--sgk-accent)}
+#sgk-story .sgk-role{font-size:13.5px;color:var(--sgk-textMuted)}
+#sgk-story .sgk-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+#sgk-story .sgk-fact{padding:18px 18px;border-radius:20px;border:1px solid var(--sgk-cardBorder)}
+#sgk-story .sgk-fact-v{font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(22px,2.2vw,30px);color:var(--sgk-text)}
+#sgk-story .sgk-fact-l{margin-top:6px;font-size:13px;line-height:1.4;color:var(--sgk-textMuted)}
+@keyframes sgkSpin{to{transform:rotate(360deg)}}
+@media (max-width:900px){
+  #sgk-story .sgk-grid{grid-template-columns:minmax(0,1fr)}
+  #sgk-story .sgk-photo-col{max-width:460px}
+}
+@media (max-width:560px){
+  #sgk-story .sgk-photo-col{padding:0 14px 14px 0}
+  #sgk-story .sgk-frame{top:14px;left:14px;border-radius:24px}
+  #sgk-story .sgk-photo{border-radius:24px}
+  #sgk-story .sgk-seal{width:104px;height:104px;top:22px;right:-4px}
+  #sgk-story .sgk-seal-in{width:46px;height:46px;margin:-23px 0 0 -23px}
+  #sgk-story .sgk-facts{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:8px}
+  #sgk-story .sgk-fact{padding:14px 12px}
+  #sgk-story .sgk-fact-v{font-size:20px}
+  #sgk-story .sgk-fact-l{font-size:11.5px}
+  #sgk-story .sgk-quote{padding:22px 20px}
+}
+
+@@config
+    kicker: "Засновник",                                         /* ЗМІНИТИ - надпис над заголовком */
+    title: "Я роками шукав [ідеальні] рукавиці. Тож зробив свої", /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    paragraphs: [                                                 /* ЗМІНИТИ - абзаци історії (чернетка - замініть на реальну історію) */
+      "Synergy з'явився у воротах. Засновник бренду - діючий воротар, і кожна пара спочатку проходить перевірку в його руках: на тренуваннях, у дощ, у важких матчах.",
+      "Ми не перепродуємо чужі бренди. Ми робимо рукавиці, в яких самі готові вийти на поле - і чесно розповідаємо, кому підходить кожна модель."
+    ],
+    quote: "Воротар не має права на помилку. Тому і рукавиці не мають права підвести.", /* ЗМІНИТИ - цитата засновника */
+    name: "Ім'я Прізвище",                                        /* ЗМІНИТИ - ім'я засновника */
+    role: "засновник Synergy, воротар",                           /* ЗМІНИТИ - хто він */
+
+    photo: "__ASSETS__hero-mobile.jpg",                           /* ЗМІНИТИ - фото засновника ("" = заглушка) */
+    photoPosition: "50% 18%",                                     /* ЗМІНИТИ - яку частину фото показувати "X% Y%" */
+    photoLabel: "Фото засновника",                                /* ЗМІНИТИ - підпис на заглушці */
+    number: "33",                                                 /* ЗМІНИТИ - велика цифра біля фото (ігровий номер). "" - прибрати */
+    sealText: "SYNERGY - GOALKEEPER GLOVES - ",              /* ЗМІНИТИ - текст, що крутиться по колу (сам розтягується на все коло) */
+    sealLogo: "__ASSETS__logo.png",                               /* ЗМІНИТИ - логотип у центрі кола. "" - сховати коло */
+
+    facts: [                                                      /* ЗМІНИТИ - 3 факти (заглушки - уточніть у клієнта) */
+      { value: "XX",  label: "років у воротах" },
+      { value: "XXX", label: "матчів у рукавицях Synergy" },
+      { value: "33",  label: "ігровий номер" }
+    ],
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  var ps = q("paras");
+  CONFIG.paragraphs.forEach(function (t, i) { var p = mk("p", "sgk-rv", t); p.setAttribute("data-d", (0.16 + i * 0.08).toFixed(2)); ps.appendChild(p); });
+  txt("quote", CONFIG.quote);
+  txt("name", CONFIG.name);
+  txt("role", CONFIG.role);
+  txt("number", CONFIG.number);
+  if (!CONFIG.number) q("number").style.display = "none";
+
+  var ph = q("photo");
+  ph.appendChild(media(CONFIG.photo, CONFIG.name, CONFIG.photoLabel, "photo"));
+  ph.style.setProperty("--sgk-pos", CONFIG.photoPosition || "50% 20%");
+
+  if (CONFIG.sealLogo) {
+    q("sealText").textContent = CONFIG.sealText;
+    q("sealText").setAttribute("textLength", "486");
+    q("sealText").setAttribute("lengthAdjust", "spacing");
+    var li = mk("img"); li.src = CONFIG.sealLogo; li.alt = "logo"; q("sealLogo").appendChild(li);
+    if (!animOn) root.querySelector(".sgk-seal-ring").style.animation = "none";
+  } else q("seal").style.display = "none";
+
+  var fx = q("facts");
+  CONFIG.facts.forEach(function (f, i) {
+    var d = mk("div", "sgk-fact sgk-rv"); d.setAttribute("data-d", (0.35 + i * 0.08).toFixed(2));
+    d.appendChild(mk("div", "sgk-fact-v", f.value));
+    d.appendChild(mk("div", "sgk-fact-l", f.label));
+    fx.appendChild(d);
+  });
+  if (!CONFIG.facts.length) fx.style.display = "none";
+
+  reveal();
+
+@@notes
+kicker / title - надпис і заголовок.
+paragraphs     - абзаци історії (можна 1-4).
+quote          - цитата засновника; name, role - підпис під нею.
+
+ФОТО
+  photo         - фото засновника (зараз - фото з прапором);
+  photoPosition - яку частину фото показувати, формат "X% Y%";
+  number        - велика контурна цифра біля фото (ігровий номер 33);
+  sealText      - текст, що обертається по колу біля логотипу;
+  sealLogo      - логотип у центрі кола ("" - прибрати коло).
+  При появі фото "відкривається шторкою" згори вниз.
+
+facts - 3 факти під цитатою (value - число, label - підпис).
+
+УВАГА: ім'я, історія, цитата і цифри - ЗАГЛУШКИ. Попросіть у
+клієнта: ім'я засновника, клуб/досвід, 2-3 речення його історії,
+і цитату "від себе".

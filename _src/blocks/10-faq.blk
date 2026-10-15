@@ -1,0 +1,171 @@
+@@meta
+id: sgk-faq
+anchor: faq
+title: Питання та відповіді (FAQ)
+pos: після блоку 09 (Доставка).
+icons: yes
+
+@@html
+<section id="sgk-faq" aria-label="Питання та відповіді">
+  <div class="sgk-wrap">
+    <div class="sgk-grid">
+      <div class="sgk-side">
+        <div class="sgk-head">
+          <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+          <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+          <p class="sgk-lead sgk-rv" data-d="0.16" data-sgk="lead"></p>
+        </div>
+        <div class="sgk-ask sgk-rv" data-d="0.2">
+          <div class="sgk-ask-t" data-sgk="askTitle"></div>
+          <p class="sgk-ask-d" data-sgk="askText"></p>
+          <div class="sgk-ask-b">
+            <a class="sgk-btn sgk-btn--main" data-sgk="tg" href="#"><span class="sgk-bi" data-sgk="tgIc"></span><span data-sgk="tgText"></span></a>
+            <a class="sgk-btn sgk-btn--ghost" data-sgk="ig" href="#"><span class="sgk-bi" data-sgk="igIc"></span><span data-sgk="igText"></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="sgk-list" data-sgk="list"></div>
+    </div>
+  </div>
+</section>
+
+@@css
+#sgk-faq{overflow:visible}
+#sgk-faq .sgk-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,5vw,80px);align-items:start}
+#sgk-faq .sgk-side{position:sticky;top:100px}
+#sgk-faq .sgk-side .sgk-head{margin-bottom:28px}
+#sgk-faq .sgk-ask{padding:26px;border-radius:24px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder)}
+#sgk-faq .sgk-ask-t{font-family:var(--sgk-font-h);font-weight:700;font-size:19px;color:var(--sgk-text)}
+#sgk-faq .sgk-ask-d{margin-top:8px;font-size:14.5px;line-height:1.55;color:var(--sgk-textMuted)}
+#sgk-faq .sgk-ask-b{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+#sgk-faq .sgk-ask-b .sgk-btn{height:50px;padding:0 20px;font-size:14px}
+#sgk-faq .sgk-bi{display:flex}
+#sgk-faq .sgk-bi svg{width:19px;height:19px}
+#sgk-faq .sgk-item{border-bottom:1px solid var(--sgk-line)}
+#sgk-faq .sgk-item:first-child{border-top:1px solid var(--sgk-line)}
+#sgk-faq .sgk-q{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;padding:24px 0;text-align:left;font-family:var(--sgk-font-h);font-weight:600;font-size:clamp(16px,1.4vw,19px);line-height:1.35;color:var(--sgk-text);transition:color .3s ease}
+#sgk-faq .sgk-q:hover{color:var(--sgk-accent)}
+#sgk-faq .sgk-pl{flex:none;position:relative;width:40px;height:40px;border-radius:50%;border:1px solid var(--sgk-cardBorder);transition:background .35s ease,border-color .35s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+#sgk-faq .sgk-pl::before,#sgk-faq .sgk-pl::after{content:"";position:absolute;top:50%;left:50%;width:14px;height:2px;margin:-1px 0 0 -7px;border-radius:2px;background:var(--sgk-text);transition:transform .45s cubic-bezier(.2,.8,.2,1),background .35s ease}
+#sgk-faq .sgk-pl::after{transform:rotate(90deg)}
+#sgk-faq .sgk-item.is-open .sgk-pl{background:var(--sgk-accent);border-color:var(--sgk-accent);transform:rotate(180deg)}
+#sgk-faq .sgk-item.is-open .sgk-pl::before,#sgk-faq .sgk-item.is-open .sgk-pl::after{background:var(--sgk-btnText)}
+#sgk-faq .sgk-item.is-open .sgk-pl::after{transform:rotate(0deg)}
+#sgk-faq .sgk-a{height:0;overflow:hidden;transition:height .45s cubic-bezier(.2,.8,.2,1)}
+#sgk-faq .sgk-a-in{padding:0 60px 26px 0;font-size:15.5px;line-height:1.7;color:var(--sgk-textMuted);opacity:0;transform:translateY(-8px);transition:opacity .4s ease .05s,transform .45s ease .05s}
+#sgk-faq .sgk-item.is-open .sgk-a-in{opacity:1;transform:none}
+#sgk-faq .sgk-a-in a{color:var(--sgk-accent) !important;font-weight:700;border-bottom:1px solid currentColor}
+@media (max-width:900px){
+  #sgk-faq .sgk-grid{grid-template-columns:minmax(0,1fr)}
+  #sgk-faq .sgk-side{position:static}
+  #sgk-faq .sgk-ask{display:none}
+  #sgk-faq .sgk-ask.sgk-ask--m{display:block;margin-top:28px}
+}
+@media (max-width:560px){
+  #sgk-faq .sgk-a-in{padding-right:0}
+  #sgk-faq .sgk-ask-b .sgk-btn{flex:1 1 100%}
+}
+
+@@config
+    kicker: "FAQ",                                          /* ЗМІНИТИ - надпис над заголовком */
+    title: "Часті [питання]",                               /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    lead: "Коротко про те, що питають найчастіше.",          /* ЗМІНИТИ - текст під заголовком */
+
+    askTitle: "Не знайшли відповідь?",                       /* ЗМІНИТИ - заголовок картки "запитати" */
+    askText: "Напишіть нам - відповімо і допоможемо з розміром особисто.", /* ЗМІНИТИ - текст */
+    telegramText: "Telegram",                                /* ЗМІНИТИ - текст кнопки Telegram */
+    telegramLink: "https://t.me/synergy_gk",                 /* ЗМІНИТИ - посилання на Telegram ("" - сховати) */
+    instagramText: "Instagram",                              /* ЗМІНИТИ - текст кнопки Instagram */
+    instagramLink: "https://ig.me/m/synergy.gk",             /* ЗМІНИТИ - посилання в директ Instagram ("" - сховати) */
+    openFirst: true,                                         /* ЗМІНИТИ - true = перше питання відкрите одразу */
+
+    /* ПИТАННЯ. У відповіді можна зробити посилання: [текст](#size) */
+    items: [                                                                                     /* ЗМІНИТИ */
+      { q: "Як обрати розмір?", a: "Поміряйте обхват долоні і скористайтеся [калькулятором розміру](#size) - він покаже ваш розмір за кілька секунд. Якщо сумніваєтесь - напишіть нам." },
+      { q: "Чим відрізняються Negative cut і Roll finger?", a: "Negative - шви всередині, щільна посадка і точний контроль. Roll finger - латекс обгортає пальці, більша площа хвату. Детально - у блоці [Типи крою](#cut)." },
+      { q: "Скільки служать рукавиці?", a: "Залежить від покриття, частоти ігор і догляду. Ігрові рукавиці при правильному догляді служать сезон і більше. Тренувальні моделі - найміцніші." },
+      { q: "Чи можна грати на штучному газоні?", a: "Так. Перед грою злегка змочіть латекс - це покращує хват і зменшує знос на синтетиці." },
+      { q: "Як обміняти розмір?", a: "Напишіть нам протягом 14 днів. Рукавиці мають бути без слідів гри. Ми підберемо правильний розмір і відправимо новий." },
+      { q: "Чи є дитячі рукавиці?", a: "Так, у каталозі є дитячі моделі від розміру 4. Фільтр \"Дитячі\" у [каталозі](#catalog)." }
+    ],
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+
+  function setupAsk(box) {
+    box.querySelector('[data-sgk="askTitle"]').textContent = CONFIG.askTitle;
+    box.querySelector('[data-sgk="askText"]').textContent = CONFIG.askText;
+    var tg = box.querySelector('[data-sgk="tg"]'), ig = box.querySelector('[data-sgk="ig"]');
+    box.querySelector('[data-sgk="tgIc"]').innerHTML = icon("telegram");
+    box.querySelector('[data-sgk="igIc"]').innerHTML = icon("instagram");
+    box.querySelector('[data-sgk="tgText"]').textContent = CONFIG.telegramText;
+    box.querySelector('[data-sgk="igText"]').textContent = CONFIG.instagramText;
+    if (CONFIG.telegramLink) lnk(tg, CONFIG.telegramLink, true); else tg.style.display = "none";
+    if (CONFIG.instagramLink) lnk(ig, CONFIG.instagramLink, true); else ig.style.display = "none";
+  }
+  var ask = root.querySelector(".sgk-ask");
+  setupAsk(ask);
+
+  function answerHtml(s) {
+    return esc(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, t, h) {
+      var ext = /^https?:/.test(h);
+      return '<a href="' + h + '"' + (ext ? ' target="_blank" rel="noopener"' : "") + ">" + t + "</a>";
+    });
+  }
+
+  var list = q("list"), items = [];
+  CONFIG.items.forEach(function (it, i) {
+    var d = mk("div", "sgk-item sgk-rv"); d.setAttribute("data-d", (0.05 + i * 0.07).toFixed(2));
+    var b = mk("button", "sgk-q"); b.type = "button"; b.setAttribute("aria-expanded", "false");
+    b.appendChild(mk("span", "", it.q)); b.appendChild(mk("span", "sgk-pl"));
+    var a = mk("div", "sgk-a"); var ai = mk("div", "sgk-a-in"); ai.innerHTML = answerHtml(it.a); a.appendChild(ai);
+    d.appendChild(b); d.appendChild(a); list.appendChild(d);
+    items.push({ d: d, b: b, a: a, ai: ai });
+    b.addEventListener("click", function () { toggle(i); });
+  });
+  function setOpen(o, open) {
+    o.d.classList.toggle("is-open", open);
+    o.b.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) {
+      o.a.style.height = o.ai.offsetHeight + "px";
+      setTimeout(function () { if (o.d.classList.contains("is-open")) o.a.style.height = "auto"; }, 460);
+    } else {
+      o.a.style.height = o.a.offsetHeight + "px"; void o.a.offsetHeight; o.a.style.height = "0px";
+    }
+  }
+  function toggle(i) {
+    items.forEach(function (o, k) {
+      if (k === i) setOpen(o, !o.d.classList.contains("is-open"));
+      else if (o.d.classList.contains("is-open")) setOpen(o, false);
+    });
+  }
+  if (CONFIG.openFirst && items[0]) { items[0].d.classList.add("is-open"); items[0].a.style.height = "auto"; items[0].b.setAttribute("aria-expanded", "true"); }
+
+  /* на телефоні картка "Не знайшли відповідь?" переїжджає під питання */
+  var askM = ask.cloneNode(true); askM.className = "sgk-ask sgk-ask--m sgk-rv"; askM.style.display = "";
+  list.parentNode.appendChild(askM);
+  setupAsk(askM);
+  function placeAsk() { var m = window.innerWidth <= 900; askM.style.display = m ? "block" : "none"; }
+  placeAsk(); window.addEventListener("resize", placeAsk);
+
+  reveal();
+
+@@notes
+kicker / title / lead - надписи.
+
+items - питання і відповіді:
+  q - питання; a - відповідь.
+  У відповіді можна вставити посилання так: [текст посилання](#size)
+  (#якір - на блок цієї сторінки, або повна адреса https://...).
+openFirst - true = перше питання відкрите одразу.
+
+Картка "Не знайшли відповідь?" з кнопками Telegram і Instagram:
+  askTitle, askText - тексти;
+  telegramLink - посилання на Telegram (https://t.me/НІК);
+  instagramLink - директ Instagram (https://ig.me/m/НІК).
+  На ПК картка "прилипає" при прокрутці, на телефоні стоїть під
+  питаннями.
+
+УВАГА: нік Telegram synergy_gk - ЗАГЛУШКА, уточніть у клієнта.

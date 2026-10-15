@@ -1,0 +1,355 @@
+@@meta
+id: sgk-cat
+anchor: catalog
+title: Каталог моделей
+pos: після блоку 02 (Переваги).
+icons: yes
+colors: bg=#0F1211
+extra: danger=#FF6A5C|колір підказки "Оберіть розмір"; barTrack=rgba(255,255,255,0.10)|фон порожньої шкали
+
+@@install
+ВАЖЛИВО: щоб кнопка "У кошик" працювала, на цій же сторінці має
+стояти блок 12 (Кошик). cartKey у цьому блоці і в блоці 12 мають
+бути однакові (за замовчуванням вже однакові).
+
+@@html
+<section id="sgk-cat" aria-label="Каталог">
+  <div class="sgk-wrap">
+    <div class="sgk-top">
+      <div class="sgk-head">
+        <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+        <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+        <p class="sgk-lead sgk-rv" data-d="0.16" data-sgk="lead"></p>
+      </div>
+      <div class="sgk-filters sgk-rv" data-d="0.2">
+        <div class="sgk-fl" data-sgk="fCat" role="group"></div>
+        <div class="sgk-fl" data-sgk="fCut" role="group"></div>
+      </div>
+    </div>
+    <div class="sgk-grid" data-sgk="grid"></div>
+    <div class="sgk-empty" data-sgk="empty"></div>
+  </div>
+</section>
+
+@@css
+#sgk-cat .sgk-top{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+#sgk-cat .sgk-top .sgk-head{margin-bottom:0}
+#sgk-cat .sgk-filters{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#sgk-cat .sgk-fl{display:flex;flex-wrap:wrap;gap:8px}
+#sgk-cat .sgk-chip{height:40px;padding:0 18px;border-radius:100px;border:1px solid var(--sgk-cardBorder);background:var(--sgk-cardBg);color:var(--sgk-text);font-size:14px;font-weight:600;transition:background .3s ease,color .3s ease,border-color .3s ease,transform .3s ease}
+#sgk-cat .sgk-chip:hover{border-color:var(--sgk-accent);transform:translateY(-2px)}
+#sgk-cat .sgk-chip.is-on{background:var(--sgk-accent);border-color:var(--sgk-accent);color:var(--sgk-btnText)}
+
+#sgk-cat .sgk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#sgk-cat .sgk-card{position:relative;display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .4s ease,opacity .9s ease}
+#sgk-cat .sgk-card:hover{transform:translateY(-6px);border-color:var(--sgk-accentSoft)}
+#sgk-cat .sgk-card.is-hid{display:none}
+#sgk-cat .sgk-card.is-pop{animation:sgkPop .5s cubic-bezier(.2,.8,.2,1)}
+#sgk-cat .sgk-media{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--sgk-phBg)}
+#sgk-cat .sgk-media .sgk-img,#sgk-cat .sgk-media .sgk-ph{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .5s ease}
+#sgk-cat .sgk-card:hover .sgk-media .sgk-img,#sgk-cat .sgk-card:hover .sgk-media .sgk-ph{transform:scale(1.06)}
+#sgk-cat .sgk-media .sgk-img2{opacity:0}
+#sgk-cat .sgk-card:hover .sgk-media .sgk-img2{opacity:1}
+#sgk-cat .sgk-badge{position:absolute;left:16px;top:16px;z-index:2;padding:6px 12px;border-radius:100px;background:var(--sgk-accent);color:var(--sgk-btnText);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+#sgk-cat .sgk-cut{position:absolute;right:16px;top:16px;z-index:2;padding:6px 12px;border-radius:100px;background:rgba(10,12,11,.6);border:1px solid var(--sgk-cardBorder);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--sgk-text);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+#sgk-cat .sgk-body{display:flex;flex-direction:column;flex:1;padding:22px 22px 22px}
+#sgk-cat .sgk-name{font-family:var(--sgk-font-h);font-weight:700;font-size:19px;line-height:1.25;color:var(--sgk-text)}
+#sgk-cat .sgk-desc{margin-top:8px;font-size:14px;line-height:1.55;color:var(--sgk-textMuted)}
+#sgk-cat .sgk-bars{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+#sgk-cat .sgk-bar-h{display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+#sgk-cat .sgk-bar-l{color:var(--sgk-textMuted)}
+#sgk-cat .sgk-bar-v{font-weight:700;color:var(--sgk-text)}
+#sgk-cat .sgk-bar-t{margin-top:6px;height:5px;border-radius:5px;background:var(--sgk-barTrack);overflow:hidden}
+#sgk-cat .sgk-bar-f{height:100%;width:0;border-radius:5px;background:var(--sgk-accent);transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+#sgk-cat .sgk-card.is-in .sgk-bar-f,#sgk-cat.sgk-static .sgk-bar-f{width:var(--w)}
+#sgk-cat .sgk-sz-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sgk-textMuted)}
+#sgk-cat .sgk-hint{letter-spacing:0;text-transform:none;font-weight:600;color:var(--sgk-danger);opacity:0;transition:opacity .3s ease}
+#sgk-cat .sgk-card.is-need .sgk-hint{opacity:1}
+#sgk-cat .sgk-szs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+#sgk-cat .sgk-card.is-need .sgk-szs{animation:sgkShake .45s ease}
+#sgk-cat .sgk-sz{min-width:42px;height:38px;padding:0 10px;border-radius:12px;border:1px solid var(--sgk-cardBorder);color:var(--sgk-text);font-size:14px;font-weight:700;transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease}
+#sgk-cat .sgk-sz:hover{border-color:var(--sgk-accent)}
+#sgk-cat .sgk-sz.is-on{background:var(--sgk-accent);border-color:var(--sgk-accent);color:var(--sgk-btnText);transform:translateY(-2px)}
+#sgk-cat .sgk-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:22px}
+#sgk-cat .sgk-price{display:flex;flex-direction:column;gap:2px;padding-top:18px}
+#sgk-cat .sgk-pnow{font-family:var(--sgk-font-h);font-weight:700;font-size:21px;color:var(--sgk-text);white-space:nowrap}
+#sgk-cat .sgk-pold{font-size:13px;color:var(--sgk-textMuted);text-decoration:line-through}
+#sgk-cat .sgk-add{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;height:50px;margin-top:18px;padding:0 8px 0 20px;border-radius:100px;background:var(--sgk-accent);color:var(--sgk-btnText) !important;font-size:14px;font-weight:800;white-space:nowrap;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),background .3s ease,box-shadow .3s ease}
+#sgk-cat .sgk-add span{color:var(--sgk-btnText) !important}
+#sgk-cat .sgk-add:hover{background:var(--sgk-accentHover);transform:translateY(-2px);box-shadow:0 12px 30px var(--sgk-btnShadow)}
+#sgk-cat .sgk-add-ic{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-btnText);color:var(--sgk-accent) !important;transition:transform .4s cubic-bezier(.2,1.4,.4,1)}
+#sgk-cat .sgk-add .sgk-add-ic{color:var(--sgk-accent) !important}
+#sgk-cat .sgk-add-ic svg{width:17px;height:17px}
+#sgk-cat .sgk-add:hover .sgk-add-ic{transform:rotate(-12deg) scale(1.08)}
+#sgk-cat .sgk-add.is-done .sgk-add-ic{transform:scale(1.15)}
+#sgk-cat .sgk-empty{display:none;padding:48px 20px;text-align:center;color:var(--sgk-textMuted);font-size:15px}
+#sgk-cat .sgk-empty.is-on{display:block}
+#sgk-cat .sgk-fly{position:fixed;z-index:99999;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--sgk-accent);box-shadow:0 0 0 6px var(--sgk-accentSoft);pointer-events:none;
+  transition:transform .75s cubic-bezier(.55,-0.2,.7,.9),opacity .75s ease}
+@keyframes sgkPop{0%{opacity:0;transform:translateY(18px) scale(.98)}100%{opacity:1;transform:none}}
+@keyframes sgkShake{0%,100%{transform:none}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+@media (max-width:1100px){#sgk-cat .sgk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){
+  #sgk-cat .sgk-filters{align-items:flex-start}
+  #sgk-cat .sgk-top{align-items:flex-start;flex-direction:column}
+}
+@media (max-width:600px){
+  #sgk-cat .sgk-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  #sgk-cat .sgk-media{aspect-ratio:4/3}
+  #sgk-cat .sgk-fl{flex-wrap:nowrap;overflow-x:auto;width:calc(100% + 32px);margin:0 -16px;padding:2px 16px;scrollbar-width:none}
+  #sgk-cat .sgk-fl::-webkit-scrollbar{display:none}
+  #sgk-cat .sgk-chip{flex:none}
+  #sgk-cat .sgk-filters{width:100%}
+}
+
+@@config
+    kicker: "Каталог",                                  /* ЗМІНИТИ - надпис над заголовком */
+    title: "Обери [свою] зброю",                         /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    lead: "Дорослі та дитячі моделі. Обери розмір - і рукавиці вже у кошику.", /* ЗМІНИТИ - текст під заголовком */
+    currency: "грн",                                     /* ЗМІНИТИ - валюта */
+    addText: "У кошик",                                  /* ЗМІНИТИ - текст кнопки */
+    addedText: "Додано",                                 /* ЗМІНИТИ - текст кнопки після додавання */
+    sizeLabel: "Розмір",                                 /* ЗМІНИТИ - підпис над розмірами */
+    needSizeText: "Оберіть розмір",                      /* ЗМІНИТИ - підказка, якщо розмір не обрано */
+    emptyText: "За цими фільтрами моделей поки немає.",  /* ЗМІНИТИ - текст, якщо фільтр нічого не знайшов */
+    photoLabel: "Фото моделі",                           /* ЗМІНИТИ - підпис на заглушці замість фото */
+
+    categories: [                                        /* ЗМІНИТИ - фільтр за категорією (id має збігатися з category товару) */
+      { id: "all",   name: "Усі" },
+      { id: "adult", name: "Дорослі" },
+      { id: "kids",  name: "Дитячі" }
+    ],
+    cuts: [                                              /* ЗМІНИТИ - фільтр за кроєм (id має збігатися з cut товару). Порожній список [] - фільтр сховається */
+      { id: "all",      name: "Усі крої" },
+      { id: "negative", name: "Negative" },
+      { id: "roll",     name: "Roll finger" },
+      { id: "hybrid",   name: "Hybrid" }
+    ],
+    cutNames: { negative: "Negative cut", roll: "Roll finger", hybrid: "Hybrid cut" }, /* ЗМІНИТИ - як крій підписаний на фото товару */
+
+    /* Шкали в картках товару (однакові назви для всіх моделей). Значення для кожної моделі - у полі ratings товару */
+    ratingLabels: ["Хват", "Посадка", "Зносостійкість"], /* ЗМІНИТИ - назви шкал */
+
+    /* ТОВАРИ. Скопіюйте рядок { ... }, щоб додати модель. id - унікальний, латиницею без пробілів */
+    products: [
+      { id: "pro-negative", name: "Synergy Pro Negative", category: "adult", cut: "negative", price: 1650, oldPrice: 1900, badge: "Хіт",  desc: "Щільна посадка і максимальний контроль м'яча.", ratings: [9.6, 9.8, 8.5], sizes: ["7","8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
+      { id: "pro-roll",     name: "Synergy Pro Roll",     category: "adult", cut: "roll",     price: 1650, oldPrice: 0,    badge: "New",  desc: "Латекс обгортає пальці - більше площі для хвату.", ratings: [9.8, 9.0, 8.6], sizes: ["7","8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
+      { id: "hybrid-elite", name: "Synergy Hybrid Elite", category: "adult", cut: "hybrid",   price: 1950, oldPrice: 0,    badge: "",     desc: "Топова модель для матчів: щільність і площа контакту.", ratings: [9.7, 9.5, 9.0], sizes: ["8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
+      { id: "training",     name: "Synergy Training",     category: "adult", cut: "negative", price: 990,  oldPrice: 0,    badge: "",     desc: "Міцні рукавиці для щоденних тренувань.", ratings: [8.6, 9.2, 9.6], sizes: ["7","8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
+      { id: "junior-neg",   name: "Synergy Junior Negative", category: "kids", cut: "negative", price: 890, oldPrice: 0,  badge: "Kids", desc: "Дитяча модель з тим самим латексом, що й у дорослих.", ratings: [9.2, 9.4, 8.4], sizes: ["4","5","6","7"], image: "", image2: "" }, /* ЗМІНИТИ */
+      { id: "junior-roll",  name: "Synergy Junior Roll",  category: "kids",  cut: "roll",     price: 890,  oldPrice: 990,  badge: "Kids", desc: "М'яка посадка для юних воротарів.", ratings: [9.3, 8.9, 8.4], sizes: ["4","5","6","7"], image: "", image2: "" }  /* ЗМІНИТИ */
+    ],
+
+@@settings
+      openCartOnAdd: false,   /* ЗМІНИТИ - true = після додавання одразу відкривати кошик */
+      cartKey: "sgk_cart_v1"  /* НЕ ЗМІНЮВАТИ без потреби - має збігатися з блоком 12 (Кошик) */
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+
+  /* --- кошик: спільне сховище з блоком 12 --- */
+  var KEY = S.cartKey || "sgk_cart_v1";
+  function readCart() {
+    try { var v = JSON.parse(window.localStorage.getItem(KEY) || "[]"); return Array.isArray(v) ? v : []; }
+    catch (e) { return window.__sgkCartMem || []; }
+  }
+  function writeCart(c) {
+    window.__sgkCartMem = c;
+    try { window.localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {}
+  }
+  function addToCart(p, size) {
+    var cart = readCart(), key = p.id + "|" + size, found = null;
+    cart.forEach(function (it) { if (it.key === key) found = it; });
+    if (found) found.qty += 1;
+    else cart.push({ key: key, id: p.id, name: p.name, size: size, price: p.price, qty: 1, image: p.image || "" });
+    writeCart(cart);
+    var ev;
+    try { ev = new CustomEvent("sgk:cart", { detail: { action: "add", open: !!S.openCartOnAdd } }); }
+    catch (e) { ev = document.createEvent("CustomEvent"); ev.initCustomEvent("sgk:cart", false, false, { action: "add", open: !!S.openCartOnAdd }); }
+    document.dispatchEvent(ev);
+  }
+
+  /* --- анімація "точка летить у кошик" --- */
+  function fly(fromEl) {
+    if (!animOn) return;
+    var a = fromEl.getBoundingClientRect();
+    var target = document.querySelector("#sgk-cart .sgk-cbtn");
+    var tx = window.innerWidth - 56, ty = window.innerHeight - 56;
+    if (target) { var b = target.getBoundingClientRect(); if (b.width) { tx = b.left + b.width / 2; ty = b.top + b.height / 2; } }
+    var dot = mk("div", "sgk-fly");
+    var sx = a.left + a.width / 2, sy = a.top + a.height / 2;
+    dot.style.left = sx + "px"; dot.style.top = sy + "px";
+    root.appendChild(dot);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        dot.style.transform = "translate(" + (tx - sx) + "px," + (ty - sy) + "px) scale(.6)";
+        dot.style.opacity = "0.2";
+      });
+    });
+    setTimeout(function () { if (dot.parentNode) dot.parentNode.removeChild(dot); }, 850);
+  }
+
+  /* --- картки --- */
+  var grid = q("grid"), cards = [];
+  CONFIG.products.forEach(function (p, i) {
+    var c = mk("article", "sgk-card sgk-rv");
+    c.setAttribute("data-d", (0.05 + (i % 3) * 0.1).toFixed(2));
+    var m = mk("div", "sgk-media");
+    m.appendChild(media(p.image, p.name, CONFIG.photoLabel, "glove"));
+    if (p.image && p.image2) { var i2 = media(p.image2, p.name); i2.className += " sgk-img2"; m.appendChild(i2); }
+    if (p.badge) m.appendChild(mk("span", "sgk-badge", p.badge));
+    if (p.cut && CONFIG.cutNames[p.cut]) m.appendChild(mk("span", "sgk-cut", CONFIG.cutNames[p.cut]));
+    c.appendChild(m);
+
+    var b = mk("div", "sgk-body");
+    b.appendChild(mk("h3", "sgk-name", p.name));
+    if (p.desc) b.appendChild(mk("p", "sgk-desc", p.desc));
+
+    if (p.ratings && p.ratings.length) {
+      var bars = mk("div", "sgk-bars");
+      p.ratings.forEach(function (r, k) {
+        if (!CONFIG.ratingLabels[k]) return;
+        var row = mk("div", "sgk-bar"), h = mk("div", "sgk-bar-h");
+        h.appendChild(mk("span", "sgk-bar-l", CONFIG.ratingLabels[k]));
+        h.appendChild(mk("span", "sgk-bar-v", String(r)));
+        var t = mk("div", "sgk-bar-t"), f = mk("div", "sgk-bar-f");
+        f.style.setProperty("--w", Math.max(0, Math.min(100, r * 10)) + "%");
+        f.style.transitionDelay = (0.5 + k * 0.12) + "s";
+        t.appendChild(f); row.appendChild(h); row.appendChild(t); bars.appendChild(row);
+      });
+      b.appendChild(bars);
+    }
+
+    var szh = mk("div", "sgk-sz-h");
+    szh.appendChild(mk("span", "", CONFIG.sizeLabel));
+    szh.appendChild(mk("span", "sgk-hint", CONFIG.needSizeText));
+    b.appendChild(szh);
+    var szs = mk("div", "sgk-szs");
+    var chosen = { v: "" };
+    (p.sizes || []).forEach(function (s) {
+      var sb = mk("button", "sgk-sz", s);
+      sb.type = "button";
+      sb.setAttribute("data-size", s);
+      sb.addEventListener("click", function () {
+        each(szs.querySelectorAll(".sgk-sz"), function (x) { x.classList.remove("is-on"); });
+        sb.classList.add("is-on"); chosen.v = s; c.classList.remove("is-need");
+      });
+      szs.appendChild(sb);
+    });
+    if (p.sizes && p.sizes.length === 1) { szs.firstChild.classList.add("is-on"); chosen.v = p.sizes[0]; }
+    b.appendChild(szs);
+
+    var foot = mk("div", "sgk-foot");
+    var pr = mk("div", "sgk-price");
+    pr.appendChild(mk("span", "sgk-pnow", fmt(p.price) + " " + CONFIG.currency));
+    if (p.oldPrice) pr.appendChild(mk("span", "sgk-pold", fmt(p.oldPrice) + " " + CONFIG.currency));
+    foot.appendChild(pr);
+    var add = mk("button", "sgk-add");
+    add.type = "button";
+    var at = mk("span", "sgk-add-t", CONFIG.addText);
+    var ai = mk("span", "sgk-add-ic"); ai.innerHTML = icon("bag", 2);
+    add.appendChild(at); add.appendChild(ai);
+    var tmr;
+    add.addEventListener("click", function () {
+      if (!chosen.v) {
+        c.classList.remove("is-need"); void c.offsetWidth; c.classList.add("is-need");
+        return;
+      }
+      addToCart(p, chosen.v);
+      fly(add);
+      add.classList.add("is-done"); at.textContent = CONFIG.addedText; ai.innerHTML = icon("check", 2.4);
+      clearTimeout(tmr);
+      tmr = setTimeout(function () { add.classList.remove("is-done"); at.textContent = CONFIG.addText; ai.innerHTML = icon("bag", 2); }, 1600);
+    });
+    foot.appendChild(add);
+    b.appendChild(foot);
+    c.appendChild(b);
+    grid.appendChild(c);
+    cards.push({ el: c, p: p, szs: szs, chosen: chosen });
+  });
+
+  /* --- фільтри --- */
+  var state = { cat: "all", cut: "all" };
+  function applyFilter() {
+    var shown = 0;
+    cards.forEach(function (o) {
+      var ok = (state.cat === "all" || o.p.category === state.cat) && (state.cut === "all" || o.p.cut === state.cut);
+      if (ok) {
+        shown++;
+        if (o.el.classList.contains("is-hid")) {
+          o.el.classList.remove("is-hid");
+          o.el.classList.add("is-in");
+          if (animOn) { o.el.classList.remove("is-pop"); void o.el.offsetWidth; o.el.classList.add("is-pop"); }
+        }
+      } else o.el.classList.add("is-hid");
+    });
+    var em = q("empty"); em.textContent = CONFIG.emptyText; em.classList.toggle("is-on", shown === 0);
+  }
+  function chips(boxName, list, field) {
+    var box = q(boxName);
+    if (!list || !list.length) { box.style.display = "none"; return; }
+    list.forEach(function (f, i) {
+      var b = mk("button", "sgk-chip" + (i === 0 ? " is-on" : ""), f.name);
+      b.type = "button";
+      b.addEventListener("click", function () {
+        each(box.querySelectorAll(".sgk-chip"), function (x) { x.classList.remove("is-on"); });
+        b.classList.add("is-on"); state[field] = f.id; applyFilter();
+      });
+      box.appendChild(b);
+    });
+  }
+  chips("fCat", CONFIG.categories, "cat");
+  chips("fCut", CONFIG.cuts, "cut");
+
+  /* --- розмір з калькулятора (блок 05) --- */
+  document.addEventListener("sgk:size", function (e) {
+    var s = e && e.detail ? String(e.detail.size) : "";
+    if (!s) return;
+    cards.forEach(function (o) {
+      var btn = o.szs.querySelector('[data-size="' + s + '"]');
+      if (!btn) return;
+      each(o.szs.querySelectorAll(".sgk-sz"), function (x) { x.classList.remove("is-on"); });
+      btn.classList.add("is-on"); o.chosen.v = s; o.el.classList.remove("is-need");
+    });
+  });
+
+  reveal();
+
+@@notes
+kicker / title / lead - надписи над каталогом.
+
+ТОВАРИ  ->  CONFIG.products
+  Кожен товар - один рядок { ... }. Поля:
+  id        - унікальний код латиницею (наприклад "pro-negative");
+  name      - назва моделі;
+  category  - "adult" або "kids" (для фільтра);
+  cut       - "negative", "roll" або "hybrid" (для фільтра і мітки);
+  price     - ціна числом без пробілів: 1650;
+  oldPrice  - стара ціна (буде закреслена), 0 - не показувати;
+  badge     - мітка на фото ("Хіт", "New", "-15%"), "" - без мітки;
+  desc      - короткий опис;
+  ratings   - оцінки для шкал від 0 до 10, наприклад [9.6, 9.8, 8.5]
+              (порядок як у ratingLabels: Хват, Посадка, Зносостійкість);
+              [] - без шкал;
+  sizes     - доступні розміри, наприклад ["7","8","9"];
+  image     - фото товару ("" = заглушка з іконкою рукавиці);
+  image2    - друге фото, показується при наведенні (необов'язково).
+
+ФІЛЬТРИ  ->  categories, cuts
+  Кнопки над товарами. id фільтра має збігатися з category / cut товару.
+  Щоб прибрати фільтр за кроєм: cuts: []
+
+ЯК ПРАЦЮЄ КОШИК
+  Відвідувач обирає розмір -> "У кошик" -> точка "летить" у кнопку
+  кошика (блок 12), лічильник збільшується. Без розміру кнопка
+  трясе розміри і підсвічує "Оберіть розмір".
+  Якщо в калькуляторі розмірів (блок 05) натиснути "Показати
+  рукавиці мого розміру" - цей розмір автоматично обереться в усіх
+  картках, де він є.
+
+УВАГА: назви моделей, ціни, оцінки і розміри - ЗАГЛУШКИ. Замініть
+на реальний асортимент клієнта.

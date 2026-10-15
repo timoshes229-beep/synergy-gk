@@ -407,8 +407,10 @@ SYNERGY GK - ПЕРШИЙ ЕКРАН (HERO) ДЛЯ TILDA, БЛОК T123
 #sgk-hero.sgk-panel .sgk-word-in{font-size:13vw}
 #sgk-hero.sgk-panel .sgk-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,110px);pointer-events:none}
 #sgk-hero.sgk-panel .sgk-left,#sgk-hero.sgk-panel .sgk-card-wrap{pointer-events:auto}
-#sgk-hero.sgk-panel .sgk-right{align-self:end}
-#sgk-hero.sgk-panel .sgk-card-wrap{max-width:330px}
+#sgk-hero.sgk-panel .sgk-right{align-self:center;justify-content:flex-end}
+#sgk-hero.sgk-panel .sgk-card-wrap{max-width:300px}
+#sgk-hero.sgk-panel .sgk-card{padding:22px}
+#sgk-hero.sgk-panel .sgk-card-name{font-size:20px}
 #sgk-hero.sgk-panel .sgk-title{font-size:clamp(30px,3.9vw,60px)}
 #sgk-hero.sgk-panel .sgk-scroll-w{display:none}
 
@@ -647,7 +649,7 @@ SYNERGY GK - ПЕРШИЙ ЕКРАН (HERO) ДЛЯ TILDA, БЛОК T123
       cardTilt: true,        /* ЗМІНИТИ - 3D-нахил картки при наведенні (тільки ПК) */
       accentUnderline: true, /* ЗМІНИТИ - намальоване підкреслення під акцентним рядком */
       showTopBar: true,      /* ЗМІНИТИ - показати логотип та Instagram зверху */
-      showCard: false,       /* ЗМІНИТИ - показати картку моделі (у режимі "panel" вона перекриває частину фото) */
+      showCard: true,        /* ЗМІНИТИ - показати картку моделі зі шкалами (на ПК - праворуч поверх фото, на телефоні - під текстом) */
       showNet: true,         /* ЗМІНИТИ - показати візерунок "сітка воріт" */
       showMarquee: true,     /* ЗМІНИТИ - показати бігучий рядок */
       showScrollHint: true,  /* ЗМІНИТИ - показати підказку "Гортай" (тільки в режимі "full") */
@@ -1008,9 +1010,9 @@ HTML і CSS чіпати не потрібно. Біля кожного пара
   bars             - шкали характеристик: value 0-100 - довжина
                      смужки, text - цифра праворуч (можна "10/10").
   price            - ціна; buttonLink - куди веде кнопка картки.
-  Зараз картка вимкнена (settings.showCard: false), бо в режимі
-  "panel" праворуч стоїть фото. Увімкнути: settings.showCard: true
-  (на ПК вона стане в нижньому правому куті поверх фото).
+  На ПК картка стоїть праворуч поверх фото (по центру по висоті, щоб
+  не закривати рукавиці), на телефоні - під текстом.
+  Прибрати: settings.showCard: false
 
 ---------------------------------------------------------------------
 7. ФОНОВІ ДЕТАЛІ

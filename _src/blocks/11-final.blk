@@ -1,0 +1,203 @@
+@@meta
+id: sgk-final
+anchor: contacts
+title: Фінальний екран і підвал (контакти)
+pos: останній блок сторінки (перед ним - блок 10 FAQ; блок 12 Кошик можна ставити до або після нього).
+icons: yes
+colors: bg=#0F1211
+extra: panelBg=#C8FF2E|фон великої лаймової панелі; panelText=#0A0C0B|текст на панелі; panelWord=rgba(10,12,11,0.10)|контур слова, що біжить по панелі
+
+@@html
+<section id="sgk-final" aria-label="Контакти">
+  <div class="sgk-wrap">
+    <div class="sgk-panel sgk-rv">
+      <div class="sgk-run" aria-hidden="true"><div class="sgk-run-in" data-sgk="run"></div></div>
+      <div class="sgk-p-in">
+        <h2 class="sgk-p-title" data-sgk="title"></h2>
+        <p class="sgk-p-text" data-sgk="text"></p>
+        <div class="sgk-p-btns">
+          <a class="sgk-pbtn sgk-pbtn--dark" data-sgk="btn1" href="#catalog"><span data-sgk="btn1Text"></span><span class="sgk-pbi" data-sgk="btn1Ic"></span></a>
+          <a class="sgk-pbtn sgk-pbtn--line" data-sgk="btn2" href="#"><span class="sgk-pbi2" data-sgk="btn2Ic"></span><span data-sgk="btn2Text"></span></a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="sgk-foot">
+      <div class="sgk-f-brand sgk-rv">
+        <a class="sgk-logo" data-sgk="logo" href="#"></a>
+        <p class="sgk-f-tag" data-sgk="tagline"></p>
+        <div class="sgk-soc" data-sgk="social"></div>
+      </div>
+      <div class="sgk-f-col sgk-rv" data-d="0.08">
+        <div class="sgk-f-h" data-sgk="navTitle"></div>
+        <ul data-sgk="nav"></ul>
+      </div>
+      <div class="sgk-f-col sgk-rv" data-d="0.16">
+        <div class="sgk-f-h" data-sgk="contactsTitle"></div>
+        <ul data-sgk="contacts"></ul>
+      </div>
+      <div class="sgk-f-bottom">
+        <span data-sgk="copy"></span>
+        <a data-sgk="policy" href="#"></a>
+        <button class="sgk-up" type="button" data-sgk="up"></button>
+      </div>
+    </footer>
+  </div>
+</section>
+
+@@css
+#sgk-final{padding-bottom:0}
+#sgk-final .sgk-panel{position:relative;overflow:hidden;border-radius:clamp(26px,3vw,40px);background:var(--sgk-panelBg);color:var(--sgk-panelText);padding:clamp(40px,7vw,96px) clamp(24px,5vw,72px)}
+#sgk-final .sgk-run{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);pointer-events:none;overflow:hidden}
+#sgk-final .sgk-run-in{display:inline-block;white-space:nowrap;font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(90px,16vw,240px);line-height:1;color:transparent;-webkit-text-stroke:2px var(--sgk-panelWord);animation:sgkRun 40s linear infinite}
+#sgk-final .sgk-p-in{position:relative;z-index:1;max-width:820px}
+#sgk-final .sgk-p-title{font-family:var(--sgk-font-h);font-weight:800;font-size:clamp(32px,5.4vw,78px);line-height:1.02;letter-spacing:-.02em;color:var(--sgk-panelText)}
+#sgk-final .sgk-p-title em{font-style:normal;color:var(--sgk-panelText);background:linear-gradient(var(--sgk-panelText),var(--sgk-panelText)) 0 92%/0 6px no-repeat;transition:background-size 1s cubic-bezier(.6,.1,.2,1) .5s}
+#sgk-final .sgk-panel.is-in .sgk-p-title em,#sgk-final.sgk-static .sgk-p-title em{background-size:100% 6px}
+#sgk-final .sgk-p-text{margin-top:20px;max-width:560px;font-size:clamp(15px,1.3vw,18px);line-height:1.6;color:var(--sgk-panelText);opacity:.75}
+#sgk-final .sgk-p-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+#sgk-final .sgk-pbtn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:58px;border-radius:100px;font-size:15px;font-weight:800;white-space:nowrap;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,color .3s ease,box-shadow .3s ease}
+#sgk-final .sgk-pbtn:hover{transform:translateY(-3px)}
+#sgk-final .sgk-pbtn--dark,#sgk-final .sgk-pbtn--dark span{color:var(--sgk-panelBg) !important}
+#sgk-final .sgk-pbtn--dark{padding:0 9px 0 28px;background:var(--sgk-panelText)}
+#sgk-final .sgk-pbtn--dark:hover{box-shadow:0 16px 40px rgba(0,0,0,.25)}
+#sgk-final .sgk-pbi{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-panelBg);color:var(--sgk-panelText) !important;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+#sgk-final .sgk-pbtn .sgk-pbi{color:var(--sgk-panelText) !important}
+#sgk-final .sgk-pbi svg{width:18px;height:18px}
+#sgk-final .sgk-pbtn--dark:hover .sgk-pbi{transform:rotate(-45deg)}
+#sgk-final .sgk-pbtn--line,#sgk-final .sgk-pbtn--line span{color:var(--sgk-panelText) !important}
+#sgk-final .sgk-pbtn--line{padding:0 26px;border:2px solid var(--sgk-panelText)}
+#sgk-final .sgk-pbtn--line:hover{background:var(--sgk-panelText)}
+#sgk-final .sgk-pbtn--line:hover,#sgk-final .sgk-pbtn--line:hover span{color:var(--sgk-panelBg) !important}
+#sgk-final .sgk-pbi2{display:flex}
+#sgk-final .sgk-pbi2 svg{width:20px;height:20px}
+
+#sgk-final .sgk-foot{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:32px;padding:clamp(56px,7vw,88px) 0 0}
+#sgk-final a.sgk-logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--sgk-font-h);font-weight:800;font-size:18px;letter-spacing:.06em;color:var(--sgk-text) !important}
+#sgk-final .sgk-logo img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.3)}
+#sgk-final .sgk-logo em{color:var(--sgk-accent)}
+#sgk-final .sgk-f-tag{margin-top:16px;max-width:320px;font-size:14.5px;line-height:1.6;color:var(--sgk-textMuted)}
+#sgk-final .sgk-soc{display:flex;gap:10px;margin-top:20px}
+#sgk-final .sgk-soc a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--sgk-cardBorder);color:var(--sgk-text) !important;transition:background .3s ease,color .3s ease,transform .3s ease,border-color .3s ease}
+#sgk-final .sgk-soc a svg{width:20px;height:20px}
+#sgk-final .sgk-soc a:hover{background:var(--sgk-accent);border-color:var(--sgk-accent);color:var(--sgk-btnText) !important;transform:translateY(-3px)}
+#sgk-final .sgk-f-h{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-accent);margin-bottom:16px}
+#sgk-final .sgk-f-col ul{list-style:none}
+#sgk-final .sgk-f-col li + li{margin-top:10px}
+#sgk-final .sgk-f-col a,#sgk-final .sgk-f-col li > span{display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--sgk-text) !important;transition:color .25s ease,transform .25s ease}
+#sgk-final .sgk-f-col a svg,#sgk-final .sgk-f-col li > span svg{width:17px;height:17px;color:var(--sgk-accent)}
+#sgk-final .sgk-f-col a:hover{color:var(--sgk-accent) !important;transform:translateX(4px)}
+#sgk-final .sgk-f-bottom{grid-column:1/-1;display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:20px;padding:24px 0 28px;border-top:1px solid var(--sgk-line);font-size:13px;color:var(--sgk-textMuted)}
+#sgk-final .sgk-f-bottom a{color:var(--sgk-textMuted) !important;transition:color .25s ease}
+#sgk-final .sgk-f-bottom a:hover{color:var(--sgk-accent) !important}
+#sgk-final .sgk-up{margin-left:auto;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sgk-accent);color:var(--sgk-btnText);transition:transform .35s cubic-bezier(.2,1.4,.4,1)}
+#sgk-final .sgk-up svg{width:20px;height:20px;transform:rotate(-90deg)}
+#sgk-final .sgk-up:hover{transform:translateY(-4px)}
+@keyframes sgkRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:900px){#sgk-final .sgk-foot{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#sgk-final .sgk-f-brand{grid-column:1/-1}}
+@media (max-width:560px){
+  #sgk-final .sgk-foot{grid-template-columns:minmax(0,1fr);gap:28px}
+  #sgk-final .sgk-p-btns{flex-direction:column}
+  #sgk-final .sgk-pbtn{width:100%}
+  #sgk-final .sgk-pbtn--dark{justify-content:space-between}
+  #sgk-final .sgk-wrap{padding-left:12px;padding-right:12px}
+  #sgk-final .sgk-foot{padding-left:4px;padding-right:4px}
+}
+
+@@config
+    title: "Готовий стати [стіною]?",                       /* ЗМІНИТИ - великий заголовок, [слово] = підкреслення */
+    text: "Обери рукавиці, які не підведуть у вирішальний момент. Допоможемо з розміром і відправимо вже сьогодні.", /* ЗМІНИТИ - текст */
+    runningWord: "SYNERGY",                                 /* ЗМІНИТИ - слово, що біжить фоном ("" - прибрати) */
+    button1: { text: "Обрати рукавиці", link: "#catalog", newTab: false },          /* ЗМІНИТИ - темна кнопка */
+    button2: { text: "Написати в Telegram", link: "https://t.me/synergy_gk", newTab: true, icon: "telegram" }, /* ЗМІНИТИ - друга кнопка */
+
+    logo: "__ASSETS__logo.png",                             /* ЗМІНИТИ - логотип у підвалі ("" - лише текст) */
+    logoText: "SYNERGY [GK]",                               /* ЗМІНИТИ - назва поруч з логотипом, [частина] = акцент */
+    tagline: "Воротарські рукавиці від воротаря. Німецький латекс, чесні оцінки, допомога з розміром.", /* ЗМІНИТИ - опис під логотипом */
+    social: [                                               /* ЗМІНИТИ - соцмережі (icon: instagram / telegram / phone / mail) */
+      { icon: "instagram", link: "https://www.instagram.com/synergy.gk/" },
+      { icon: "telegram",  link: "https://t.me/synergy_gk" }
+    ],
+
+    navTitle: "Меню",                                       /* ЗМІНИТИ - заголовок колонки меню */
+    nav: [                                                  /* ЗМІНИТИ - пункти меню (посилання на якорі блоків) */
+      { text: "Каталог",         link: "#catalog" },
+      { text: "Типи крою",       link: "#cut" },
+      { text: "Підбір розміру",  link: "#size" },
+      { text: "Доставка і оплата", link: "#delivery" },
+      { text: "Питання",         link: "#faq" }
+    ],
+
+    contactsTitle: "Контакти",                              /* ЗМІНИТИ - заголовок колонки контактів */
+    contacts: [                                             /* ЗМІНИТИ - контакти (ЗАГЛУШКИ). link: "" = просто текст */
+      { icon: "phone",     text: "+380 00 000 00 00", link: "tel:+380000000000" },
+      { icon: "telegram",  text: "@synergy_gk",       link: "https://t.me/synergy_gk" },
+      { icon: "instagram", text: "@synergy.gk",       link: "https://www.instagram.com/synergy.gk/" },
+      { icon: "pin",       text: "Україна, доставка по всій країні", link: "" }
+    ],
+
+    copyright: "© 2026 Synergy GK",                         /* ЗМІНИТИ - копірайт */
+    policyText: "Політика конфіденційності",                /* ЗМІНИТИ - посилання на політику ("" - сховати) */
+    policyLink: "#",                                        /* ЗМІНИТИ - адреса сторінки політики */
+
+@@js
+  rich(q("title"), CONFIG.title);
+  txt("text", CONFIG.text);
+  if (CONFIG.runningWord) { var w = (CONFIG.runningWord + "  ").repeat(6); txt("run", w + w); if (!animOn) q("run").style.animation = "none"; }
+  else root.querySelector(".sgk-run").style.display = "none";
+
+  txt("btn1Text", CONFIG.button1.text); lnk(q("btn1"), CONFIG.button1.link, CONFIG.button1.newTab);
+  q("btn1Ic").innerHTML = icon("arrow", 2.2);
+  if (CONFIG.button2 && CONFIG.button2.text) {
+    txt("btn2Text", CONFIG.button2.text); lnk(q("btn2"), CONFIG.button2.link, CONFIG.button2.newTab);
+    q("btn2Ic").innerHTML = CONFIG.button2.icon ? icon(CONFIG.button2.icon) : "";
+  } else q("btn2").style.display = "none";
+
+  var logo = q("logo");
+  if (CONFIG.logo) { var li = mk("img"); li.src = CONFIG.logo; li.alt = "logo"; logo.appendChild(li); }
+  var ls = mk("span"); rich(ls, CONFIG.logoText); logo.appendChild(ls);
+  txt("tagline", CONFIG.tagline);
+  var soc = q("social");
+  CONFIG.social.forEach(function (s) { var a = mk("a"); a.innerHTML = icon(s.icon); a.setAttribute("aria-label", s.icon); lnk(a, s.link, /^https?:/.test(s.link)); soc.appendChild(a); });
+
+  txt("navTitle", CONFIG.navTitle);
+  var nav = q("nav");
+  CONFIG.nav.forEach(function (n) { var li = mk("li"); var a = mk("a", "", n.text); lnk(a, n.link, /^https?:/.test(n.link)); li.appendChild(a); nav.appendChild(li); });
+
+  txt("contactsTitle", CONFIG.contactsTitle);
+  var ct = q("contacts");
+  CONFIG.contacts.forEach(function (c) {
+    var li = mk("li");
+    var el = c.link ? mk("a") : mk("span");
+    if (c.link) lnk(el, c.link, /^https?:/.test(c.link));
+    el.innerHTML = icon(c.icon); el.appendChild(mk("span", "", c.text));
+    li.appendChild(el); ct.appendChild(li);
+  });
+
+  txt("copy", CONFIG.copyright);
+  if (CONFIG.policyText) { txt("policy", CONFIG.policyText); lnk(q("policy"), CONFIG.policyLink); } else q("policy").style.display = "none";
+  var up = q("up"); up.innerHTML = icon("arrow", 2.2); up.setAttribute("aria-label", "up");
+  up.addEventListener("click", function () { try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) { window.scrollTo(0, 0); } });
+
+  reveal();
+
+@@notes
+ЛАЙМОВА ПАНЕЛЬ
+  title       - великий заголовок, [слово] підкреслюється лінією;
+  text        - текст під ним;
+  runningWord - контурне слово, що повільно біжить фоном;
+  button1     - темна кнопка (за замовчуванням - у каталог);
+  button2     - друга кнопка (за замовчуванням - Telegram);
+                icon: "telegram" / "instagram" / "phone" або "".
+
+ПІДВАЛ
+  logo, logoText, tagline - логотип, назва і короткий опис;
+  social   - круглі кнопки соцмереж (icon + link);
+  nav      - меню з посиланнями на блоки (#catalog, #size ...);
+  contacts - контакти: icon, text, link
+             (телефон: "tel:+380...", пошта: "mailto:...",
+              link: "" - просто текст без посилання);
+  copyright, policyText, policyLink - нижній рядок.
+  Кругла лаймова кнопка праворуч знизу - "нагору".
+
+УВАГА: телефон, нік Telegram і посилання на політику - ЗАГЛУШКИ.

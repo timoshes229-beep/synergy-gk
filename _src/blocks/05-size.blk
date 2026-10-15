@@ -1,0 +1,249 @@
+@@meta
+id: sgk-size
+anchor: size
+title: Підбір розміру
+pos: після блоку 04 (Типи крою).
+icons: yes
+colors: bg=#0F1211
+extra: rangeTrack=rgba(255,255,255,0.12)|фон повзунка; rowActive=rgba(200,255,46,0.10)|підсвітка рядка таблиці з твоїм розміром
+
+@@html
+<section id="sgk-size" aria-label="Підбір розміру">
+  <div class="sgk-wrap">
+    <div class="sgk-head">
+      <div class="sgk-kicker sgk-rv" data-sgk="kicker"></div>
+      <h2 class="sgk-h2 sgk-rv" data-d="0.08" data-sgk="title"></h2>
+      <p class="sgk-lead sgk-rv" data-d="0.16" data-sgk="lead"></p>
+    </div>
+    <div class="sgk-layout">
+      <div class="sgk-calc sgk-rv" data-d="0.1">
+        <div class="sgk-steps" data-sgk="steps"></div>
+        <div class="sgk-meter">
+          <div class="sgk-m-top">
+            <span class="sgk-m-l" data-sgk="inputLabel"></span>
+            <span class="sgk-m-v"><b data-sgk="cm"></b> <span data-sgk="unit"></span></span>
+          </div>
+          <div class="sgk-range-row">
+            <button class="sgk-pm" type="button" data-sgk="minus" aria-label="-"></button>
+            <input class="sgk-range" type="range" data-sgk="range" aria-label="cm">
+            <button class="sgk-pm" type="button" data-sgk="plus" aria-label="+"></button>
+          </div>
+        </div>
+        <div class="sgk-result">
+          <div class="sgk-r-l" data-sgk="resultLabel"></div>
+          <div class="sgk-r-v"><span class="sgk-r-num" data-sgk="size"></span></div>
+          <div class="sgk-r-who" data-sgk="who"></div>
+          <p class="sgk-r-tip" data-sgk="tip"></p>
+          <a class="sgk-btn sgk-btn--main" data-sgk="btn" href="#catalog"><span data-sgk="btnText"></span></a>
+        </div>
+      </div>
+      <div class="sgk-table sgk-rv" data-d="0.2">
+        <div class="sgk-t-title" data-sgk="tableTitle"></div>
+        <div class="sgk-t-head" data-sgk="thead"></div>
+        <div class="sgk-t-body" data-sgk="tbody"></div>
+        <p class="sgk-t-note" data-sgk="tableNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+@@css
+#sgk-size .sgk-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(16px,2.4vw,28px);align-items:stretch}
+#sgk-size .sgk-calc,#sgk-size .sgk-table{border-radius:28px;background:var(--sgk-cardBg);border:1px solid var(--sgk-cardBorder);padding:clamp(22px,3vw,40px)}
+#sgk-size .sgk-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#sgk-size .sgk-step{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--sgk-cardBorder)}
+#sgk-size .sgk-step-i{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--sgk-accentSoft);color:var(--sgk-accent)}
+#sgk-size .sgk-step-i svg{width:20px;height:20px}
+#sgk-size .sgk-step-t{font-size:13.5px;line-height:1.45;color:var(--sgk-textMuted)}
+#sgk-size .sgk-step-t b{color:var(--sgk-text);font-weight:700}
+#sgk-size .sgk-meter{margin-top:28px}
+#sgk-size .sgk-m-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+#sgk-size .sgk-m-l{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sgk-textMuted)}
+#sgk-size .sgk-m-v{font-size:15px;color:var(--sgk-textMuted)}
+#sgk-size .sgk-m-v b{font-family:var(--sgk-font-h);font-weight:800;font-size:30px;color:var(--sgk-text)}
+#sgk-size .sgk-range-row{display:flex;align-items:center;gap:12px;margin-top:14px}
+#sgk-size .sgk-pm{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--sgk-cardBorder) !important;display:flex;align-items:center;justify-content:center;color:var(--sgk-text);transition:background .25s ease,color .25s ease,transform .25s ease}
+#sgk-size .sgk-pm svg{width:18px;height:18px}
+#sgk-size .sgk-pm:hover{background:var(--sgk-accent);color:var(--sgk-btnText);transform:scale(1.06)}
+#sgk-size .sgk-range{-webkit-appearance:none;appearance:none;flex:1;height:8px;border-radius:8px;outline:none;cursor:pointer;
+  background:linear-gradient(90deg,var(--sgk-accent) 0%,var(--sgk-accent) var(--p,50%),var(--sgk-rangeTrack) var(--p,50%),var(--sgk-rangeTrack) 100%)}
+#sgk-size .sgk-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:30px;height:30px;border-radius:50%;background:var(--sgk-text);border:6px solid var(--sgk-accent);box-shadow:0 6px 20px rgba(0,0,0,.4);transition:transform .2s ease}
+#sgk-size .sgk-range::-webkit-slider-thumb:hover{transform:scale(1.12)}
+#sgk-size .sgk-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--sgk-text);border:6px solid var(--sgk-accent);box-shadow:0 6px 20px rgba(0,0,0,.4)}
+#sgk-size .sgk-result{margin-top:28px;padding:24px;border-radius:22px;background:var(--sgk-accentSoft);display:grid;grid-template-columns:auto 1fr;gap:4px 22px;align-items:center}
+#sgk-size .sgk-r-l{grid-column:1/-1;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sgk-accent)}
+#sgk-size .sgk-r-v{grid-row:span 2;display:flex;align-items:center;justify-content:center;width:110px;height:110px;border-radius:26px;background:var(--sgk-accent);overflow:hidden}
+#sgk-size .sgk-r-num{display:block;font-family:var(--sgk-font-h);font-weight:800;font-size:56px;line-height:1;color:var(--sgk-btnText)}
+#sgk-size .sgk-r-num.is-flip{animation:sgkFlip .45s cubic-bezier(.2,.8,.2,1)}
+#sgk-size .sgk-r-who{font-family:var(--sgk-font-h);font-weight:700;font-size:18px;color:var(--sgk-text)}
+#sgk-size .sgk-r-tip{font-size:13.5px;line-height:1.5;color:var(--sgk-textMuted)}
+#sgk-size .sgk-result .sgk-btn{grid-column:1/-1;margin-top:16px;justify-self:start}
+#sgk-size .sgk-t-title{font-family:var(--sgk-font-h);font-weight:700;font-size:20px;color:var(--sgk-text);margin-bottom:18px}
+#sgk-size .sgk-t-row{display:grid;grid-template-columns:.6fr 1fr 1fr;gap:10px;align-items:center;padding:13px 14px;border-radius:14px;font-size:14.5px;color:var(--sgk-textMuted);transition:background .35s ease,color .35s ease,transform .35s ease}
+#sgk-size .sgk-t-head .sgk-t-row{padding-top:0;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+#sgk-size .sgk-t-body .sgk-t-row{border-top:1px solid var(--sgk-line);border-radius:0}
+#sgk-size .sgk-t-body .sgk-t-row:first-child{border-top:0}
+#sgk-size .sgk-t-row b{font-family:var(--sgk-font-h);font-weight:700;font-size:16px;color:var(--sgk-text)}
+#sgk-size .sgk-t-body .sgk-t-row.is-on{background:var(--sgk-rowActive);border-radius:14px;color:var(--sgk-text);transform:scale(1.02)}
+#sgk-size .sgk-t-body .sgk-t-row.is-on b{color:var(--sgk-accent)}
+#sgk-size .sgk-t-body .sgk-t-row.is-on + .sgk-t-row{border-top-color:transparent}
+#sgk-size .sgk-t-note{margin-top:16px;font-size:13px;line-height:1.5;color:var(--sgk-textMuted)}
+@keyframes sgkFlip{0%{transform:translateY(60%);opacity:0}100%{transform:none;opacity:1}}
+@media (max-width:1000px){#sgk-size .sgk-layout{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){
+  #sgk-size .sgk-steps{grid-template-columns:minmax(0,1fr)}
+  #sgk-size .sgk-step{flex-direction:row;align-items:center}
+  #sgk-size .sgk-result{grid-template-columns:minmax(0,1fr);text-align:left}
+  #sgk-size .sgk-r-v{grid-row:auto;width:84px;height:84px;border-radius:20px;margin:8px 0}
+  #sgk-size .sgk-r-num{font-size:42px}
+  #sgk-size .sgk-result .sgk-btn{justify-self:stretch;white-space:normal;text-align:center;height:auto;min-height:54px;padding:12px 20px}
+  #sgk-size .sgk-t-row{font-size:13.5px;padding:12px 10px}
+}
+
+@@config
+    kicker: "Підбір розміру",                                /* ЗМІНИТИ - надпис над заголовком */
+    title: "Розмір за [10 секунд]",                           /* ЗМІНИТИ - заголовок, [слово] = акцент */
+    lead: "Правильний розмір - половина хвату. Поміряй долоню і посунь повзунок.", /* ЗМІНИТИ - текст під заголовком */
+
+    steps: [                                                  /* ЗМІНИТИ - як міряти (3 кроки) */
+      { icon: "ruler",  text: "Візьми сантиметрову стрічку або нитку" },   /* ЗМІНИТИ */
+      { icon: "hand",   text: "Обміряй долоню під пальцями, без великого пальця" }, /* ЗМІНИТИ */
+      { icon: "target", text: "Посунь повзунок на своє число" }            /* ЗМІНИТИ */
+    ],
+
+    inputLabel: "Обхват долоні",                              /* ЗМІНИТИ - підпис повзунка */
+    unit: "см",                                               /* ЗМІНИТИ - одиниці */
+    min: 13,                                                  /* ЗМІНИТИ - мінімум повзунка */
+    max: 25,                                                  /* ЗМІНИТИ - максимум повзунка */
+    step: 0.5,                                                /* ЗМІНИТИ - крок */
+    start: 19,                                                /* ЗМІНИТИ - значення на старті */
+
+    resultLabel: "Твій розмір",                               /* ЗМІНИТИ - підпис результату */
+    tip: "Між розмірами? Для Negative cut бери менший, для Roll finger - більший.", /* ЗМІНИТИ - порада під результатом */
+    btnText: "Показати рукавиці мого розміру",                /* ЗМІНИТИ - кнопка (веде в каталог і обирає розмір у картках) */
+    btnLink: "#catalog",                                      /* ЗМІНИТИ - куди веде кнопка */
+    tooSmall: "Менше за найменший розмір - напишіть нам",     /* ЗМІНИТИ - якщо обхват менший за таблицю */
+    tooBig: "Більше за найбільший розмір - напишіть нам",     /* ЗМІНИТИ - якщо обхват більший за таблицю */
+
+    tableTitle: "Таблиця розмірів",                           /* ЗМІНИТИ - заголовок таблиці */
+    tableHead: ["Розмір", "Обхват, см", "Для кого"],          /* ЗМІНИТИ - назви колонок */
+    tableNote: "Таблиця орієнтовна. Якщо сумніваєтесь - напишіть нам, підберемо розмір особисто.", /* ЗМІНИТИ - примітка під таблицею */
+
+    /* ТАБЛИЦЯ РОЗМІРІВ: from / to - обхват долоні в см (to не включно) */
+    sizes: [                                                  /* ЗМІНИТИ - реальна таблиця клієнта */
+      { size: "4",  from: 14,   to: 15,   who: "6-8 років" },
+      { size: "5",  from: 15,   to: 16,   who: "8-10 років" },
+      { size: "6",  from: 16,   to: 17,   who: "10-12 років" },
+      { size: "7",  from: 17,   to: 18,   who: "Підлітки" },
+      { size: "8",  from: 18,   to: 19,   who: "Дорослі S" },
+      { size: "9",  from: 19,   to: 20.5, who: "Дорослі M" },
+      { size: "10", from: 20.5, to: 22,   who: "Дорослі L" },
+      { size: "11", from: 22,   to: 23.5, who: "Дорослі XL" }
+    ],
+
+@@js
+  rich(q("kicker"), CONFIG.kicker);
+  rich(q("title"), CONFIG.title);
+  rich(q("lead"), CONFIG.lead);
+  txt("inputLabel", CONFIG.inputLabel);
+  txt("unit", CONFIG.unit);
+  txt("resultLabel", CONFIG.resultLabel);
+  txt("tableTitle", CONFIG.tableTitle);
+  txt("tableNote", CONFIG.tableNote);
+  q("minus").innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>';
+  q("plus").innerHTML = icon("plus", 2.2);
+
+  var stepsEl = q("steps");
+  CONFIG.steps.forEach(function (s) {
+    var d = mk("div", "sgk-step");
+    var i = mk("div", "sgk-step-i"); i.innerHTML = icon(s.icon); d.appendChild(i);
+    d.appendChild(mk("div", "sgk-step-t", s.text));
+    stepsEl.appendChild(d);
+  });
+
+  var head = mk("div", "sgk-t-row");
+  CONFIG.tableHead.forEach(function (h) { head.appendChild(mk("span", "", h)); });
+  q("thead").appendChild(head);
+  var rows = [];
+  CONFIG.sizes.forEach(function (s) {
+    var r = mk("div", "sgk-t-row");
+    r.appendChild(mk("b", "", s.size));
+    r.appendChild(mk("span", "", String(s.from).replace(".", ",") + " - " + String(s.to).replace(".", ",")));
+    r.appendChild(mk("span", "", s.who));
+    r.addEventListener("click", function () { setVal((s.from + s.to) / 2); });
+    r.style.cursor = "pointer";
+    q("tbody").appendChild(r); rows.push(r);
+  });
+
+  var range = q("range"), cmEl = q("cm"), sizeEl = q("size"), whoEl = q("who"), tipEl = q("tip"), btn = q("btn");
+  range.min = CONFIG.min; range.max = CONFIG.max; range.step = CONFIG.step; range.value = CONFIG.start;
+  txt("btnText", CONFIG.btnText);
+  lnk(btn, CONFIG.btnLink);
+  var lastSize = null, current = null;
+
+  function find(v) {
+    for (var i = 0; i < CONFIG.sizes.length; i++) { var s = CONFIG.sizes[i]; if (v >= s.from && v < s.to) return i; }
+    return -1;
+  }
+  function setVal(v) {
+    v = Math.max(CONFIG.min, Math.min(CONFIG.max, Math.round(v / CONFIG.step) * CONFIG.step));
+    range.value = v;
+    update();
+  }
+  function update() {
+    var v = parseFloat(range.value);
+    range.style.setProperty("--p", ((v - CONFIG.min) / (CONFIG.max - CONFIG.min) * 100) + "%");
+    cmEl.textContent = String(v).replace(".", ",");
+    var i = find(v), s = i >= 0 ? CONFIG.sizes[i] : null;
+    var label = s ? s.size : "-";
+    if (label !== lastSize) {
+      sizeEl.textContent = label;
+      if (animOn && lastSize !== null) { sizeEl.classList.remove("is-flip"); void sizeEl.offsetWidth; sizeEl.classList.add("is-flip"); }
+      lastSize = label;
+    }
+    current = s;
+    var first = CONFIG.sizes[0], last = CONFIG.sizes[CONFIG.sizes.length - 1];
+    whoEl.textContent = s ? s.who : (v < first.from ? CONFIG.tooSmall : CONFIG.tooBig);
+    tipEl.textContent = CONFIG.tip;
+    btn.style.display = s ? "" : "none";
+    rows.forEach(function (r, k) { r.classList.toggle("is-on", k === i); });
+  }
+  range.addEventListener("input", update);
+  q("minus").addEventListener("click", function () { setVal(parseFloat(range.value) - CONFIG.step); });
+  q("plus").addEventListener("click", function () { setVal(parseFloat(range.value) + CONFIG.step); });
+  btn.addEventListener("click", function () {
+    if (!current) return;
+    var ev;
+    try { ev = new CustomEvent("sgk:size", { detail: { size: current.size } }); }
+    catch (e) { ev = document.createEvent("CustomEvent"); ev.initCustomEvent("sgk:size", false, false, { size: current.size }); }
+    document.dispatchEvent(ev);
+  });
+  update();
+
+  reveal();
+
+@@notes
+kicker / title / lead - надписи над блоком.
+
+steps - 3 кроки "як поміряти" (icon - іконка, text - текст).
+
+ПОВЗУНОК
+  inputLabel, unit - підпис і одиниці;
+  min, max, step   - межі і крок повзунка;
+  start            - з якого значення починається.
+
+РЕЗУЛЬТАТ
+  resultLabel - підпис "Твій розмір";
+  tip         - порада під результатом;
+  btnText     - кнопка. Вона прокручує до каталогу і САМА обирає
+                знайдений розмір у всіх картках товарів (блок 03);
+  tooSmall / tooBig - текст, якщо обхват поза таблицею.
+
+ТАБЛИЦЯ  ->  sizes
+  size  - розмір;
+  from, to - обхват долоні в см (від - включно, до - не включно);
+  who   - для кого (вік або S/M/L).
+  Клік по рядку таблиці теж ставить повзунок на цей розмір.
+
+УВАГА: таблиця - ОРІЄНТОВНА заглушка. Обов'язково попросіть у
+клієнта його реальну розмірну сітку.
