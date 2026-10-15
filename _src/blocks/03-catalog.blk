@@ -51,6 +51,21 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
 #sgk-cat .sgk-card:hover .sgk-media .sgk-img,#sgk-cat .sgk-card:hover .sgk-media .sgk-ph{transform:scale(1.06)}
 #sgk-cat .sgk-media .sgk-img2{opacity:0}
 #sgk-cat .sgk-card:hover .sgk-media .sgk-img2{opacity:1}
+#sgk-cat .sgk-slides{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+#sgk-cat .sgk-slides::-webkit-scrollbar{display:none}
+#sgk-cat .sgk-slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always}
+#sgk-cat .sgk-dots{position:absolute;left:0;right:0;bottom:14px;z-index:3;display:flex;justify-content:center;gap:6px}
+#sgk-cat .sgk-dot{width:8px;height:8px;border-radius:8px;background:rgba(255,255,255,.6);box-shadow:0 1px 4px rgba(0,0,0,.35);transition:width .35s cubic-bezier(.2,.8,.2,1),background .35s ease}
+#sgk-cat .sgk-dot.is-on{width:24px;background:var(--sgk-accent)}
+#sgk-cat .sgk-nav{position:absolute;top:50%;z-index:3;width:42px;height:42px;margin-top:-21px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,12,11,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;opacity:0;transition:opacity .3s ease,background .25s ease,color .25s ease,transform .25s ease}
+#sgk-cat .sgk-nav svg{width:18px;height:18px}
+#sgk-cat .sgk-nav--p{left:12px}
+#sgk-cat .sgk-nav--p svg{transform:rotate(180deg)}
+#sgk-cat .sgk-nav--n{right:12px}
+#sgk-cat .sgk-media:hover .sgk-nav{opacity:1}
+#sgk-cat .sgk-nav:hover{background:var(--sgk-accent);color:var(--sgk-btnText);transform:scale(1.08)}
+#sgk-cat .sgk-count{position:absolute;right:16px;bottom:12px;z-index:3;padding:4px 9px;border-radius:100px;background:rgba(10,12,11,.55);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.04em}
+@media (hover:none){#sgk-cat .sgk-nav{display:none}}
 #sgk-cat .sgk-badge{position:absolute;left:16px;top:16px;z-index:2;padding:6px 12px;border-radius:100px;background:var(--sgk-accent);color:var(--sgk-btnText);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 #sgk-cat .sgk-cut{position:absolute;right:16px;top:16px;z-index:2;padding:6px 12px;border-radius:100px;background:rgba(10,12,11,.6);border:1px solid var(--sgk-cardBorder);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--sgk-text);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 #sgk-cat .sgk-body{display:flex;flex-direction:column;flex:1;padding:22px 22px 22px}
@@ -134,12 +149,12 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
 
     /* ТОВАРИ. Скопіюйте рядок { ... }, щоб додати модель. id - унікальний, латиницею без пробілів */
     products: [
-      { id: "evolution",    name: "Synergy Evolution",    category: "adult", cut: "",         price: 1650, oldPrice: 0,    badge: "New",  desc: "Біла модель з фірмовим S на долоні і рельєфним захистом пальців.", ratings: [9.6, 9.4, 8.8], sizes: ["7","8","9","10","11"], image: "__ASSETS__evolution-1.jpg", image2: "__ASSETS__evolution-2.jpg", imagePosition: "50% 22%" }, /* ЗМІНИТИ - ціна, оцінки, розміри і крій - уточнити у клієнта */
-      { id: "shine",        name: "Synergy Shine",        category: "adult", cut: "",         price: 1650, oldPrice: 0,    badge: "New",  desc: "Чорна модель з неоново-блакитними вставками і фірмовим S.", ratings: [9.7, 9.3, 8.7], sizes: ["7","8","9","10","11"], image: "__ASSETS__shine-1.jpg", image2: "__ASSETS__shine-2.jpg", imagePosition: "50% 45%" }, /* ЗМІНИТИ - ціна, оцінки, розміри і крій - уточнити у клієнта */
-      { id: "hybrid-elite", name: "Synergy Hybrid Elite", category: "adult", cut: "hybrid",   price: 1950, oldPrice: 0,    badge: "",     desc: "Топова модель для матчів: щільність і площа контакту.", ratings: [9.7, 9.5, 9.0], sizes: ["8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
-      { id: "training",     name: "Synergy Training",     category: "adult", cut: "negative", price: 990,  oldPrice: 0,    badge: "",     desc: "Міцні рукавиці для щоденних тренувань.", ratings: [8.6, 9.2, 9.6], sizes: ["7","8","9","10","11"], image: "", image2: "" }, /* ЗМІНИТИ */
-      { id: "junior-neg",   name: "Synergy Junior Negative", category: "kids", cut: "negative", price: 890, oldPrice: 0,  badge: "Kids", desc: "Дитяча модель з тим самим латексом, що й у дорослих.", ratings: [9.2, 9.4, 8.4], sizes: ["4","5","6","7"], image: "", image2: "" }, /* ЗМІНИТИ */
-      { id: "junior-roll",  name: "Synergy Junior Roll",  category: "kids",  cut: "roll",     price: 890,  oldPrice: 990,  badge: "Kids", desc: "М'яка посадка для юних воротарів.", ratings: [9.3, 8.9, 8.4], sizes: ["4","5","6","7"], image: "", image2: "" }  /* ЗМІНИТИ */
+      { id: "evolution",    name: "Synergy Evolution",    category: "adult", cut: "",         price: 1650, oldPrice: 0,    badge: "New",  desc: "Біла модель з фірмовим S на долоні і рельєфним захистом пальців.", ratings: [9.6, 9.4, 8.8], sizes: ["7","8","9","10","11"], imagePosition: "50% 22%", images: ["__ASSETS__evolution-1.jpg", "__ASSETS__evolution-2.jpg", "__ASSETS__evolution-palm.jpg", { src: "__ASSETS__evolution-detail.jpg", pos: "50% 50%" }] }, /* ЗМІНИТИ - ціна, оцінки, розміри і крій - уточнити у клієнта */
+      { id: "shine",        name: "Synergy Shine",        category: "adult", cut: "",         price: 1650, oldPrice: 0,    badge: "New",  desc: "Чорна модель з неоново-блакитними вставками і фірмовим S.", ratings: [9.7, 9.3, 8.7], sizes: ["7","8","9","10","11"], imagePosition: "50% 45%", images: ["__ASSETS__shine-1.jpg", "__ASSETS__shine-2.jpg", { src: "__ASSETS__shine-detail.jpg", pos: "50% 60%" }, { src: "__ASSETS__shine-palm.jpg", pos: "50% 40%" }] }, /* ЗМІНИТИ - ціна, оцінки, розміри і крій - уточнити у клієнта */
+      { id: "hybrid-elite", name: "Synergy Hybrid Elite", category: "adult", cut: "hybrid",   price: 1950, oldPrice: 0,    badge: "",     desc: "Топова модель для матчів: щільність і площа контакту.", ratings: [9.7, 9.5, 9.0], sizes: ["8","9","10","11"], images: [] }, /* ЗМІНИТИ */
+      { id: "training",     name: "Synergy Training",     category: "adult", cut: "negative", price: 990,  oldPrice: 0,    badge: "",     desc: "Міцні рукавиці для щоденних тренувань.", ratings: [8.6, 9.2, 9.6], sizes: ["7","8","9","10","11"], images: [] }, /* ЗМІНИТИ */
+      { id: "junior-neg",   name: "Synergy Junior Negative", category: "kids", cut: "negative", price: 890, oldPrice: 0,  badge: "Kids", desc: "Дитяча модель з тим самим латексом, що й у дорослих.", ratings: [9.2, 9.4, 8.4], sizes: ["4","5","6","7"], images: [] }, /* ЗМІНИТИ */
+      { id: "junior-roll",  name: "Synergy Junior Roll",  category: "kids",  cut: "roll",     price: 890,  oldPrice: 990,  badge: "Kids", desc: "М'яка посадка для юних воротарів.", ratings: [9.3, 8.9, 8.4], sizes: ["4","5","6","7"], images: [] }  /* ЗМІНИТИ */
     ],
 
 @@settings
@@ -165,7 +180,7 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
     var cart = readCart(), key = p.id + "|" + size, found = null;
     cart.forEach(function (it) { if (it.key === key) found = it; });
     if (found) found.qty += 1;
-    else cart.push({ key: key, id: p.id, name: p.name, size: size, price: p.price, qty: 1, image: p.image || "" });
+    else cart.push({ key: key, id: p.id, name: p.name, size: size, price: p.price, qty: 1, image: p.image || "", pos: p.imagePosition || "" });
     writeCart(cart);
     var ev;
     try { ev = new CustomEvent("sgk:cart", { detail: { action: "add", open: !!S.openCartOnAdd } }); }
@@ -193,16 +208,69 @@ extra: danger=#FF6A5C|колір підказки "Оберіть розмір";
     setTimeout(function () { if (dot.parentNode) dot.parentNode.removeChild(dot); }, 850);
   }
 
+  /* --- фото товару: одне фото або гортання кількох --- */
+  function slidesOf(p) {
+    var arr = [];
+    (p.images || []).forEach(function (x) {
+      if (!x) return;
+      if (typeof x === "string") arr.push({ src: x, pos: p.imagePosition || "" });
+      else if (x.src) arr.push({ src: x.src, pos: x.pos || p.imagePosition || "" });
+    });
+    if (!arr.length && p.image) {
+      arr.push({ src: p.image, pos: p.imagePosition || "" });
+      if (p.image2) arr.push({ src: p.image2, pos: p.imagePosition || "" });
+    }
+    return arr;
+  }
+  function buildSlides(m, p) {
+    var sl = slidesOf(p);
+    if (!p.image && sl.length) p.image = sl[0].src;
+    if (!sl.length) { m.appendChild(media("", p.name, CONFIG.photoLabel, "glove")); return; }
+    if (sl.length === 1) { var one = media(sl[0].src, p.name); if (sl[0].pos) one.style.objectPosition = sl[0].pos; m.appendChild(one); return; }
+    var track = mk("div", "sgk-slides");
+    sl.forEach(function (s, k) {
+      var d = mk("div", "sgk-slide");
+      var im = media(s.src, p.name + " - " + (k + 1));
+      if (s.pos) im.style.objectPosition = s.pos;
+      d.appendChild(im); track.appendChild(d);
+    });
+    m.appendChild(track);
+    function cur() { return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); }
+    function goTo(k) {
+      k = (k + sl.length) % sl.length;
+      try { track.scrollTo({ left: k * track.clientWidth, behavior: animOn ? "smooth" : "auto" }); } catch (e) { track.scrollLeft = k * track.clientWidth; }
+    }
+    var dots = mk("div", "sgk-dots"), dl = [];
+    sl.forEach(function (s, k) {
+      var b = mk("button", "sgk-dot" + (k === 0 ? " is-on" : "")); b.type = "button"; b.setAttribute("aria-label", String(k + 1));
+      b.addEventListener("click", function (e) { e.stopPropagation(); goTo(k); });
+      dots.appendChild(b); dl.push(b);
+    });
+    m.appendChild(dots);
+    var pv = mk("button", "sgk-nav sgk-nav--p"); pv.type = "button"; pv.setAttribute("aria-label", "prev"); pv.innerHTML = icon("arrow", 2.2);
+    var nx = mk("button", "sgk-nav sgk-nav--n"); nx.type = "button"; nx.setAttribute("aria-label", "next"); nx.innerHTML = icon("arrow", 2.2);
+    pv.addEventListener("click", function () { goTo(cur() - 1); });
+    nx.addEventListener("click", function () { goTo(cur() + 1); });
+    m.appendChild(pv); m.appendChild(nx);
+    var cnt = mk("span", "sgk-count", "1/" + sl.length); m.appendChild(cnt);
+    var rf = null;
+    track.addEventListener("scroll", function () {
+      if (rf) return;
+      rf = requestAnimationFrame(function () {
+        rf = null; var c = Math.max(0, Math.min(sl.length - 1, cur()));
+        dl.forEach(function (d, i) { d.classList.toggle("is-on", i === c); });
+        cnt.textContent = (c + 1) + "/" + sl.length;
+      });
+    }, { passive: true });
+  }
+
   /* --- картки --- */
   var grid = q("grid"), cards = [];
   CONFIG.products.forEach(function (p, i) {
     var c = mk("article", "sgk-card sgk-rv");
     c.setAttribute("data-d", (0.05 + (i % 3) * 0.1).toFixed(2));
     var m = mk("div", "sgk-media");
-    var i1 = media(p.image, p.name, CONFIG.photoLabel, "glove");
-    if (p.image && p.imagePosition) i1.style.objectPosition = p.imagePosition;
-    m.appendChild(i1);
-    if (p.image && p.image2) { var i2 = media(p.image2, p.name); i2.className += " sgk-img2"; if (p.imagePosition) i2.style.objectPosition = p.imagePosition; m.appendChild(i2); }
+    buildSlides(m, p);
     if (p.badge) m.appendChild(mk("span", "sgk-badge", p.badge));
     if (p.cut && CONFIG.cutNames[p.cut]) m.appendChild(mk("span", "sgk-cut", CONFIG.cutNames[p.cut]));
     c.appendChild(m);
@@ -339,10 +407,16 @@ kicker / title / lead - надписи над каталогом.
               (порядок як у ratingLabels: Хват, Посадка, Зносостійкість);
               [] - без шкал;
   sizes     - доступні розміри, наприклад ["7","8","9"];
-  image     - фото товару ("" = заглушка з іконкою рукавиці);
-  image2    - друге фото, показується при наведенні (необов'язково);
-  imagePosition - яку частину фото показувати в картці, "X% Y%"
-              (для вертикальних фото рукавиць добре працює "50% 22%").
+  images    - ФОТО ТОВАРУ, скільки завгодно: перше - головне, інші
+              гортаються (стрілки на ПК, свайп на телефоні, крапки
+              і лічильник 1/4 внизу фото). Приклад:
+              images: ["https://.../1.jpg", "https://.../2.jpg"]
+              [] = заглушка з іконкою рукавиці.
+              Якщо якесь фото обрізається невдало - запишіть його так:
+              { src: "https://.../3.jpg", pos: "50% 60%" }
+              (pos - яку частину фото показувати, "X% Y%");
+  imagePosition - яку частину показувати для всіх фото моделі за
+              замовчуванням (для вертикальних фото рукавиць - "50% 22%").
 
 ФІЛЬТРИ  ->  categories, cuts
   Кнопки над товарами. id фільтра має збігатися з category / cut товару.

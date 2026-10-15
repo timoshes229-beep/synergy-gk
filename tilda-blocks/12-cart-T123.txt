@@ -574,7 +574,7 @@ instagramUsername на реальні ніки клієнта.
     var box = q("items"); box.innerHTML = "";
     cart.forEach(function (it, idx) {
       var row = mk("div", "sgk-it");
-      var th = mk("div", "sgk-th"); th.appendChild(media(it.image, it.name, "", "glove")); row.appendChild(th);
+      var th = mk("div", "sgk-th"); var thi = media(it.image, it.name, "", "glove"); if (it.image && it.pos) thi.style.objectPosition = it.pos; th.appendChild(thi); row.appendChild(th);
       var info = mk("div");
       info.appendChild(mk("div", "sgk-it-n", it.name));
       info.appendChild(mk("div", "sgk-it-m", CONFIG.sizeLabel + " " + it.size + "  |  " + money(it.price)));
